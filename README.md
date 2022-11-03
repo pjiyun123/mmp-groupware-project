@@ -11,7 +11,7 @@
 
 ## ✔ 4팀 팀원 소개
 - 박지윤(팀장) | pjiyun123
-- 엄지엉 | thumbzzero
+- 엄지 | thumbzzero
 - 정다혜 | JeongDaH
 - 홍은솔 | hyo05095
 
