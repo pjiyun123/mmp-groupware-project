@@ -10,13 +10,6 @@ import java.util.Objects;
 
 @Getter
 @ToString
-@Table(indexes = {
-        @Index(columnList = "userId", unique = true),
-        @Index(columnList = "phone", unique = true),
-        @Index(columnList = "email", unique = true),
-        @Index(columnList = "creatAt"),
-        @Index(columnList = "updateAt")
-})
 @Entity
 public class User extends AuditingFields {
 

@@ -2,12 +2,14 @@ package com.team4.groupwareproject.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Getter
+@ToString
 @Entity
 public class Calendar extends AuditingFields{
 
