@@ -25,8 +25,8 @@ public class User extends AuditingFields {
     private int userId;
 
     @Setter @ManyToOne(optional = false) @JoinColumn(name = "deptNo") private Dept dept; // 부서 정보
-    @Setter @ManyToOne(optional = false) @JoinColumn(name = "authorId") private Authorization authorization; // 부서 정보
-    @Setter @ManyToOne(optional = false) @JoinColumn(name = "rankId") private Rank rank; // 부서 정보
+    @Setter @ManyToOne(optional = false) @JoinColumn(name = "authorId") private Authorization authorization; // 권한 정보
+    @Setter @ManyToOne(optional = false) @JoinColumn(name = "rankId") private Rank rank; // 직급 정보
 
     @Setter @Column(nullable = false) private String userName;
     @Setter @Column(nullable = false) private String password;
