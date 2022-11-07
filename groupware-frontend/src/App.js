@@ -1,9 +1,9 @@
-
+import RootPage from './pages/RootPage'
 
 function App() {
   return (
     <div>
-      groupware
+      <RootPage />
     </div>
   );
 }
