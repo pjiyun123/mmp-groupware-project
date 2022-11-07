@@ -3,7 +3,7 @@ import React from 'react';
 const HeaderContainer = () => {
 	return (
 		<div>
-			HeaderContainer
+			<h1>GROUPWARE - HEADER LOGO</h1>
 		</div>
 	);
 };

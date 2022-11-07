@@ -1,0 +1,17 @@
+.login-page {
+	display: flex;
+	flex-direction: row;	
+	height: 100%;
+}
+
+.logo-container {
+	height: 100%;
+	flex: 0.5;
+	border-right: 1px solid black;
+	text-align: center;
+}
+
+.login-container {
+	height: 100%;
+	flex: 0.5;
+}
