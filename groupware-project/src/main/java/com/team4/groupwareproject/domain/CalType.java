@@ -11,12 +11,12 @@ import javax.persistence.Id;
 @Getter
 @ToString
 @Entity
-public class Rank extends AuditingFields{
+public class CalType extends AuditingFields{
 
     @Id
     @Column(length = 20)
-    private Long rankId;
+    private Long calType;
 
-    @Setter @Column(length = 50) private String rankName;
+    @Setter @Column(nullable = false, length = 50) private String calTypeName;
 
 }
