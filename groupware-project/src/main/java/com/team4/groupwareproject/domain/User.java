@@ -5,7 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Getter
@@ -23,13 +23,13 @@ public class User extends AuditingFields {
 
     @Setter @Column(nullable = false) private String userName;
     @Setter @Column(nullable = false) private String password;
-    @Setter @Column private LocalDateTime birthDate;
+    @Setter @Column private LocalDate birthDate;
     @Setter @Column(length = 20) private String phone;
     @Setter @Column(length = 250) private String email;
     @Setter private String picture;
 
     protected User() {}
-    private User(Long userId, String userName, String password, LocalDateTime birthDate, String phone, String email, String picture) {
+    public User(Long userId, String userName, String password, LocalDate birthDate, String phone, String email, String picture) {
         this.userId = userId;
         this.userName = userName;
         this.password = password;
@@ -38,7 +38,7 @@ public class User extends AuditingFields {
         this.email = email;
         this.picture = picture;
     }
-    public static User of(Long userId, String userName, String password, LocalDateTime birthDate, String phone, String email, String picture) {
+    public static User of(Long userId, String userName, String password, LocalDate birthDate, String phone, String email, String picture) {
         return new User(userId, userName, password, birthDate, phone, email, picture);
     }
 
