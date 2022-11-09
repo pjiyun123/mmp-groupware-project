@@ -1,9 +1,10 @@
-
+import RootPage from './pages/RootPage'
+import './styles/common.css';
 
 function App() {
   return (
-    <div>
-      groupware
+    <div className='app'>
+      <RootPage />
     </div>
   );
 }
