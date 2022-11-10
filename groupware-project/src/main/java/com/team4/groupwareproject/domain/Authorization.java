@@ -19,4 +19,14 @@ public class Authorization extends AuditingFields{
 
     @Setter @Column(nullable = false, length = 50) private String authorName;
 
+    protected Authorization() {}
+
+    public Authorization (Long authorId, String authorName) {
+        this.authorId = authorId;
+        this.authorName = authorName;
+    }
+
+    public static Authorization of(Long authorId, String authorName) {
+        return new Authorization(authorId, authorName);
+    }
 }

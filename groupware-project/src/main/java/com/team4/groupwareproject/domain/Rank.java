@@ -19,4 +19,15 @@ public class Rank extends AuditingFields{
 
     @Setter @Column(length = 50) private String rankName;
 
+    protected Rank() {}
+
+    public Rank (Long rankId, String rankName) {
+        this.rankId = rankId;
+        this.rankName = rankName;
+    }
+
+    public static Rank of(Long rankId, String rankName) {
+        return new Rank(rankId, rankName);
+    }
+
 }

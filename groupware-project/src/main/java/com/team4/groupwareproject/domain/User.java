@@ -29,8 +29,12 @@ public class User extends AuditingFields {
     @Setter private String picture;
 
     protected User() {}
-    public User(Long userId, String userName, String password, LocalDate birthDate, String phone, String email, String picture) {
+    public User(Long userId, Dept dept, Authorization authorization, Rank rank, String userName, String password,
+                LocalDate birthDate, String phone, String email, String picture) {
         this.userId = userId;
+        this.dept = dept;
+        this.authorization = authorization;
+        this.rank = rank;
         this.userName = userName;
         this.password = password;
         this.birthDate = birthDate;
@@ -38,8 +42,8 @@ public class User extends AuditingFields {
         this.email = email;
         this.picture = picture;
     }
-    public static User of(Long userId, String userName, String password, LocalDate birthDate, String phone, String email, String picture) {
-        return new User(userId, userName, password, birthDate, phone, email, picture);
+    public static User of(Long userId, Dept dept, Authorization authorization, Rank rank, String userName, String password, LocalDate birthDate, String phone, String email, String picture) {
+        return new User(userId, dept, authorization, rank, userName, password, birthDate, phone, email, picture);
     }
 
     @Override
