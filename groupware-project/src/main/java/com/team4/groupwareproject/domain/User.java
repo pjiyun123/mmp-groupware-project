@@ -3,15 +3,19 @@ package com.team4.groupwareproject.domain;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Getter
 @ToString
 @Entity
-public class User extends AuditingFields {
+public class User {
 
     @Id
     @Column(length = 20)
@@ -28,6 +32,22 @@ public class User extends AuditingFields {
     @Setter @Column(length = 250) private String email;
     @Setter private String picture;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @CreatedDate
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime creatAt; //생성일
+
+    @Setter
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @LastModifiedDate
+    @Column(nullable = false)
+    private LocalDateTime updateAt; //수정일
+
+    @Setter
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @Column(nullable = false)
+    private LocalDateTime deleteAt; //삭제일 //구현 중
+
     protected User() {}
     public User(Long userId, Dept dept, Authorization authorization, Rank rank, String userName, String password,
                 LocalDate birthDate, String phone, String email, String picture) {
@@ -41,6 +61,7 @@ public class User extends AuditingFields {
         this.phone = phone;
         this.email = email;
         this.picture = picture;
+        this.creatAt = LocalDateTime.now();
     }
     public static User of(Long userId, Dept dept, Authorization authorization, Rank rank, String userName, String password, LocalDate birthDate, String phone, String email, String picture) {
         return new User(userId, dept, authorization, rank, userName, password, birthDate, phone, email, picture);
