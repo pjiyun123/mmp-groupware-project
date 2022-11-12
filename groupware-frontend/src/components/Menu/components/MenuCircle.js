@@ -1,8 +1,9 @@
 import React from 'react';
+import classes from '../styles/MenuCircle.module.css';
 
-const MenuCircle = ({ menuName}) => {
+const MenuCircle = ({ menuName }) => {
 	return (
-		<div>
+		<div className={classes.menuCircle}>
 			{menuName}
 		</div>
 	);
