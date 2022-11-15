@@ -1,5 +1,7 @@
 import React from "react";
+import { Routes, Route, Link } from 'react-router-dom';
 import InfoModiBtn from "./components/InfoModiBtn";
+import InfoModify from "./components/InfoModify";
 import MyInformation from "./components/MyInformation";
 import ProfileImg from "./components/ProfileImg";
 
@@ -15,17 +17,42 @@ const MyPageContainer = () => {
   };
   return (
     <div className="MyPageContainer">
-      <MyInformation
-        name={dummyInformation.name}
-        userId={dummyInformation.userId}
-        dept={dummyInformation.dept}
-        rank={dummyInformation.rank}
-        phone={dummyInformation.phone}
-        email={dummyInformation.email}
-        birthDate={dummyInformation.birthDate}
-      />
-			<ProfileImg />
-			<InfoModiBtn />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <MyInformation
+                name={dummyInformation.name}
+                userId={dummyInformation.userId}
+                dept={dummyInformation.dept}
+                rank={dummyInformation.rank}
+                phone={dummyInformation.phone}
+                email={dummyInformation.email}
+                birthDate={dummyInformation.birthDate}
+              />
+              <ProfileImg />
+              <Link to="modify">
+                <InfoModiBtn />
+              </Link>
+            </>
+          }
+        />
+        <Route
+          path="/modify"
+          element={
+            <InfoModify
+              name={dummyInformation.name}
+              userId={dummyInformation.userId}
+              dept={dummyInformation.dept}
+              rank={dummyInformation.rank}
+              phone={dummyInformation.phone}
+              email={dummyInformation.email}
+              birthDate={dummyInformation.birthDate}
+            />
+          }
+        />
+      </Routes>
     </div>
   );
 };
