@@ -2,7 +2,7 @@ import React from 'react';
 
 const MainMenu = ({ menuName}) => {
 	return (
-		<div>
+		<div className='mainMenu'>
 			{menuName}
 		</div>
 	);
