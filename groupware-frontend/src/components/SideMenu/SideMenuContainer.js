@@ -36,16 +36,16 @@ const SideMenuContainer = () => {
 			<Link to=''>
 				<SubMenu menuName='결재할 문서' />
 			</Link>
-			<Link to='list'>
+			<Link to='employees'>
 				<MainMenu menuName='직원조회' />
 			</Link>
-			<Link to=''>
+			<Link to='employees'>
 				<SubMenu menuName='직원목록' />
 			</Link>
-			<Link to=''>
+			<Link to='employees/create'>
 				<SubMenu menuName='직원계정생성' />
 			</Link>
-			<Link to=''>
+			<Link to='employees/delete'>
 				<SubMenu menuName='직원계정삭제' />
 			</Link>
 		</div>
