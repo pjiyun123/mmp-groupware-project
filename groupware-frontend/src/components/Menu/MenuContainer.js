@@ -5,17 +5,20 @@ import MenuCircle from './components/MenuCircle';
 const MenuContainer = () => {
 	return (
 		<div>
-			<Link to='calendar'>
+			<Link to='/mypage'>
+				<MenuCircle menuName='마이페이지' />
+			</Link>
+			<Link to='/calendar'>
 				<MenuCircle menuName='캘린더' />
 			</Link>
-			<Link to='board'>
+			<Link to='/board'>
 				<MenuCircle menuName='업무일지' />
 			</Link>
-			<Link to='board'>
+			<Link to='/board'>
 				<MenuCircle menuName='보고/결재' />
 			</Link>
 			<Link>
-				<MenuCircle menuName='마이페이지' />
+				<MenuCircle menuName='직원 조회' />
 			</Link>
 		</div>
 	);

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const MainMenu = () => {
+const MainMenu = ({ menuName}) => {
 	return (
 		<div>
-			MainMenu
+			{menuName}
 		</div>
 	);
 };

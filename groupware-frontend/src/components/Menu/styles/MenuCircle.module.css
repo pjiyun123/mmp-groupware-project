@@ -1,0 +1,12 @@
+.menuCircle {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-color: #CFE4FF;
+
+	text-align: center;
+	line-height: 200px;
+	color: black;
+	font-size: 2em;
+	font-weight: bold;
+}

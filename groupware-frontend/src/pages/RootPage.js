@@ -5,7 +5,7 @@ import LoginedPage from "./LoginedPage";
 
 
 const RootPage = () => {
-  const isLogin = false;
+  const isLogin = true;
   
   return (
     <BrowserRouter>

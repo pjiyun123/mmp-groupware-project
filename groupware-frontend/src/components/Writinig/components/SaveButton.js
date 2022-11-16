@@ -3,7 +3,7 @@ import React from 'react';
 const SaveButton = () => {
 	return (
 		<div>
-			SaveButton
+			저장
 		</div>
 	);
 };
