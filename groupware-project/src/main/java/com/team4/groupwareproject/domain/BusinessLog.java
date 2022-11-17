@@ -40,4 +40,16 @@ public class BusinessLog {
     @Column(nullable = false)
     private LocalDateTime deleteAt; //삭제일 //구현 중
 
+    protected BusinessLog() {}
+
+    public BusinessLog(Long businessLogId, User user, String title, String content) {
+        this.businessLogId = businessLogId;
+        this.title = title;
+        this.content = content;
+        this.creatAt = LocalDateTime.now();
+    }
+
+    public static BusinessLog of(Long businessLogId, User user, String title, String content) {
+        return new BusinessLog(businessLogId, user, title, content);
+    }
 }
