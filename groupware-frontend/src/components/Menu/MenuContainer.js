@@ -17,7 +17,7 @@ const MenuContainer = () => {
 			<Link to='/board'>
 				<MenuCircle menuName='보고/결재' />
 			</Link>
-			<Link>
+			<Link to='/employees'>
 				<MenuCircle menuName='직원 조회' />
 			</Link>
 		</div>
