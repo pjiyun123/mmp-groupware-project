@@ -25,25 +25,28 @@ public class UserService {
         return userRepository.findByUserId(userId);
     }
 
+    /*
     public Long createUser(User user) {
         userRepository.save(user);
         return user.getUserId();
     }
+     */
 
     public User updateUserByUserId(Long userId, User user){
         User tempUser = userRepository.findByUserId(userId);
 
         //TODO: 권한 설정
-        tempUser.setDept(user.getDept());
-        tempUser.setAuthorization(tempUser.getAuthorization());
-        tempUser.setRank(tempUser.getRank());
+        tempUser.setDeptId(user.getDeptId());
+        tempUser.setAuthorizationId(tempUser.getAuthorizationId());
+        tempUser.setRankId(tempUser.getRankId());
+
         tempUser.setUserName(user.getUserName());
         tempUser.setPassword(user.getPassword());
         tempUser.setBirthDate(user.getBirthDate());
         tempUser.setPhone(user.getPhone());
         tempUser.setEmail(user.getEmail());
         tempUser.setPicture(user.getPicture());
-        tempUser.setUpdateAt(LocalDateTime.now());
+//        tempUser.setUpdateAt(LocalDateTime.now());
 
         User updatedUser = userRepository.save(tempUser);
 

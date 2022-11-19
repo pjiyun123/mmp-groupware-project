@@ -7,9 +7,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
@@ -18,6 +16,7 @@ import java.time.LocalDateTime;
 public class Authorization {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(length = 20)
     private Long authorId;
 
