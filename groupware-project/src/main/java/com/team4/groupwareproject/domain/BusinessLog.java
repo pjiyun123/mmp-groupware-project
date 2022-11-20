@@ -16,10 +16,11 @@ import java.time.LocalDateTime;
 public class BusinessLog {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(length = 20)
     private Long businessLogId;
 
-    @Setter @ManyToOne(optional = false) @JoinColumn(name = "userID") private User user; // 사원번호
+    @Setter @ManyToOne @JoinColumn(name = "userID") private User user; // 사원번호
 
     @Setter @Column(nullable = false, length = 50) private String title;
     @Setter private String content;
@@ -29,21 +30,22 @@ public class BusinessLog {
     @Column(nullable = false, updatable = false)
     private LocalDateTime creatAt; //생성일
 
-    @Setter
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @LastModifiedDate
-    @Column(nullable = false)
-    private LocalDateTime updateAt; //수정일
+//    @Setter
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+//    @LastModifiedDate
+//    @Column(nullable = false)
+//    private LocalDateTime updateAt; //수정일
 
-    @Setter
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @Column(nullable = false)
-    private LocalDateTime deleteAt; //삭제일 //구현 중
+//    @Setter
+//   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+//    @Column(nullable = false)
+//    private LocalDateTime deleteAt; //삭제일 //구현 중
 
     protected BusinessLog() {}
 
     public BusinessLog(Long businessLogId, User user, String title, String content) {
         this.businessLogId = businessLogId;
+        this.user = user;
         this.title = title;
         this.content = content;
         this.creatAt = LocalDateTime.now();
