@@ -26,17 +26,17 @@ public class CalType {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @CreatedDate
     @Column(nullable = false, updatable = false)
-    private LocalDateTime creatAt; //생성일
+    private LocalDateTime createAt; //생성일
 
-    @Setter
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @LastModifiedDate
-    @Column(nullable = false)
-    private LocalDateTime updateAt; //수정일
+//    @Setter
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+//    @LastModifiedDate
+//    @Column(nullable = false)
+//    private LocalDateTime updateAt; //수정일
 
-    @Setter
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @Column(nullable = false)
-    private LocalDateTime deleteAt; //삭제일 //구현 중
+//    @Setter
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+//    @Column(nullable = false)
+//    private LocalDateTime deleteAt; //삭제일 //구현 중
 
 }
