@@ -22,13 +22,13 @@ public class BusinessLog {
 
     @Setter @ManyToOne @JoinColumn(name = "userID") private User user; // 사원번호
 
-    @Setter @Column(nullable = false, length = 50) private String title;
+    @Setter @Column(length = 50) private String title;
     @Setter private String content;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @CreatedDate
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime creatAt; //생성일
+    @Column(updatable = false)
+    private LocalDateTime createAt; //생성일
 
 //    @Setter
 //    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -48,7 +48,7 @@ public class BusinessLog {
         this.user = user;
         this.title = title;
         this.content = content;
-        this.creatAt = LocalDateTime.now();
+        this.createAt = LocalDateTime.now();
     }
 
     public static BusinessLog of(Long businessLogId, User user, String title, String content) {

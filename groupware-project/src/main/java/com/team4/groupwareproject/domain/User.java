@@ -30,8 +30,8 @@ public class User {
     //@Setter @ManyToOne(optional = false) @JoinColumn(name = "authorId") private Authorization authorization; // 권한 정보
     //@Setter @ManyToOne(optional = false) @JoinColumn(name = "rankId") private Ranks rank; // 직급 정보
 
-    @Setter @Column(nullable = false) private String userName;
-    @Setter @Column(nullable = false) private String password;
+    @Setter @Column private String userName;
+    @Setter @Column private String password;
     @Setter @Column private LocalDate birthDate;
     @Setter @Column(length = 20) private String phone;
     @Setter @Column(length = 250) private String email;
@@ -39,7 +39,7 @@ public class User {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @CreatedDate
-    @Column(nullable = false, updatable = false)
+    @Column(updatable = false)
     private LocalDateTime createAt; //생성일
 
 //    @Setter
