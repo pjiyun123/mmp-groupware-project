@@ -3,7 +3,6 @@ import React from "react";
 const DropdownInput = ({ dropdownList, setSelectedDropValue }) => {
   const handleDropdown = (e) => {
     const selectedValue = e.target.value;
-		console.log(selectedValue);
     setSelectedDropValue(
       dropdownList.filter((list) => list.value === selectedValue)[0].id
     );
