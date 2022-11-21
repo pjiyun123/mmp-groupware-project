@@ -37,7 +37,7 @@ public class Calendar {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @CreatedDate
-    @Column(nullable = false, updatable = false)
+    @Column(updatable = false)
     private LocalDateTime createAt; //생성일
 
 //    @Setter
@@ -65,6 +65,7 @@ public class Calendar {
         this.calEndTime = calEndTime;
         this.calPlace = calPlace;
         this.majorYn = majorYn;
+        this.createAt = LocalDateTime.now();
     }
 
     public static Calendar of(Long calId, User user, CalCategory calCategory, String title, String content,
