@@ -51,4 +51,25 @@ public class Calendar {
 //    @Column(nullable = false)
 //    private LocalDateTime deleteAt; //삭제일 //구현 중
 
+    protected Calendar() {}
+
+    public Calendar(Long calId, User user, CalCategory calCategory, String title, String content,
+                    LocalDate calDate, LocalTime calStartTime, LocalTime calEndTime, String calPlace, char majorYn) {
+        this.calId = calId;
+        this.user = user;
+        this.calCategory = calCategory;
+        this.title = title;
+        this.content = content;
+        this.calDate = calDate;
+        this.calStartTime = calStartTime;
+        this.calEndTime = calEndTime;
+        this.calPlace = calPlace;
+        this.majorYn = majorYn;
+    }
+
+    public static Calendar of(Long calId, User user, CalCategory calCategory, String title, String content,
+                              LocalDate calDate, LocalTime calStartTime, LocalTime calEndTime, String calPlace, char majorYn) {
+        return new Calendar(calId, user, calCategory, title, content, calDate, calStartTime, calEndTime, calPlace, majorYn);
+    }
+
 }
