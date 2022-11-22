@@ -4,7 +4,7 @@ import LoginPage from "./components/LoginPage";
 import LoginedPage from "./LoginedPage";
 
 const RootPage = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);  // default: false
   const [loginedUser, setLoginedUser] = useState("");
 
   return (
