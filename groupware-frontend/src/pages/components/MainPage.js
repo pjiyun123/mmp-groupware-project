@@ -10,7 +10,8 @@ import EmployeesContainer from '../../components/Employees/EmployeesContainer';
 
 
 
-const MainPage = () => {
+const MainPage = ({ loginedUser }) => {
+	console.log(loginedUser);
 	return (
 		<div>
 			<HeaderContainer />
