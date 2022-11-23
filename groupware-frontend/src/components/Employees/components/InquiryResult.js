@@ -1,41 +1,72 @@
 import React, { useEffect, useState } from "react";
 
-const InquiryResult = ({ list }) => {
+const InquiryResult = ({ list, searchClicked, isList }) => {
   const [infoList, setInfoList] = useState([]);
 
   useEffect(() => {
     const infos = list.map((info) => (
-      <div key={info.userId}>
-        <label className="inquiryInfoType">{info.userId}</label>
-        <label className="inquiryInfoType">{info.userName}</label>
-        <label className="inquiryInfoType">{info.rankId}</label>
-        <label className="inquiryInfoType">{info.deptId}</label>
-        <label className="inquiryInfoType">
+      <tr key={info.userId}>
+        <td className="inquiryInfoType" align="center">
+          {info.userId}
+        </td>
+        <td className="inquiryInfoType" align="center">
+          {info.userName}
+        </td>
+        <td className="inquiryInfoType" align="center">
+          {info.rankId}
+        </td>
+        <td className="inquiryInfoType" align="center">
+          {info.deptId}
+        </td>
+        <td className="inquiryInfoType" align="center">
           {info.phone == null ? "등록된 연락처가 없습니다." : info.phone}
-        </label>
-        <label className="inquiryInfoType">
+        </td>
+        <td className="inquiryInfoType" align="center">
           {info.email == null ? "등록된 이메일이 없습니다." : info.email}
-        </label>
-        <label className="inquiryInfoType">{info.birthDate}</label>
-      </div>
+        </td>
+        <td className="inquiryInfoType" align="center">
+          {info.birthDate}
+        </td>
+      </tr>
     ));
     setInfoList(infos);
   }, [list]);
 
   return (
     <div className="inquiryReseultContainer">
-      <div className="inquiryInfoTypes">
-        <label className="inquiryInfoType">사원번호</label>
-        <label className="inquiryInfoType">이름</label>
-        <label className="inquiryInfoType">직급</label>
-        <label className="inquiryInfoType">부서</label>
-        <label className="inquiryInfoType">연락처</label>
-        <label className="inquiryInfoType">이메일</label>
-        <label className="inquiryInfoType">생년월일</label>
-      </div>
-      <div className="inquiryReseult">
-        {infoList.length === 0 ? "등록된 직원 정보가 없습니다" : infoList}
-      </div>
+      {isList ? (
+        infoList.length === 0 ? (
+          <h3>등록된 직원 정보가 없습니다.</h3>
+        ) : (
+          <table align="center" width="90%">
+            <th align="center">사원번호</th>
+            <th align="center">이름</th>
+            <th align="center">직급</th>
+            <th align="center">부서</th>
+            <th align="center">연락처</th>
+            <th align="center">이메일</th>
+            <th align="center">생년월일</th>
+            {infoList}
+          </table>
+        )
+      ) : searchClicked ? (
+        infoList.length === 0 ? (
+          <h3>등록된 직원 정보가 없습니다.</h3>
+        ) : (
+          <table align="center" width="90%">
+            <th align="center">사원번호</th>
+            <th align="center">이름</th>
+            <th align="center">직급</th>
+            <th align="center">부서</th>
+            <th align="center">연락처</th>
+            <th align="center">이메일</th>
+            <th align="center">생년월일</th>
+            {infoList}
+          </table>
+        )
+      ) : (
+        <h3>삭제할 계정을 검색하세요</h3>
+      )}
     </div>
   );
 };

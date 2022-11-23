@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import InquiryResult from './InquiryResult';
 
-const AccountDelete = () => {
+const AccountDelete = ({ isList, setIsList }) => {
 	const [idInput, setIdInput] = useState("");
 	const [list, setList] = useState([]);
 
+	const [searchClicked, setSearchClicked] = useState(false);
+
+	useEffect(() => {
+		setIsList(false);
+		setSearchClicked(false);
+	}, []);
+
+
 	const onChange = (e) => {
 		setIdInput(e.target.value);
+		if (idInput.length === 0) {
+			setSearchClicked(false);
+		}
 	}
 
 	const searchHandler = () => {
+		setSearchClicked(true);
 		axios({
 			method: "get", 
 			url: "//localhost:8080/users", 
@@ -36,8 +48,7 @@ const AccountDelete = () => {
 					<button className='inquiryBtn' onClick={searchHandler}>조회</button>
 				</h1>
 			</div>
-			<h3>조회결과</h3>
-			<InquiryResult list={list} />
+			<InquiryResult list={list} searchClicked={searchClicked} isList={isList} />
 			<button className='accountDeleteBtn' onClick={deleteHandler}>삭제</button>
 		</div>
 	);

@@ -9,14 +9,14 @@ const SideMenuContainer = () => {
 			<Link to='/'>
 				<MainMenu menuName='HOME' />
 			</Link>
-			<Link to=''>
-				<SubMenu menuName='일정확인' />
-			</Link>
-			<Link to=''>
-				<SubMenu menuName='일정등록' />
-			</Link>
 			<Link to='calendar'>
 				<MainMenu menuName='캘린더' />
+			<Link to='calendar'>
+				<SubMenu menuName='일정확인' />
+			</Link>
+			<Link to='calendar/create'>
+				<SubMenu menuName='일정등록' />
+			</Link>
 			</Link>
 			<Link to='businesslog'>
 				<MainMenu menuName='업무일지' />
