@@ -3,7 +3,7 @@ import axios from "axios";
 import LoginForm from './components/LoginForm';
 import '../../styles/loginPage.css';
 
-const LoginContainer = ({ setIsLogin, setLoginedUser }) => {
+const LoginContainer = () => {
 	const [msg, setMsg] = useState("");
 	const idRef = useRef();
   const pwRef = useRef();
@@ -21,8 +21,12 @@ const LoginContainer = ({ setIsLogin, setLoginedUser }) => {
 			const user = response.data.filter((employee) => employee.userId == enteredId);
 			if (user.length > 0) {
 				if (enteredPw === user[0].password) {
-					setIsLogin(true);
-					setLoginedUser(enteredId);
+					try {
+						localStorage.setItem('user', JSON.stringify(user));
+						window.location.reload();
+					} catch (e) {
+						console.log('localStorage is not working');
+					}
 				}
 				else {
 					setMsg("아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.");

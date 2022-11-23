@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
 import { Routes, Route, Link } from 'react-router-dom';
 import InfoModiBtn from "./components/InfoModiBtn";
 import InfoModify from "./components/InfoModify";
@@ -15,6 +16,19 @@ const MyPageContainer = () => {
     email: "gildong@gmail.com",
     birthDate: "1990.01.01",
   };
+
+  const [myInfo, setMyInfo] = useState([]);
+
+  useEffect(() => {
+		axios({
+			method: "get", 
+			url: "//localhost:8080/users", 
+		})
+		.then((response) => {
+			setMyInfo(response.data);
+		})
+	} , []);
+
   return (
     <div className="MyPageContainer">
       <Routes>
