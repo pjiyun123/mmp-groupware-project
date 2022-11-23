@@ -5,7 +5,7 @@ import RenderDays from "./RenderDays";
 import RenderCells from "./RenderCells";
 import '../styles/calendar.css';
 
-const Calendar = () => {
+const Calendar = ({ calList }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -31,6 +31,7 @@ const Calendar = () => {
         currentMonth={currentMonth}
         selectedDate={selectedDate}
         onDateClick={onDateClick}
+        calList={calList}
       />
     </div>
   );

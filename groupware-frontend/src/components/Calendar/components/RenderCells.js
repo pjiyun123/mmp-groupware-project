@@ -12,8 +12,8 @@ import {
 import React from "react";
 import '../styles/calendar.css';
 
-const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
-  const monthStart = startOfMonth(currentMonth);
+const RenderCells = ({ currentMonth, selectedDate, onDateClick, calList }) => {
+  const monthStart = startOfMonth(currentMonth); // Tue Nov 01 2022 00:00:00 GMT+0900 (한국 표준시) - Date 객체
   const monthEnd = endOfMonth(monthStart);
   const startDate = startOfWeek(monthStart);
   const endDate = endOfWeek(monthEnd);
@@ -23,10 +23,25 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
   let day = startDate;
   let formattedDate = "";
 
+  const schedule = calList.map((sche) => {
+    return {
+      calDate: new Date(sche.calDate),
+      scheduleDiv: (
+        <div className="schedule" key={sche.calId} >
+          {sche.user == null ? null : "["+sche.user.userName+"]"}
+          {sche.calStartTime}~{sche.calEndTime}
+          {sche.title}
+        </div>
+      )
+    }
+  });
+  console.log(schedule);
+
   while (day <= endDate) {
     for (let i = 0; i < 7; i++) {
       formattedDate = format(day, "d");
       const cloneDay = day;
+
       days.push(
         <div
           className={`col cell ${
@@ -50,6 +65,12 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
           >
             {formattedDate}
           </span>
+          {
+            // isSameDay(day, schedule.calDate) ? (schedule.scheduleDiv) : null
+            schedule.map((s) =>
+              isSameDay(day, s.calDate) ? (s.scheduleDiv) : null
+            )
+          }
         </div>
       );
 			day = addDays(day, 1);
