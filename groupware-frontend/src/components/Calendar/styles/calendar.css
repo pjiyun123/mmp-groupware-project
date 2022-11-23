@@ -116,3 +116,7 @@
 	color: pink;
 	font-weight: 600;
 }
+	
+.schedule {
+	/* overflow: scroll; */
+}
