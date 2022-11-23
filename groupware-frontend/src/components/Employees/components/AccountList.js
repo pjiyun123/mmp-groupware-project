@@ -3,11 +3,12 @@ import axios from 'axios';
 import PageNumbers from '../../Common/PageNumbers';
 import InquiryResult from './InquiryResult';
 
-const AccountList = () => {
+const AccountList = ({ isList, setIsList }) => {
 
 	const [list, setList] = useState([]);
 
 	useEffect(() => {
+		setIsList(true);
 		axios({
 			method: "get", 
 			url: "//localhost:8080/users", 
@@ -18,7 +19,7 @@ const AccountList = () => {
 	} , []);
 	return (
 		<div>
-			<InquiryResult list={list} />
+			<InquiryResult list={list} isList={isList} />
 			<PageNumbers />
 		</div>
 	);
