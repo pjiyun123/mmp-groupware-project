@@ -8,6 +8,7 @@ import com.team4.groupwareproject.repository.BusinesslogRepository;
 import com.team4.groupwareproject.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -49,6 +50,7 @@ public class BusinesslogService {
                         .atcPrtNo(blNo)
                         .atcOriName(files.get(i).getOriginalFilename())
                         .atcFtpName(fileName)
+                        .createDt(LocalDateTime.now())
                         .build();
 
                 atcRepo.save(atc);
@@ -91,10 +93,11 @@ public class BusinesslogService {
 
                 Attachment atc = Attachment.builder()
                         .atcDocNo(constant.BUSINESSLOG)
-                        .atcPrtNo(Long.parseLong(businesslog.getBlNo().toString()))
+                        .atcPrtNo(blNo)
                         .atcOriName(files.get(i).getOriginalFilename())
                         .atcFtpName(fileName)
                         .createDt(LocalDateTime.now())
+                        .updateDt(LocalDateTime.now())
                         .build();
 
                 atcRepo.save(atc);

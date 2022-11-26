@@ -26,7 +26,7 @@ public class BusinesslogController {
 
     // 업무일지 등록
     @PostMapping("/businesslog/{userNo}")
-    public Businesslog add(@PathVariable Long userNo, @RequestBody Businesslog bl, @RequestParam List<MultipartFile> files) throws IOException {
+    public Businesslog add(@PathVariable Long userNo, @RequestPart("bl") Businesslog bl, @RequestPart("files") List<MultipartFile> files) throws IOException {
         Businesslog newBl = blServ.addBusinesslog(userNo, bl, files);
         return newBl;
     }
@@ -47,7 +47,7 @@ public class BusinesslogController {
 
     // 업무일지 수정
     @PatchMapping("/businesslog/{userNo}/{blNo}")
-    public Businesslog edit(@PathVariable Long userNo, @PathVariable Long blNo, @RequestBody Businesslog bl, @RequestParam List<MultipartFile> files) throws IOException{
+    public Businesslog edit(@PathVariable Long userNo, @PathVariable Long blNo, @RequestPart("bl") Businesslog bl, @RequestPart("files") List<MultipartFile> files) throws IOException{
         Businesslog updatedBl = blServ.updateBusinesslog(blNo, bl, files);
         return updatedBl;
     }
