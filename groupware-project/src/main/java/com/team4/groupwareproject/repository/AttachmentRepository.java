@@ -5,12 +5,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Repository
 public interface AttachmentRepository extends JpaRepository<Attachment, Long> {
+    List<Attachment> findByAtcNo(Long atcNo);
+    List<Attachment> findByAtcDocNoAndAtcPrtNo(Long atcDocNo, Long atcPrtNo);
 
+    @Query(value = "delete Attachment where atcDocNo=:atcDocNo and atcPrtNo=:atcPrtNo", nativeQuery = true)
+    void deleteByAtcDocNoAndAtcPrtNo(@Param("atcDocNo") Long atcDocNo, @Param("atcPrtNo") Long atcPrtNo);
 }

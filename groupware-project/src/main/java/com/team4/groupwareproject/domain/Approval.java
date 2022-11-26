@@ -1,8 +1,7 @@
 package com.team4.groupwareproject.domain;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -10,36 +9,42 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Getter
-@ToString
 @Entity
+@ToString
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@DynamicUpdate
 public class Approval {
 
     @Id
-    @Column(length = 20)
-    private Long documentId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long aNo; // 결재 문서 번호
 
-    @Setter @ManyToOne(optional = false) @JoinColumn(name = "formID") private ApprForm apprForm; // 결재 문서 양식 번호
-    @Setter @ManyToOne(optional = false) @JoinColumn(name = "userID") private User user; // 사원번호
-
-    @Setter @Column(nullable = false, length = 100) private String title;
-    @Setter private String content;
-    @Setter private char apprYn; //결재 여부
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @CreatedDate
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime creatAt; //생성일
-
-    @Setter
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @LastModifiedDate
     @Column(nullable = false)
-    private LocalDateTime updateAt; //수정일
+    private Long afNo; // 결재 양식 번호
 
-    @Setter
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @Column(nullable=false)
+    private Long userNo; // 회원 번호
+
+    @Column(nullable = false, length = 100)
+    private String aTit; // 제목
+
+    @Column(nullable=false, length = 5000)
+    private String aContent;	// 내용
+
+    @Column
+    private char apprYn; // 결재 여부
+
     @Column(nullable = false)
-    private LocalDateTime deleteAt; //삭제일 //구현 중
+    private LocalDateTime createDt; // 작성일자
+
+    @Column(nullable = true)
+    private LocalDateTime updateDt; // 수정일자
+
+    @Column(nullable = true)
+    private LocalDateTime deleteDt; // 삭제일자
 
 }

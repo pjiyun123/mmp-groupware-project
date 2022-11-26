@@ -10,10 +10,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class CalendarService {
 
+    /*
     @Autowired
     private final CalendarRepository calendarRepository;
     @Autowired
@@ -48,5 +49,7 @@ public class CalendarService {
     public void deleteCalByCalId(Long calId) {
         calendarRepository.deleteById(calId);
     }
+
+     */
 
 }

@@ -6,17 +6,18 @@ import com.team4.groupwareproject.repository.CalendarRepository;
 import com.team4.groupwareproject.repository.UserRepository;
 import com.team4.groupwareproject.service.CalendarService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping
+@Controller
+@RequestMapping("/calendar")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:3000")
 public class CalendarController {
 
+    /*
     private final CalendarService calendarService;
     private final CalendarRepository calendarRepository;
     private final UserRepository userRepository;
@@ -81,4 +82,6 @@ public class CalendarController {
         return calendarService.getCalendars();
     }
 
+
+     */
 }

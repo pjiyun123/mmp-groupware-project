@@ -2,9 +2,6 @@ package com.team4.groupwareproject.domain;
 
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -17,26 +14,20 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @DynamicUpdate
-public class Reply {
+public class Businesslog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int rNo; // 댓글 번호
+    private Long blNo; // 글 번호
 
     @Column(nullable=false)
     private Long userNo; // 회원 번호
 
-    @Column
-    private Long aNo; // 결재 문서 번호
+    @Column(nullable=false, length = 50)
+    private String blTit;	// 제목
 
-    @Column
-    private Long afNo; // 결재 문서 양식 번호
-
-    @Column
-    private String rContent; // 댓글 내용
-
-    @Column
-    private Long prNo; // 상위 댓글 번호
+    @Column(nullable=false, length = 5000)
+    private String blContent;	// 내용
 
     @Column(nullable = false)
     private LocalDateTime createDt; // 작성일자

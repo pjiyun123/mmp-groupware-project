@@ -4,7 +4,6 @@ import com.team4.groupwareproject.domain.Calendar;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
 public interface CalendarRepository extends JpaRepository<Calendar, Long> {
-    Calendar findByCalId(Long calId);
+    Calendar findByCalNo(Long calNo);
 }
