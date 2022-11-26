@@ -2,9 +2,11 @@ package com.team4.groupwareproject.service;
 
 import com.team4.groupwareproject.domain.Attachment;
 import com.team4.groupwareproject.domain.Businesslog;
+import com.team4.groupwareproject.domain.User;
 import com.team4.groupwareproject.domain.constant.constant;
 import com.team4.groupwareproject.repository.AttachmentRepository;
 import com.team4.groupwareproject.repository.BusinesslogRepository;
+import com.team4.groupwareproject.repository.UserRepository;
 import com.team4.groupwareproject.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,7 @@ public class BusinesslogService {
     private final FileUtil fileutil;
 
     private final BusinesslogRepository blRepo;
+    private final UserRepository uRepo;
     private final AttachmentRepository atcRepo;
 
 
@@ -32,8 +35,10 @@ public class BusinesslogService {
 
     // 업무일지 등록
     public Businesslog addBusinesslog(Long userNo, Businesslog businesslog, List<MultipartFile> files) throws IOException {
+        User user = uRepo.findByUserNo(userNo);
         Businesslog newBl = Businesslog.builder()
                 .userNo(userNo)
+                .userNm(user.getUserNm())
                 .blTit(businesslog.getBlTit())
                 .blContent(businesslog.getBlContent())
                 .createDt(LocalDateTime.now())
@@ -73,7 +78,7 @@ public class BusinesslogService {
         return blFiles;
     }
 
-    // 업무일지 수정 실행
+    // 업무일지 수정
     public Businesslog updateBusinesslog(Long blNo, Businesslog businesslog, List<MultipartFile> files) throws IOException {
         Businesslog tempBl = blRepo.findByBlNo(blNo);
 
