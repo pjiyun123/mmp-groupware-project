@@ -4,25 +4,12 @@ import LoginPage from "./components/LoginPage";
 import LoginedPage from "./LoginedPage";
 
 const RootPage = () => {
-  const [isLogin, setIsLogin] = useState(true);  // default: false
-  const [loginedUser, setLoginedUser] = useState("");
+  const user = localStorage.getItem("user");
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="*"
-          element={
-            isLogin === true ? (
-              <LoginedPage loginedUser={loginedUser} />
-            ) : (
-              <LoginPage
-                setIsLogin={setIsLogin}
-                setLoginedUser={setLoginedUser}
-              />
-            )
-          }
-        />
+        <Route path="*" element={user ? <LoginedPage /> : <LoginPage />} />
       </Routes>
     </BrowserRouter>
   );

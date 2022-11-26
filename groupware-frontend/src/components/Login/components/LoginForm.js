@@ -2,8 +2,6 @@ import React, { useRef } from "react";
 import classes from "../styles/LoginForm.module.css";
 
 const LoginForm = ({ onSubmit, idRef, pwRef, message }) => {
-  // const idRef = useRef();
-  // const pwRef = useRef();
 
   return (
     <form className={classes.form} onSubmit={onSubmit} >

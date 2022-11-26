@@ -4,14 +4,13 @@ import HeaderContainer from './../../components/Header/HeaderContainer';
 import SideMenuContainer from './../../components/SideMenu/SideMenuContainer';
 import CalendarContainer from './../../components/Calendar/CalendarContainer';
 import BoardContainer from './../../components/Board/BoardContainer';
-import WritingContainer from './../../components/Writinig/WritingContainer';
+import WritingContainer from './../../components/Writing/WritingContainer';
 import MyPageContainer from '../../components/MyPage/MyPageContainer';
 import EmployeesContainer from '../../components/Employees/EmployeesContainer';
 
 
 
-const MainPage = ({ loginedUser }) => {
-	console.log(loginedUser);
+const MainPage = () => {
 	return (
 		<div>
 			<HeaderContainer />

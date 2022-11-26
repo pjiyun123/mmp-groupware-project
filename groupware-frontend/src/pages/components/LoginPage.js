@@ -3,11 +3,11 @@ import LoginContainer from '../../components/Login/LoginContainer';
 import LogoContainer from '../../components/Login/LogoContainer';
 import '../../styles/loginPage.css';
 
-const LoginPage = ({ setIsLogin, setLoginedUser }) => {
+const LoginPage = () => {
 	return (
 		<div className='login-page'>
 			<LogoContainer />
-			<LoginContainer setIsLogin={setIsLogin} setLoginedUser={setLoginedUser} />
+			<LoginContainer />
 		</div>
 	);
 };

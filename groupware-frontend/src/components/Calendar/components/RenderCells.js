@@ -35,7 +35,6 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick, calList }) => {
       )
     }
   });
-  console.log(schedule);
 
   while (day <= endDate) {
     for (let i = 0; i < 7; i++) {

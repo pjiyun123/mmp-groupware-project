@@ -40,10 +40,10 @@ const AccountCreate = () => {
     deptTypes[0].value
   );
   const [enteredRank, setEnteredRank] = useState(
-    deptTypes[0].value
+    rankTypes[0].value
   );
   const [enteredAuthorization, setEnteredAuthorization] = useState(
-    deptTypes[0].value
+    authorizationTypes[0].value
   );
   const phoneInputRef1 = useRef();
   const phoneInputRef2 = useRef();
