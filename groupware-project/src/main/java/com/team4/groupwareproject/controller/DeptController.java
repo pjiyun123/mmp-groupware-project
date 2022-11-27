@@ -8,42 +8,42 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
-@RequestMapping("/dept")
+@RestController
+@RequestMapping
 @RequiredArgsConstructor
 public class DeptController {
 
     private final DeptService dServ;
 
     // 부서 목록 조회
-    @GetMapping("/list")
+    @GetMapping("/dept/list")
     public List<Dept> list() {
         return dServ.getDeptList();
     }
 
     // 부서 상세 조회
-    @GetMapping("/detail/{deptNo}")
+    @GetMapping("/dept/{deptNo}")
     public Dept detail(@PathVariable Long deptNo) {
         Dept dept = dServ.getDeptDetail(deptNo);
         return dept;
     }
 
     // 부서 등록
-    @PostMapping("/add")
+    @PostMapping("/dept")
     public Dept add(@RequestBody Dept dept) {
         Dept newDept = dServ.addDept(dept);
         return newDept;
     }
 
     // 부서 삭제
-    @DeleteMapping("/delete")
+    @DeleteMapping("/dept/{deptNo}")
     public List<Dept> delete(@PathVariable Long deptNo){
         dServ.deleteDept(deptNo);
         return dServ.getDeptList();
     }
 
     // 부서 수정
-    @PatchMapping("/edit")
+    @PatchMapping("/dept/{deptNo}")
     public Dept edit(@PathVariable Long deptNo, @RequestBody Dept dept){
         Dept updatedDept = dServ.editDept(deptNo, dept);
         return updatedDept;

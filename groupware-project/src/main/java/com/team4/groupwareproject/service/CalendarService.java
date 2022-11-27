@@ -5,51 +5,80 @@ import com.team4.groupwareproject.domain.User;
 import com.team4.groupwareproject.repository.CalendarRepository;
 import com.team4.groupwareproject.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class CalendarService {
 
-    /*
-    @Autowired
-    private final CalendarRepository calendarRepository;
-    @Autowired
-    private final UserRepository userRepository;
+    private final CalendarRepository calRepo;
+    private final UserRepository uRepo;
 
-    public List<Calendar> getCalendars() {
-        List<Calendar> calendars = calendarRepository.findAll();
-        return calendars;
+    // 일정 목록 조회
+    public List<Calendar> getCalList() {
+        List<Calendar> calList = calRepo.findAll();
+        return calList;
     }
 
-    public Calendar getCalByCalId(Long calId) {
-        return calendarRepository.findByCalId(calId);
+    // 일정 상세 조회
+    public Calendar getCalDetail(Long calNo) {
+        Calendar cal = calRepo.findByCalNo(calNo);
+        return cal;
     }
 
-    public Calendar updateCalByCalId(User user, Long calId, Calendar calendar) {
-        Calendar tempCal = calendarRepository.findByCalId(calId);
+    // 일정 등록
+    public Calendar addCalendar(Long userNo, Calendar cal) {
+        User user = uRepo.findByUserNo(userNo);
+        Calendar newCal = Calendar.builder()
+                .ctNo(cal.getCtNo())
+                .userNo(userNo)
+                .userNm(user.getUserNm())
+                .calTit(cal.getCalTit())
+                .calContent(cal.getCalContent())
+                .calDate(cal.getCalDate())
+                .calStartTime(cal.getCalStartTime())
+                .calEndTime(cal.getCalEndTime())
+                .calPlace(cal.getCalPlace())
+                .calMajor(cal.getCalMajor())
+                .createDt(LocalDateTime.now())
+                .build();
 
-        tempCal.setUser(user);
-        tempCal.setCalCategory(calendar.getCalCategory());
-        tempCal.setTitle(calendar.getTitle());
-        tempCal.setContent(calendar.getContent());
-        tempCal.setCalDate(calendar.getCalDate());
-        tempCal.setCalStartTime(calendar.getCalStartTime());
-        tempCal.setCalEndTime(calendar.getCalEndTime());
-        tempCal.setCalPlace(calendar.getCalPlace());
-        tempCal.setMajorYn(calendar.getMajorYn());
+        calRepo.save(newCal);
+        return newCal;
+    }
 
-        Calendar updatedCal = calendarRepository.save(tempCal);
+    // 일정 수정
+    public Calendar updateCalendar(Long userNo, Long calNo, Calendar cal) {
+        Calendar tempCal = calRepo.findByCalNo(calNo);
+
+        tempCal.setUpdateDt(LocalDateTime.now());
+        if(cal.getCtNo() != null)
+            tempCal.setCtNo(cal.getCtNo());
+        if(cal.getCalTit() != null)
+            tempCal.setCalTit(cal.getCalTit());
+        if(cal.getCalContent() != null)
+            tempCal.setCalContent(cal.getCalContent());
+        if(cal.getCalDate() != null)
+            tempCal.setCalDate(cal.getCalDate());
+        if(cal.getCalStartTime() != null)
+            tempCal.setCalStartTime(cal.getCalStartTime());
+        if(cal.getCalEndTime() != null)
+            tempCal.setCalEndTime(cal.getCalEndTime());
+        if(cal.getCalPlace() != null)
+            tempCal.setCalPlace(cal.getCalPlace());
+        if(cal.getCalMajor() != null)
+            tempCal.setCalMajor(cal.getCalMajor());
+
+        Calendar updatedCal = calRepo.save(tempCal);
         return updatedCal;
     }
 
-    public void deleteCalByCalId(Long calId) {
-        calendarRepository.deleteById(calId);
+    //일정 삭제
+    public void deleteCalendar(Long calNo) {
+        calRepo.deleteById(calNo);
     }
-
-     */
 
 }

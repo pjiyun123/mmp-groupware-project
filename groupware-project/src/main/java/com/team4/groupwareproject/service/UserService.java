@@ -13,7 +13,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService {
 
-    private final CryptoUtil crypto;
     private final UserRepository uRepo;
 
     // 회원 목록 조회

@@ -2,12 +2,15 @@ package com.team4.groupwareproject.service;
 
 import com.team4.groupwareproject.domain.Attachment;
 import com.team4.groupwareproject.domain.Businesslog;
+import com.team4.groupwareproject.domain.User;
 import com.team4.groupwareproject.domain.constant.constant;
 import com.team4.groupwareproject.repository.AttachmentRepository;
 import com.team4.groupwareproject.repository.BusinesslogRepository;
+import com.team4.groupwareproject.repository.UserRepository;
 import com.team4.groupwareproject.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -21,6 +24,7 @@ public class BusinesslogService {
     private final FileUtil fileutil;
 
     private final BusinesslogRepository blRepo;
+    private final UserRepository uRepo;
     private final AttachmentRepository atcRepo;
 
 
@@ -31,8 +35,10 @@ public class BusinesslogService {
 
     // 업무일지 등록
     public Businesslog addBusinesslog(Long userNo, Businesslog businesslog, List<MultipartFile> files) throws IOException {
+        User user = uRepo.findByUserNo(userNo);
         Businesslog newBl = Businesslog.builder()
                 .userNo(userNo)
+                .userNm(user.getUserNm())
                 .blTit(businesslog.getBlTit())
                 .blContent(businesslog.getBlContent())
                 .createDt(LocalDateTime.now())
@@ -49,6 +55,7 @@ public class BusinesslogService {
                         .atcPrtNo(blNo)
                         .atcOriName(files.get(i).getOriginalFilename())
                         .atcFtpName(fileName)
+                        .createDt(LocalDateTime.now())
                         .build();
 
                 atcRepo.save(atc);
@@ -71,7 +78,7 @@ public class BusinesslogService {
         return blFiles;
     }
 
-    // 업무일지 수정 실행
+    // 업무일지 수정
     public Businesslog updateBusinesslog(Long blNo, Businesslog businesslog, List<MultipartFile> files) throws IOException {
         Businesslog tempBl = blRepo.findByBlNo(blNo);
 
@@ -91,10 +98,11 @@ public class BusinesslogService {
 
                 Attachment atc = Attachment.builder()
                         .atcDocNo(constant.BUSINESSLOG)
-                        .atcPrtNo(Long.parseLong(businesslog.getBlNo().toString()))
+                        .atcPrtNo(blNo)
                         .atcOriName(files.get(i).getOriginalFilename())
                         .atcFtpName(fileName)
                         .createDt(LocalDateTime.now())
+                        .updateDt(LocalDateTime.now())
                         .build();
 
                 atcRepo.save(atc);

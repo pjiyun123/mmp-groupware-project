@@ -27,6 +27,12 @@ public class Calendar {
     @Column
     private Long ctNo; // 일정 유형
 
+    @Column
+    private Long userNo; // 회원 번호 (작성자)
+
+    @Column
+    private String userNm; // 작성자 이름
+
     @Column(nullable = false, length = 100)
     private String calTit; // 제목
 
@@ -46,7 +52,7 @@ public class Calendar {
     private String calPlace; // 일정 장소
 
     @Column
-    private char calMajor; // 주요 일정 체크
+    private String calMajor; // 주요 일정 체크
 
     @Column(nullable = false)
     private LocalDateTime createDt; // 작성일자

@@ -21,7 +21,10 @@ public class Businesslog {
     private Long blNo; // 글 번호
 
     @Column(nullable=false)
-    private Long userNo; // 회원 번호
+    private Long userNo; // 회원 번호 (작성자)
+
+    @Column(nullable = false)
+    private String userNm; // 작성자 이름
 
     @Column(nullable=false, length = 50)
     private String blTit;	// 제목
