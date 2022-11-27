@@ -2,9 +2,6 @@ package com.team4.groupwareproject.domain;
 
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -17,7 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @DynamicUpdate
-public class ApprForm {
+public class Apprform {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
