@@ -23,6 +23,12 @@ public class Approver {
     @Column
     private Long afNo; // 결재 문서 양식 번호
 
+    @Column
+    private String userNm; //결재자 이름
+
+    @Column
+    private String deptNm; // 결재자 부서이름
+
     @Column(nullable = false)
     private LocalDateTime createDt; // 작성일자
 
