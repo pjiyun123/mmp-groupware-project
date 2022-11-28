@@ -18,7 +18,7 @@ public class ApprformController {
 
     private final ApprformService afServ;
 
-    // 결재 양식 조회
+    // 결재 양식 목록 조회
     @GetMapping("/apprform/list")
     public List<Apprform> list() {
         List<Apprform> afList = afServ.getApprformList();
