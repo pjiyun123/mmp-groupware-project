@@ -28,9 +28,9 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick, calList }) => {
       calDate: new Date(sche.calDate),
       scheduleDiv: (
         <div className="schedule" key={sche.calId} >
-          {sche.user == null ? null : "["+sche.user.userName+"]"}
+          {sche.userNo == null ? null : "["+sche.userNm+"]"}
           {sche.calStartTime}~{sche.calEndTime}
-          {sche.title}
+          {sche.calTit}
         </div>
       )
     }

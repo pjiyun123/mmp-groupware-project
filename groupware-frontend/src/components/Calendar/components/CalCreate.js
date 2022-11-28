@@ -1,22 +1,14 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import CalDropdownInput from './CalDropdownInput';
+import calCategoryTypes from '../../../assets/calCategoryTypes';
+import baseUrl from '../../../assets/baseUrl';
 
 const CalCreate = () => {
 	const [created, setCreated] = useState(false);
 
-	const calCategoryTypes = [
-		{id: 0, value: "카테고리를 선택하세요"},
-		{id: 1, value: '회의'},
-    {id: 2, value: '교육'},
-    {id: 3, value: '발표'},
-    {id: 4, value: '미팅'},
-    {id: 5, value: '출장'},
-    {id: 6, value: '회식'},
-	];
-
 	const [enteredCategory, setEnteredCategory] = useState(
-    calCategoryTypes[0].value
+    calCategoryTypes[0].id
   );
 
 	const titleRef = useRef();
@@ -38,16 +30,19 @@ const CalCreate = () => {
 		const enteredMajorYn = e.target.majorYn.value;
 
 		const newCalInfo = {
-			calCategory: enteredCategory,
-			title: enteredTitle,
-			content: enteredContent,
+			ctNo: enteredCategory,
+			calTit: enteredTitle,
+			calContent: enteredContent,
 			calDate: enteredDate,
 			calStartTime: enteredStart,
 			calEndTime: enteredFinish,
 			calPlace: enteredPlace,
-			majorYn: enteredMajorYn,
+			calMajor: enteredMajorYn,
 		};
-		const calPostUrl = "//localhost:8080/calendar/create/2"; // 로그인된 유저 아이디로 수정 필요
+		console.log(newCalInfo);
+		const user = localStorage.getItem("user");
+		const userInfo = JSON.parse(user);
+		const calPostUrl = baseUrl + "/calendar/" + userInfo[0].userNo;
 		axios({
 			method: "post",
 			url: calPostUrl,

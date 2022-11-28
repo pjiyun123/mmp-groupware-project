@@ -1,43 +1,114 @@
 import React, { useState } from "react";
+import axios from "axios";
 import DropdownInput from "../../Employees/components/DropdownInput";
+import deptTypes from "../../../assets/deptTypes";
+import jobTypes from "../../../assets/jobTypes";
+import { useNavigate } from 'react-router-dom';
+import baseUrl from "../../../assets/baseUrl";
 
 const InfoModify = () => {
   const user = localStorage.getItem("user");
   const userInfo = JSON.parse(user);
+  const navigate = useNavigate();
 
-  const deptTypes = [
-    {id: 0, value: '부서를 선택하세요.'},
-    {id: 1, value: '설계팀'},
-    {id: 2, value: '개발팀'},
-    {id: 3, value: '생산팀'},
-    {id: 4, value: '영업팀'},
-    {id: 5, value: '관리팀'},
-  ];
+  const [userNum, setUserNum] = useState(parseInt(userInfo[0].userNum));
+  const [userOldPwd, setUserOldPwd] = useState(userInfo[0].userPwd);
+  const [userPwd, setUserPwd] = useState("");
+  const [userPwdCheck, setUserPwdCheck] = useState("");
+  const [userNm, setUserNm] = useState(userInfo[0].userNm);
+  const [userEmail, setUserEmail] = useState(userInfo[0].userEmail);
+  const [userPhone1, setUserPhone1] = useState(userInfo[0].userPhone.slice(0, 3));
+  const [userPhone2, setUserPhone2] = useState(userInfo[0].userPhone.slice(4, 8));
+  const [userPhone3, setUserPhone3] = useState(userInfo[0].userPhone.slice(9, 13));
 
-  const rankTypes = [
-    {id: 0, value: '직급을 선택하세요.'},
-    {id: 1, value: '사장'},
-    {id: 2, value: '부장'},
-    {id: 3, value: '차장'},
-    {id: 4, value: '과장'},
-    {id: 5, value: '대리'},
-    {id: 6, value: '주임'},
-    {id: 7, value: '사원'},
-  ];
+  // const [enteredDept, setEnteredDept] = useState(
+  //   deptTypes[userInfo[0].deptNo].id
+  // );
+  // const [enteredRank, setEnteredRank] = useState(
+  //   jobTypes[userInfo[0].jobNo].id
+  // );
 
-  console.log(userInfo[0].deptId)
+  const onUserNmChange = (e) => {
+    setUserNm(e.target.value);
+  };
 
-  const [enteredDept, setEnteredDept] = useState(
-    deptTypes[userInfo[0].deptId].value
-  );
-  const [enteredRank, setEnteredRank] = useState(
-    rankTypes[userInfo[0].rankId].value
-  );
+  const onUserNumChange = (e) => {
+    setUserNum(parseInt(e.target.value));
+  };
+
+  const onUserPhone1Change = (e) => {
+    setUserPhone1(e.target.value);
+  };
+
+  const onUserPhone2Change = (e) => {
+    setUserPhone2(e.target.value);
+  };
+
+  const onUserPhone3Change = (e) => {
+    setUserPhone3(e.target.value);
+  };
+
+  const onUserEmailChange = (e) => {
+    setUserEmail(e.target.value);
+  }
+
+  const onUserOldPwdChange = (e) => {
+    setUserOldPwd(e.target.value);
+  };
+
+  const onUserPwdChange = (e) => {
+    setUserPwd(e.target.value);
+  };
+
+  const onUserPwdCheckChange = (e) => {
+    setUserPwdCheck(e.target.value);
+  };
+
+  const onModify = (e) => {
+    e.preventDefault();
+
+    if (userOldPwd !== userInfo[0].userPwd) {
+      alert("비밀번호를 다시 확인해주세요.");
+      return;
+    }
+    if (userPwd === "") {
+      alert("새 비밀번호를 입력해주세요.");
+      return;
+    }
+    if (userPwd !== userPwdCheck) {
+      alert("비밀번호를 다시 확인해주세요.");
+      return;
+    }
+
+    const userPhone = userPhone1 + "-" + userPhone2 + "-" + userPhone3;
+    const modiInfo = {
+      userNum: userNum,
+      userPwd: userPwd,
+      userNm: userNm,
+      userEmail: userEmail,
+      userPhone: userPhone,
+      // deptNo: enteredDept,
+      // jobNo: enteredRank,
+    };
+    console.log(modiInfo);
+    const modiUrl = baseUrl + "/users/" + userInfo[0].userNo;
+    axios({
+      method: "patch",
+      url: modiUrl,
+      data: modiInfo,
+    }).then((response) => {
+      alert('수정이 완료되었습니다. 다시 로그인 하기 위해 로그인 화면으로 돌아갑니다.');
+      localStorage.removeItem('user');
+      navigate('/');
+      window.location.reload();
+    })
+
+  };
 
 
   return (
     <div className="InfoModifyContainer">
-      <form>
+      <form onSubmit={onModify}>
         <table>
           <tr>
             <td>이름</td>
@@ -45,7 +116,8 @@ const InfoModify = () => {
               <input
                 className="textInput"
                 type="text"
-                placeholder={userInfo[0].userName}
+                placeholder={userInfo[0].userNm}
+                onChange={onUserNmChange}
               />
             </td>
           </tr>
@@ -55,26 +127,40 @@ const InfoModify = () => {
               <input
                 className="textInput"
                 type="text"
-                placeholder={userInfo[0].userId}
+                placeholder={userInfo[0].userNum}
+                onChange={onUserNumChange}
+                disabled
               />
             </td>
           </tr>
           <tr>
             <td>부서</td>
             <td>
-            <DropdownInput
+              <input
+                  className="textInput"
+                  type="text"
+                  placeholder={deptTypes[userInfo[0].deptNo].value}
+                  disabled
+                />
+            {/* <DropdownInput
             dropdownList={deptTypes}
             setSelectedDropValue={setEnteredDept}
-          />
+          /> */}
             </td>
           </tr>
           <tr>
             <td>직급</td>
-            <td align="center">
-            <DropdownInput
-            dropdownList={rankTypes}
+            <td>
+            <input
+                className="textInput"
+                type="text"
+                placeholder={jobTypes[userInfo[0].jobNo].value}
+                disabled
+              />
+            {/* <DropdownInput
+            dropdownList={jobTypes}
             setSelectedDropValue={setEnteredRank}
-          />
+          /> */}
             </td>
           </tr>
           <tr>
@@ -83,19 +169,22 @@ const InfoModify = () => {
               <input
                 className="textInput"
                 type="text"
-                placeholder={userInfo[0].phone.slice(0, 3)}
+                placeholder={userInfo[0].userPhone.slice(0, 3)}
+                onChange={onUserPhone1Change}
               />{" "}
               -{" "}
               <input
                 className="textInput"
                 type="text"
-                placeholder={userInfo[0].phone.slice(4, 8)}
+                placeholder={userInfo[0].userPhone.slice(4, 8)}
+                onChange={onUserPhone2Change}
               />{" "}
               -{" "}
               <input
                 className="textInput"
                 type="text"
-                placeholder={userInfo[0].phone.slice(9, 13)}
+                placeholder={userInfo[0].userPhone.slice(9, 13)}
+                onChange={onUserPhone3Change}
               />
             </td>
           </tr>
@@ -105,7 +194,8 @@ const InfoModify = () => {
               <input
                 className="textInput"
                 type="email"
-                placeholder={userInfo[0].email}
+                placeholder={userInfo[0].userEmail}
+                onChange={onUserEmailChange}
               />
             </td>
           </tr>
@@ -119,36 +209,14 @@ const InfoModify = () => {
             <td>비밀번호</td>
             <td>
               <label>현재 비밀번호 : </label>
-              <input className="pwModiInput" type="password" />
+              <input className="pwModiInput" type="password" onChange={onUserOldPwdChange} />
               <label>새로운 비밀번호 : </label>
-              <input className="pwModiInput" type="password" />
+              <input className="pwModiInput" type="password" onChange={onUserPwdChange} />
               <label>비밀번호 확인 : </label>
-              <input className="pwModiInput" type="password" />
+              <input className="pwModiInput" type="password" onChange={onUserPwdCheckChange} />
             </td>
           </tr>
         </table>
-
-        {/* <form>
-
-        <h3 className="infoType">
-          사진 : <button>+</button>
-          <input className="fileInput" type="file" />
-        </h3>
-        <h3 className="infoType">비밀번호</h3>
-        <div className="pwModi">
-          <label>현재 비밀번호 : </label>
-          <input className="pwModiInput" type="password" />
-        </div>
-        <div className="pwModi">
-          <label>새로운 비밀번호 : </label>
-          <input className="pwModiInput" type="password" />
-        </div>
-        <div className="pwModi">
-          <label>비밀번호 확인 : </label>
-          <input className="pwModiInput" type="password" />
-        </div>
-        <button className="infoModiBtn">수정하기</button>
-      </form> */}
         <button className="infoModiBtn">수정하기</button>
       </form>
     </div>

@@ -16,11 +16,11 @@ const LoginContainer = () => {
 
 		axios({
 			method: "get",
-			url: "//localhost:8080/users"
+			url: "//localhost:8080/users/list"
 		}).then((response) => {
-			const user = response.data.filter((employee) => employee.userId == enteredId);
+			const user = response.data.filter((employee) => employee.userNum === enteredId);
 			if (user.length > 0) {
-				if (enteredPw === user[0].password) {
+				if (enteredPw === user[0].userPwd) {
 					try {
 						localStorage.setItem('user', JSON.stringify(user));
 						window.location.reload();

@@ -1,49 +1,29 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import DropdownInput from "./DropdownInput";
+import deptTypes from './../../../assets/deptTypes';
+import jobTypes from "../../../assets/jobTypes";
+import lvTypes from "../../../assets/lvTypes";
+import baseUrl from "../../../assets/baseUrl";
+import { useNavigate } from 'react-router-dom';
 
 const AccountCreate = () => {
-  const [created, setCreated] = useState(false);
-  useEffect(() => {
-    setCreated(false);
-  }, []);
-
-  const deptTypes = [
-    {id: 0, value: '부서를 선택하세요.'},
-    {id: 1, value: '설계팀'},
-    {id: 2, value: '개발팀'},
-    {id: 3, value: '생산팀'},
-    {id: 4, value: '영업팀'},
-    {id: 5, value: '관리팀'},
-  ];
-
-  const rankTypes = [
-    {id: 0, value: '직급을 선택하세요.'},
-    {id: 1, value: '사장'},
-    {id: 2, value: '부장'},
-    {id: 3, value: '차장'},
-    {id: 4, value: '과장'},
-    {id: 5, value: '대리'},
-    {id: 6, value: '주임'},
-    {id: 7, value: '사원'},
-  ];
-
-  const authorizationTypes = [
-    {id: 0, value: '권한을 선택하세요.'},
-    {id: 1, value: '관리자'},
-    {id: 2, value: '고급'},
-    {id: 3, value: '일반'},
-  ];
+  // const [created, setCreated] = useState(false);
+  // useEffect(() => {
+  //   setCreated(false);
+  // }, []);  
+  const navigate = useNavigate();
 
   const userNameInputRef = useRef();
+  const userNumInputRef = useRef();
   const [enteredDept, setEnteredDept] = useState(
     deptTypes[0].value
   );
   const [enteredRank, setEnteredRank] = useState(
-    rankTypes[0].value
+    jobTypes[0].value
   );
   const [enteredAuthorization, setEnteredAuthorization] = useState(
-    authorizationTypes[0].value
+    lvTypes[0].value
   );
   const phoneInputRef1 = useRef();
   const phoneInputRef2 = useRef();
@@ -55,7 +35,8 @@ const AccountCreate = () => {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    const enterenUserName = userNameInputRef.current.value;
+    const enteredUserName = userNameInputRef.current.value;
+    const enteredUserNum = userNumInputRef.current.value
     const enteredPhone1 = phoneInputRef1.current.value;
     const enteredPhone2 = phoneInputRef2.current.value;
     const enteredPhone3 = phoneInputRef3.current.value;
@@ -67,23 +48,27 @@ const AccountCreate = () => {
       enteredPhone1 + "-" + enteredPhone2 + "-" + enteredPhone3;
 
     const newEmployeeInfo = {
-      authorizationId: enteredAuthorization,
-      deptId: enteredDept,
-      rankId: enteredRank,
-      userName: enterenUserName,
-      password: enteredPassword,
-      birthDate: enteredBirthday,
-      phone: enteredPhone,
-      email: enteredEmail,
+      userLv: enteredAuthorization,
+      deptNo: enteredDept,
+      jobNo: enteredRank,
+      userNm: enteredUserName,
+      userPwd: enteredPassword,
+      userBirth: enteredBirthday,
+      userPhone: enteredPhone,
+      userEmail: enteredEmail,
+      userNum: enteredUserNum,
     };
     
+    const url = baseUrl + "/users"
     axios({
       method: "post",
-      url: "//localhost:8080/users/create",
+      url: url,
       data: newEmployeeInfo,
     }).then((response) => {
       // console.log(response);
-      setCreated(true);
+      // setCreated(true);
+      alert("계정이 생성되었습니다.");
+      navigate("/employees");
     });
   };
 
@@ -92,6 +77,9 @@ const AccountCreate = () => {
       <form onSubmit={submitHandler}>
         <h3 className="infoType">
           이름 : <input type="text" ref={userNameInputRef} />
+        </h3>
+        <h3 className="infoType">
+          사번 : <input type="text" ref={userNumInputRef} />
         </h3>
         <h3 className="infoType">
           부서 :{" "}
@@ -103,14 +91,14 @@ const AccountCreate = () => {
         <h3 className="infoType">
           직급 :{" "}
           <DropdownInput
-            dropdownList={rankTypes}
+            dropdownList={jobTypes}
             setSelectedDropValue={setEnteredRank}
           />
         </h3>
         <h3 className="infoType">
           권한 :{" "}
           <DropdownInput
-            dropdownList={authorizationTypes}
+            dropdownList={lvTypes}
             setSelectedDropValue={setEnteredAuthorization}
           />
         </h3>
@@ -131,7 +119,7 @@ const AccountCreate = () => {
         </h3>
         <button className="accountCreateBtn">생성</button>
       </form>
-      {created ? <h4>계정이 생성되었습니다.</h4> : null}
+      {/* {created ? <h4>계정이 생성되었습니다.</h4> : null} */}
     </div>
   );
 };
