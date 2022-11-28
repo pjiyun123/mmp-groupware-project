@@ -13,11 +13,12 @@ import java.util.List;
 @RestController
 @RequestMapping
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:3030")
 public class BusinesslogController {
 
     private final BusinesslogService blServ;
 
-    // 업무일지 조회
+    // 업무일지 목록 조회
     @GetMapping("/businesslog/list")
     public List<Businesslog> list() {
         List<Businesslog> blList = blServ.getBusinesslogList();
