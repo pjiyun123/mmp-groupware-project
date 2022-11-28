@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping()
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:3030")
 public class JobController {
 
     private final SessionUtil sess;

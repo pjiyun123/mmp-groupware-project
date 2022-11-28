@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:3030")
 public class CalendarController {
 
     private final CalendarService calServ;
