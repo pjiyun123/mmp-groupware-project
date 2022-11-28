@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import CalCreate from './components/CalCreate';
 import Calendar from './components/Calendar';
 import axios from 'axios';
+import baseUrl from '../../assets/baseUrl';
 
 const CalendarContainer = () => {
 	const [calList, setCalList] = useState([]);
@@ -10,7 +11,7 @@ const CalendarContainer = () => {
 	useEffect(() => {
     axios({
       method: "get",
-      url: "//localhost:8080/calendar",
+      url: baseUrl + "/calendar/list",
     }).then((response) => {
       setCalList(response.data);
     })

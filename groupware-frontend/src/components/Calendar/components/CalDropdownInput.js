@@ -4,7 +4,7 @@ const CalDropdownInput = ({ dropdownList, setSelectedDropValue }) => {
   const handleDropdown = (e) => {
     const selectedValue = e.target.value;
     setSelectedDropValue(
-      dropdownList.filter((list) => list.value === selectedValue)[0].value
+      dropdownList.filter((list) => list.value === selectedValue)[0].id
     );
   };
 

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import deptTypes from "../../../assets/deptTypes";
+import jobTypes from "../../../assets/jobTypes";
 
 const InquiryResult = ({ list, searchClicked, isList }) => {
   const [infoList, setInfoList] = useState([]);
@@ -7,25 +9,25 @@ const InquiryResult = ({ list, searchClicked, isList }) => {
     const infos = list.map((info) => (
       <tr key={info.userId}>
         <td className="inquiryInfoType" align="center">
-          {info.userId}
+          {info.userNum}
         </td>
         <td className="inquiryInfoType" align="center">
-          {info.userName}
+          {info.userNm}
         </td>
         <td className="inquiryInfoType" align="center">
-          {info.rankId}
+          {jobTypes[info.jobNo].value}
         </td>
         <td className="inquiryInfoType" align="center">
-          {info.deptId}
+          {deptTypes[info.deptNo].value}
         </td>
         <td className="inquiryInfoType" align="center">
-          {info.phone == null ? "등록된 연락처가 없습니다." : info.phone}
+          {info.userPhone == null ? "등록된 연락처가 없습니다." : info.userPhone}
         </td>
         <td className="inquiryInfoType" align="center">
-          {info.email == null ? "등록된 이메일이 없습니다." : info.email}
+          {info.userEmail == null ? "등록된 이메일이 없습니다." : info.userEmail}
         </td>
         <td className="inquiryInfoType" align="center">
-          {info.birthDate}
+          {info.userBirth}
         </td>
       </tr>
     ));
