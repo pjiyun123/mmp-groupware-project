@@ -1,10 +1,12 @@
 package com.team4.groupwareproject.service;
 
 import com.team4.groupwareproject.domain.Apprform;
+import com.team4.groupwareproject.domain.Approver;
 import com.team4.groupwareproject.domain.Attachment;
 import com.team4.groupwareproject.domain.User;
 import com.team4.groupwareproject.domain.constant.constant;
 import com.team4.groupwareproject.repository.ApprformRepository;
+import com.team4.groupwareproject.repository.ApproverRepository;
 import com.team4.groupwareproject.repository.AttachmentRepository;
 import com.team4.groupwareproject.repository.UserRepository;
 import com.team4.groupwareproject.util.FileUtil;
@@ -25,6 +27,7 @@ public class ApprformService {
     private final ApprformRepository afRepo;
     private final AttachmentRepository atcRepo;
     private final UserRepository uRepo;
+    private final ApproverRepository apRepo;
 
     // 결재 양식 목록 조회
     public List<Apprform> getApprformList() {
@@ -35,8 +38,12 @@ public class ApprformService {
     // 결재 양식 등록
     public Apprform addApprform(Long userNo, Apprform apprform, List<MultipartFile> files) throws IOException {
         User user = uRepo.findByUserNo(userNo);
+        Approver ap = apRepo.findByApNo(apprform.getApNo());
+
         Apprform newAf = Apprform.builder()
                 .afNm(apprform.getAfNm())
+                .apNo(apprform.getApNo())
+                .apNm(ap.getUserNm())
                 .createDt(LocalDateTime.now())
                 .build();
 
@@ -81,6 +88,10 @@ public class ApprformService {
         tempAf.setUpdateDt(LocalDateTime.now());
         if(apprform.getAfNm() != null)
             tempAf.setAfNm(apprform.getAfNm());
+        if(apprform.getApNo() != null) {
+            tempAf.setApNo(apprform.getApNo());
+            tempAf.setApNm(apRepo.findByApNo(apprform.getApNo()).getUserNm());
+        }
 
         Apprform updatedAf = afRepo.save(tempAf);
 

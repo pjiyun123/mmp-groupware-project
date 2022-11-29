@@ -35,13 +35,12 @@ public class ApprovalService {
     public Approval addApproval(Long userNo, Approval approval, List<MultipartFile> files) throws IOException {
         User user = uRepo.findByUserNo(userNo);
         Apprform af = afRepo.findByAfNo(approval.getAfNo());
-        Approver ap = apRepo.findByApNo(approval.getApNo());
 
         Approval newAvl = Approval.builder()
                 .afNo(approval.getAfNo())
                 .afNm(af.getAfNm())
-                .apNo(approval.getApNo())
-                .apNm(ap.getUserNm())
+                .apNo(af.getApNo())
+                .apNm(af.getApNm())
                 .userNo(userNo)
                 .userNm(user.getUserNm())
                 .avlTit(approval.getAvlTit())
