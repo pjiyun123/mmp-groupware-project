@@ -11,10 +11,10 @@ const MenuContainer = () => {
 			<Link to='/calendar'>
 				<MenuCircle menuName='캘린더' />
 			</Link>
-			<Link to='/board'>
+			<Link to='/businesslog'>
 				<MenuCircle menuName='업무일지' />
 			</Link>
-			<Link to='/board'>
+			<Link to='/appr'>
 				<MenuCircle menuName='보고/결재' />
 			</Link>
 			<Link to='/employees'>

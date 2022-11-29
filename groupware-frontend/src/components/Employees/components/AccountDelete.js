@@ -39,7 +39,6 @@ const AccountDelete = ({ isList, setIsList }) => {
       method: "delete",
       url: deleteUrl,
     }).then((response) => {
-      // console.log(response)
       alert("계정이 생성되었습니다.");
       navigate("/employees");
     });

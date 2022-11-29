@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import DropdownInput from "./DropdownInput";
 import deptTypes from './../../../assets/deptTypes';
 import jobTypes from "../../../assets/jobTypes";

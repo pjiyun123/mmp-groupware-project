@@ -1,10 +1,10 @@
 import React from 'react';
 
-const WriteButton = () => {
+const WriteButton = ({ menuType, onClick }) => {
 	return (
-		<div>
-			WriteButton
-		</div>
+		<button onClick={onClick}>
+			{menuType} 작성
+		</button>
 	);
 };
 

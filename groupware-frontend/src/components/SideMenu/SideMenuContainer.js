@@ -21,19 +21,19 @@ const SideMenuContainer = () => {
 			<Link to='businesslog'>
 				<MainMenu menuName='업무일지' />
 			</Link>
-			<Link to='board'>
+			<Link to='appr'>
 				<MainMenu menuName='보고/결재' />
 			</Link>
-			<Link to=''>
+			<Link to='appr'>
 				<SubMenu menuName='결재' />
 			</Link>
-			<Link to=''>
+			<Link to='appr/'>
 				<SubMenu menuName='결재신청' />
 			</Link>
-			<Link to=''>
+			<Link to='appr/form'>
 				<SubMenu menuName='결재양식' />
 			</Link>
-			<Link to=''>
+			<Link to='appr/request'>
 				<SubMenu menuName='결재할 문서' />
 			</Link>
 			<Link to='employees'>
@@ -47,6 +47,9 @@ const SideMenuContainer = () => {
 			</Link>
 			<Link to='employees/delete'>
 				<SubMenu menuName='직원계정삭제' />
+			</Link>
+			<Link to='mypage'>
+				<SubMenu menuName='마이페이지' />
 			</Link>
 		</div>
 	);
