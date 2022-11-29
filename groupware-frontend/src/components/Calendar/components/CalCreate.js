@@ -3,9 +3,11 @@ import axios from 'axios';
 import CalDropdownInput from './CalDropdownInput';
 import calCategoryTypes from '../../../assets/calCategoryTypes';
 import baseUrl from '../../../assets/baseUrl';
+import { useNavigate } from 'react-router-dom';
 
 const CalCreate = () => {
-	const [created, setCreated] = useState(false);
+	// const [created, setCreated] = useState(false);
+	const navigate = useNavigate();
 
 	const [enteredCategory, setEnteredCategory] = useState(
     calCategoryTypes[0].id
@@ -39,7 +41,7 @@ const CalCreate = () => {
 			calPlace: enteredPlace,
 			calMajor: enteredMajorYn,
 		};
-		console.log(newCalInfo);
+		// console.log(newCalInfo);
 		const user = localStorage.getItem("user");
 		const userInfo = JSON.parse(user);
 		const calPostUrl = baseUrl + "/calendar/" + userInfo[0].userNo;
@@ -48,7 +50,9 @@ const CalCreate = () => {
 			url: calPostUrl,
 			data: newCalInfo,
 		}).then((response) => {
-			setCreated(true);
+			// setCreated(true);
+			alert("일정이 등록되었습니다.");
+      navigate("/calendar");
 		});
 	}
 
@@ -86,7 +90,7 @@ const CalCreate = () => {
 				</h3>
 				<button>저장</button>
 			</form>
-			{created ? <h4>일정이 등록되었습니다.</h4> : null}
+			{/* {created ? <h4>일정이 등록되었습니다.</h4> : null} */}
 		</div>
 	);
 };

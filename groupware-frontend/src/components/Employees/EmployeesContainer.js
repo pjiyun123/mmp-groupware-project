@@ -11,7 +11,7 @@ const EmployeesContainer = () => {
 	return (
 		<div className='employeesContainer'>
 			<Routes>
-				<Route path='/' element={<AccountList isList={isList} setIsList={setIsList} />} />
+				<Route path='/' element={<AccountList />} />
 				<Route path='/create' element={<AccountCreate />} />
 				<Route path='/delete' element={<AccountDelete isList={isList} setIsList={setIsList} />} />
 			</Routes>

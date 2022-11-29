@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import axios from "axios";
 import LoginForm from './components/LoginForm';
 import '../../styles/loginPage.css';
+import baseUrl from './../../assets/baseUrl';
 
 const LoginContainer = () => {
 	const [msg, setMsg] = useState("");
@@ -16,7 +17,7 @@ const LoginContainer = () => {
 
 		axios({
 			method: "get",
-			url: "//localhost:8080/users/list"
+			url: baseUrl + "/users/list"
 		}).then((response) => {
 			const user = response.data.filter((employee) => employee.userNum === enteredId);
 			if (user.length > 0) {

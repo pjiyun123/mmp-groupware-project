@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import PageNumbers from '../../Common/PageNumbers';
-import InquiryResult from './InquiryResult';
 import baseUrl from '../../../assets/baseUrl';
+import UsersPagination from './UsersPagination';
 
-const AccountList = ({ isList, setIsList }) => {
-
+const AccountList = () => {
 	const [list, setList] = useState([]);
+
 	const url = baseUrl + "/users/list"
 	useEffect(() => {
-		setIsList(true);
 		axios({
 			method: "get", 
 			url: url, 
@@ -20,8 +18,7 @@ const AccountList = ({ isList, setIsList }) => {
 	} , []);
 	return (
 		<div>
-			<InquiryResult list={list} isList={isList} />
-			<PageNumbers />
+			<UsersPagination data={list} />
 		</div>
 	);
 };

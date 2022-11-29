@@ -18,8 +18,10 @@ const MainPage = () => {
 			<Routes>
 				<Route path="/mypage/*" element={<MyPageContainer />} />
 				<Route path="/calendar/*" element={<CalendarContainer />} />
-				<Route path="/board/*" element={<BoardContainer />} />
-				<Route path="/writing/*" element={<WritingContainer />} />
+				<Route path="/businesslog/*" element={<BoardContainer menuType='업무일지' />} />
+				<Route path="/appr/*" element={<BoardContainer menuType='결재' />} />
+				<Route path="businesslog/writing/*" element={<WritingContainer menuType='업무일지' />} />
+				<Route path="appr/writing/*" element={<WritingContainer menuType='결재' />} />
 				<Route path="/employees/*" element={<EmployeesContainer />} />
 			</Routes>
 		</div>

@@ -2,9 +2,9 @@ import React from 'react';
 
 const SaveButton = () => {
 	return (
-		<div>
+		<button>
 			저장
-		</div>
+		</button>
 	);
 };
 
