@@ -70,4 +70,6 @@ public class ApprovalService {
         return newAvl;
     }
 
+    // 결재문서 상세 조회
+
 }
