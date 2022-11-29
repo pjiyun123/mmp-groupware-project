@@ -1,6 +1,7 @@
 package com.team4.groupwareproject.controller;
 
 import com.team4.groupwareproject.domain.Approval;
+import com.team4.groupwareproject.domain.Attachment;
 import com.team4.groupwareproject.service.ApprovalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -30,5 +31,20 @@ public class ApprovalController {
         Approval newAvl = avlServ.addApproval(userNo, approval, files);
         return newAvl;
     }
+
+    // 결재문서 상세 조회
+    @GetMapping("/approval/{avlNo}")
+    public Approval detail(@PathVariable Long avlNo) {
+        Approval avl = avlServ.getDetailApproval(avlNo);
+        return avl;
+    }
+
+    // 결재문서 상세 파일정보 조회
+    @GetMapping("/approval/{avlNo}/atc")
+    public List<Attachment> detailAtc(@PathVariable Long avlNo) {
+        List<Attachment> avlFiles = avlServ.getApprovalFiles(avlNo);
+        return avlFiles;
+    }
+
 
 }

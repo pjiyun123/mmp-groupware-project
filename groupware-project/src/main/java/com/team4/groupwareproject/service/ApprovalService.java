@@ -71,5 +71,17 @@ public class ApprovalService {
     }
 
     // 결재문서 상세 조회
+    public Approval getDetailApproval(Long avlNo) {
+        Approval avl = avlRepo.findByAvlNo(avlNo);
+        return avl;
+    }
+
+    // 결재문서 상세 파일정보 조회
+    public List<Attachment> getApprovalFiles(Long avlNo) {
+        List<Attachment> avlFiles = atcRepo.findByAtcDocNoAndAtcPrtNo(constant.APPROVAL, avlNo);
+        return avlFiles;
+    }
+
+
 
 }
