@@ -4,10 +4,10 @@ import HeaderContainer from './../../components/Header/HeaderContainer';
 
 const MenuPage = () => {
 	return (
-		<div>
+		<>
 			<HeaderContainer />
 			<MenuContainer />
-		</div>
+		</>
 	);
 };
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import deptTypes from "../../../assets/deptTypes";
-import jobTypes from "../../../assets/jobTypes";
+import { Link } from "react-router-dom";
+import classes from '../styles/BoardPagination.module.css';
 
 const BoardPagination = ({ menuType, data }) => {
   const [start, setStart] = useState(0);
@@ -14,9 +14,9 @@ const BoardPagination = ({ menuType, data }) => {
     setStart((currentPage - 1) * 5);
     setEnd(currentPage * 5);
   }, [currentPage]);
-	console.log(data)
+  
   return (
-    <>
+    <div className={classes.boardPagination}>
 			{data.length === 0 ? <div>등록된 글이 없습니다.</div> : (
 				<>
 				<table align="center" width="90%">
@@ -36,7 +36,7 @@ const BoardPagination = ({ menuType, data }) => {
                     {start + index + 1}
                   </td>
                   <td className="inquiryInfoType" align="center">
-                    {info.blTit}
+                    <Link to={`${info.blNo}`}>{info.blTit}</Link>
                   </td>
                   <td className="inquiryInfoType" align="center">
                     {info.userNm}
@@ -77,7 +77,7 @@ const BoardPagination = ({ menuType, data }) => {
 			</>
 			)}
       
-    </>
+    </div>
   );
 };
 

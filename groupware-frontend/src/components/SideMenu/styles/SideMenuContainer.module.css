@@ -1,0 +1,23 @@
+.sideMenuContainer {
+	flex: 0.3;
+	margin-right: 50px;
+	text-align: center;
+}
+
+.sideMainMenu {
+	/* border: solid 1px #bfcfff; */
+	background-color: #acbae5;
+	
+}
+
+.sideMainMenu :hover {
+	color: white;
+}
+
+.sideSubMenu {
+	background-color: #bfcfff;
+}
+
+.sideSubMenu :hover {
+	color: white;
+}

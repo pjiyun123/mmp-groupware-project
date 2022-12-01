@@ -1,9 +1,9 @@
 import React from 'react';
 
-const InfoModiBtn = () => {
+const InfoModiBtn = ( {onClick} ) => {
 	return (
 		<>
-			<button className='InfoModiBtn'>내 정보 수정</button>
+			<button className='InfoModiBtn' onClick={onClick}>내 정보 수정</button>
 		</>
 	);
 };

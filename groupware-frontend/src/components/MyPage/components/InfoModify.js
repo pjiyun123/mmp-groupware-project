@@ -3,7 +3,7 @@ import axios from "axios";
 import DropdownInput from "../../Employees/components/DropdownInput";
 import deptTypes from "../../../assets/deptTypes";
 import jobTypes from "../../../assets/jobTypes";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import baseUrl from "../../../assets/baseUrl";
 
 const InfoModify = () => {
@@ -17,9 +17,15 @@ const InfoModify = () => {
   const [userPwdCheck, setUserPwdCheck] = useState("");
   const [userNm, setUserNm] = useState(userInfo[0].userNm);
   const [userEmail, setUserEmail] = useState(userInfo[0].userEmail);
-  const [userPhone1, setUserPhone1] = useState(userInfo[0].userPhone.slice(0, 3));
-  const [userPhone2, setUserPhone2] = useState(userInfo[0].userPhone.slice(4, 8));
-  const [userPhone3, setUserPhone3] = useState(userInfo[0].userPhone.slice(9, 13));
+  const [userPhone1, setUserPhone1] = useState(
+    userInfo[0].userPhone.slice(0, 3)
+  );
+  const [userPhone2, setUserPhone2] = useState(
+    userInfo[0].userPhone.slice(4, 8)
+  );
+  const [userPhone3, setUserPhone3] = useState(
+    userInfo[0].userPhone.slice(9, 13)
+  );
 
   // const [enteredDept, setEnteredDept] = useState(
   //   deptTypes[userInfo[0].deptNo].id
@@ -50,7 +56,7 @@ const InfoModify = () => {
 
   const onUserEmailChange = (e) => {
     setUserEmail(e.target.value);
-  }
+  };
 
   const onUserOldPwdChange = (e) => {
     setUserOldPwd(e.target.value);
@@ -97,125 +103,153 @@ const InfoModify = () => {
       url: modiUrl,
       data: modiInfo,
     }).then((response) => {
-      alert('수정이 완료되었습니다. 다시 로그인 하기 위해 로그인 화면으로 돌아갑니다.');
-      localStorage.removeItem('user');
-      navigate('/');
+      alert(
+        "수정이 완료되었습니다. 다시 로그인 하기 위해 로그인 화면으로 돌아갑니다."
+      );
+      localStorage.removeItem("user");
+      navigate("/");
       window.location.reload();
-    })
-
+    });
   };
-
 
   return (
     <div className="InfoModifyContainer">
       <form onSubmit={onModify}>
         <table>
-          <tr>
-            <td>이름</td>
-            <td>
-              <input
-                className="textInput"
-                type="text"
-                placeholder={userInfo[0].userNm}
-                onChange={onUserNmChange}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>사번</td>
-            <td>
-              <input
-                className="textInput"
-                type="text"
-                placeholder={userInfo[0].userNum}
-                onChange={onUserNumChange}
-                disabled
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>부서</td>
-            <td>
-              <input
+          <tbody>
+            <tr>
+              <td>이름</td>
+              <td>
+                <input
+                  className="textInput"
+                  type="text"
+                  placeholder={userInfo[0].userNm}
+                  onChange={onUserNmChange}
+                />
+              </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>사번</td>
+              <td>
+                <input
+                  className="textInput"
+                  type="text"
+                  placeholder={userInfo[0].userNum}
+                  onChange={onUserNumChange}
+                  disabled
+                />
+              </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>부서</td>
+              <td>
+                <input
                   className="textInput"
                   type="text"
                   placeholder={deptTypes[userInfo[0].deptNo].value}
                   disabled
                 />
-            {/* <DropdownInput
+                {/* <DropdownInput
             dropdownList={deptTypes}
             setSelectedDropValue={setEnteredDept}
           /> */}
-            </td>
-          </tr>
-          <tr>
-            <td>직급</td>
-            <td>
-            <input
-                className="textInput"
-                type="text"
-                placeholder={jobTypes[userInfo[0].jobNo].value}
-                disabled
-              />
-            {/* <DropdownInput
+              </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>직급</td>
+              <td>
+                <input
+                  className="textInput"
+                  type="text"
+                  placeholder={jobTypes[userInfo[0].jobNo].value}
+                  disabled
+                />
+                {/* <DropdownInput
             dropdownList={jobTypes}
             setSelectedDropValue={setEnteredRank}
           /> */}
-            </td>
-          </tr>
-          <tr>
-            <td>연락처</td>
-            <td>
-              <input
-                className="textInput"
-                type="text"
-                placeholder={userInfo[0].userPhone.slice(0, 3)}
-                onChange={onUserPhone1Change}
-              />{" "}
-              -{" "}
-              <input
-                className="textInput"
-                type="text"
-                placeholder={userInfo[0].userPhone.slice(4, 8)}
-                onChange={onUserPhone2Change}
-              />{" "}
-              -{" "}
-              <input
-                className="textInput"
-                type="text"
-                placeholder={userInfo[0].userPhone.slice(9, 13)}
-                onChange={onUserPhone3Change}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>이메일</td>
-            <td>
-              <input
-                className="textInput"
-                type="email"
-                placeholder={userInfo[0].userEmail}
-                onChange={onUserEmailChange}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>사진</td>
-            <td>
-              <input className="fileInput" type="file" />
-            </td>
-          </tr>
-          <tr>
-            <td>비밀번호</td>
-            <td>
-              <label>현재 비밀번호 : </label>
-              <input className="pwModiInput" type="password" onChange={onUserOldPwdChange} />
-              <label>새로운 비밀번호 : </label>
-              <input className="pwModiInput" type="password" onChange={onUserPwdChange} />
-              <label>비밀번호 확인 : </label>
-              <input className="pwModiInput" type="password" onChange={onUserPwdCheckChange} />
-            </td>
-          </tr>
+              </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>연락처</td>
+              <td>
+                <input
+                  className="textInput"
+                  type="text"
+                  placeholder={userInfo[0].userPhone.slice(0, 3)}
+                  onChange={onUserPhone1Change}
+                />{" "}
+                -{" "}
+                <input
+                  className="textInput"
+                  type="text"
+                  placeholder={userInfo[0].userPhone.slice(4, 8)}
+                  onChange={onUserPhone2Change}
+                />{" "}
+                -{" "}
+                <input
+                  className="textInput"
+                  type="text"
+                  placeholder={userInfo[0].userPhone.slice(9, 13)}
+                  onChange={onUserPhone3Change}
+                />
+              </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>이메일</td>
+              <td>
+                <input
+                  className="textInput"
+                  type="email"
+                  placeholder={userInfo[0].userEmail}
+                  onChange={onUserEmailChange}
+                />
+              </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>사진</td>
+              <td>
+                <input className="fileInput" type="file" />
+              </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>비밀번호</td>
+              <td>
+                <label>현재 비밀번호 : </label>
+                <input
+                  className="pwModiInput"
+                  type="password"
+                  onChange={onUserOldPwdChange}
+                />
+                <label>새로운 비밀번호 : </label>
+                <input
+                  className="pwModiInput"
+                  type="password"
+                  onChange={onUserPwdChange}
+                />
+                <label>비밀번호 확인 : </label>
+                <input
+                  className="pwModiInput"
+                  type="password"
+                  onChange={onUserPwdCheckChange}
+                />
+              </td>
+            </tr>
+          </tbody>
         </table>
         <button className="infoModiBtn">수정하기</button>
       </form>
