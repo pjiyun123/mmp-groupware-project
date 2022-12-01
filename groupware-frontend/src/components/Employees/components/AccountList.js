@@ -5,6 +5,7 @@ import UsersPagination from './UsersPagination';
 
 const AccountList = () => {
 	const [list, setList] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 
 	const url = baseUrl + "/users/list"
 	useEffect(() => {
@@ -13,13 +14,15 @@ const AccountList = () => {
 			url: url, 
 		})
 		.then((response) => {
+			// setIsLoading(false);
 			setList(response.data);
 		})
 	} , []);
 	return (
-		<div>
+		<>
 			<UsersPagination data={list} />
-		</div>
+			{isLoading ? <img style={{width: '30px', textAlign: 'center'}} src='image/buffering.gif' alt='로딩중입니다.' /> : null}
+		</>
 	);
 };
 

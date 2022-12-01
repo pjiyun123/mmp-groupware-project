@@ -1,0 +1,10 @@
+.menuContainer {
+	display: flex;
+}
+
+.circle {
+	width: 200px;
+	height: 200px;
+	flex: 0.25;
+	margin-top: 5%;
+}

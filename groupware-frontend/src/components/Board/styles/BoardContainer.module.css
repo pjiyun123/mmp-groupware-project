@@ -1,0 +1,5 @@
+.boardContainer {
+	flex: 0.7;
+	display: flex;
+	flex-direction: column;
+}
