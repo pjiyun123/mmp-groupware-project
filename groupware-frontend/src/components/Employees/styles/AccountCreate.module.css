@@ -1,8 +1,5 @@
-.container {
-	flex: 0.7;
-}
-.appraddBtn{
-	width: flex;
+.accountCreateBtn{
+    width: flex;
     height: flex;
     padding: 6px;
     color: white;
