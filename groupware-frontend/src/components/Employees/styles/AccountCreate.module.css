@@ -1,0 +1,13 @@
+.accountCreateBtn{
+    width: flex;
+    height: flex;
+    padding: 6px;
+    color: white;
+    font-size: 14px;
+    float:right;
+    align-items:center;
+    justify-content: center;
+    background-color: #9285f9;
+    border: 0;
+    border-radius:10px;
+}

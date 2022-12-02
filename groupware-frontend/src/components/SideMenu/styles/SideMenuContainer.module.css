@@ -1,0 +1,26 @@
+.sideMenuContainer {
+	width: 200px;
+	margin-right: 50px;
+	text-align: center;
+}
+
+.sideMainMenu {
+	/* border: solid 1px #bfcfff; */
+	font-size: 25px;
+	margin-top: 11px;
+	margin-bottom: 11px;
+}
+
+.sideMainMenu :hover {
+	background-color: #acbae5;
+	color: white;
+}
+
+.sideSubMenu {
+	height: 25px;
+}
+
+.sideSubMenu :hover {
+	background-color: #acbae5;
+	color: white;
+}

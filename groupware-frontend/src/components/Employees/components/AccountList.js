@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import PageNumbers from '../../Common/PageNumbers';
-import InquiryResult from './InquiryResult';
 import baseUrl from '../../../assets/baseUrl';
+import UsersPagination from './UsersPagination';
 
-const AccountList = ({ isList, setIsList }) => {
-
+const AccountList = () => {
 	const [list, setList] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
+
 	const url = baseUrl + "/users/list"
 	useEffect(() => {
-		setIsList(true);
 		axios({
 			method: "get", 
 			url: url, 
 		})
 		.then((response) => {
+			// setIsLoading(false);
 			setList(response.data);
 		})
 	} , []);
 	return (
-		<div>
-			<InquiryResult list={list} isList={isList} />
-			<PageNumbers />
-		</div>
+		<>
+			<UsersPagination data={list} />
+			{isLoading ? <img style={{width: '30px', textAlign: 'center'}} src='image/buffering.gif' alt='로딩중입니다.' /> : null}
+		</>
 	);
 };
 

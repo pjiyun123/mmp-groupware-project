@@ -4,8 +4,13 @@ import InfoModiBtn from "./components/InfoModiBtn";
 import InfoModify from "./components/InfoModify";
 import MyInformation from "./components/MyInformation";
 import ProfileImg from "./components/ProfileImg";
+import { useNavigate } from 'react-router-dom';
 
 const MyPageContainer = () => {
+  const navigate = useNavigate();
+  const onClick = () => {
+    navigate('modify');
+  }
   return (
     <div className="MyPageContainer">
       <Routes>
@@ -15,9 +20,10 @@ const MyPageContainer = () => {
             <>
               <MyInformation />
               <ProfileImg />
-              <Link to="modify">
+              <InfoModiBtn onClick={onClick} />
+              {/* <Link to="modify">
                 <InfoModiBtn />
-              </Link>
+              </Link> */}
             </>
           }
         />

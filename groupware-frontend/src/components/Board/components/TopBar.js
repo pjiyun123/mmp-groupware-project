@@ -1,9 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import WriteButton from './WriteButton';
+import classes from '../styles/TopBar.module.css';
 
-const TopBar = () => {
+const TopBar = ({ menuType }) => {
+	const navigate = useNavigate();
+	const onWritingClick = () => {
+		navigate("writing");
+	}
 	return (
-		<div>
-			TopBar
+		<div className={classes.topbar}>
+			<span>{menuType} 목록</span>
+			<WriteButton menuType={menuType} onClick={onWritingClick} />
 		</div>
 	);
 };

@@ -1,23 +1,33 @@
 import axios from "axios";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import DropdownInput from "./DropdownInput";
-import deptTypes from './../../../assets/deptTypes';
+import deptTypes from "../../../assets/deptTypes";
 import jobTypes from "../../../assets/jobTypes";
 import lvTypes from "../../../assets/lvTypes";
 import baseUrl from "../../../assets/baseUrl";
 import { useNavigate } from 'react-router-dom';
+import classes from "../styles/AccountCreate.module.css"
+// import DeptTypesDropdown from "./DeptTypesDropdown";
 
 const AccountCreate = () => {
-  // const [created, setCreated] = useState(false);
+  // const defaultDeptTypes = [{deptNo: 0, deptNm: '부서를 선택하세요.'},];
+  // const [deptTypes, setDeptTypes] = useState(defaultDeptTypes);
+
   // useEffect(() => {
-  //   setCreated(false);
-  // }, []);  
+  //   axios({
+  //     method: "get",
+  //     url: baseUrl + "/dept/list",
+  //   }).then((response) => {
+  //     setDeptTypes(defaultDeptTypes.concat(response.data));
+  //   })
+  // }, []);
+
   const navigate = useNavigate();
 
   const userNameInputRef = useRef();
   const userNumInputRef = useRef();
   const [enteredDept, setEnteredDept] = useState(
-    deptTypes[0].value
+    deptTypes[0].deptNm
   );
   const [enteredRank, setEnteredRank] = useState(
     jobTypes[0].value
@@ -65,8 +75,6 @@ const AccountCreate = () => {
       url: url,
       data: newEmployeeInfo,
     }).then((response) => {
-      // console.log(response);
-      // setCreated(true);
       alert("계정이 생성되었습니다.");
       navigate("/employees");
     });
@@ -119,7 +127,6 @@ const AccountCreate = () => {
         </h3>
         <button className="accountCreateBtn">생성</button>
       </form>
-      {/* {created ? <h4>계정이 생성되었습니다.</h4> : null} */}
     </div>
   );
 };
