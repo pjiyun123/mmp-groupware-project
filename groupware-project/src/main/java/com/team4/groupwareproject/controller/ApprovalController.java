@@ -1,6 +1,7 @@
 package com.team4.groupwareproject.controller;
 
 import com.team4.groupwareproject.domain.Approval;
+import com.team4.groupwareproject.domain.Approver;
 import com.team4.groupwareproject.domain.Attachment;
 import com.team4.groupwareproject.service.ApprovalService;
 import lombok.RequiredArgsConstructor;
@@ -46,5 +47,18 @@ public class ApprovalController {
         return avlFiles;
     }
 
+    // 결재문서 수정
+    @PatchMapping("/approval/{userNo}/{avlNo}")
+    public Approval edit(@PathVariable Long userNo, @PathVariable Long avlNo, @RequestPart("avl") Approval avl, @RequestPart("files") List<MultipartFile> files) throws IOException {
+        Approval updatedAvl = avlServ.updateApproval(userNo, avlNo, avl, files);
+        return updatedAvl;
+    }
+
+    // 결재문서 삭제
+    @DeleteMapping("/approval/{avlNo}")
+    public List<Approval> delete(@PathVariable Long avlNo) {
+        avlServ.deleteApproval(avlNo);
+        return avlServ.getApprovalList();
+    }
 
 }

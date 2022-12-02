@@ -3,6 +3,7 @@ package com.team4.groupwareproject.service;
 import com.team4.groupwareproject.domain.*;
 import com.team4.groupwareproject.domain.constant.apprStatus;
 import com.team4.groupwareproject.domain.constant.constant;
+import com.team4.groupwareproject.domain.constant.levelConstant;
 import com.team4.groupwareproject.repository.*;
 import com.team4.groupwareproject.util.FileUtil;
 import lombok.RequiredArgsConstructor;
@@ -82,6 +83,51 @@ public class ApprovalService {
         return avlFiles;
     }
 
+    // 결재문서 수정
+    public Approval updateApproval(Long userNo, Long avlNo, Approval approval, List<MultipartFile> files) throws IOException {
+        Approval tempAvl = avlRepo.findByAvlNo(avlNo);
 
+        tempAvl.setUpdateDt(LocalDateTime.now());
+        if(approval.getAfNo() != null) {
+            tempAvl.setAfNo(approval.getAfNo());
+            tempAvl.setAfNm(afRepo.findByAfNo(approval.getAfNo()).getAfNm());
+            tempAvl.setApNo(afRepo.findByAfNo(approval.getAfNo()).getApNo());
+            tempAvl.setApNm(afRepo.findByAfNo(approval.getAfNo()).getApNm());
+        }
+        if(approval.getAvlTit() != null)
+            tempAvl.setAvlTit(approval.getAvlTit());
+        if(approval.getAvlContent() != null)
+            tempAvl.setAvlContent(approval.getAvlContent());
+        if(approval.getApprYn() != null)
+            tempAvl.setApprYn(approval.getApprYn());
+
+        Approval updatedAvl = avlRepo.save(tempAvl);
+
+        if(files != null) {
+            atcRepo.deleteByAtcDocNoAndAtcPrtNo(constant.APPROVAL, avlNo);
+
+            for(int i=0; i<files.size(); i++) {
+                String fileName = fileutil.uploadFile(files.get(0), "approval");
+
+                Attachment atc = Attachment.builder()
+                        .atcDocNo(constant.APPROVAL)
+                        .atcPrtNo(avlNo)
+                        .atcOriName(files.get(i).getOriginalFilename())
+                        .atcFtpName(fileName)
+                        .createDt(LocalDateTime.now())
+                        .updateDt(LocalDateTime.now())
+                        .build();
+
+                atcRepo.save(atc);
+            }
+        }
+
+        return updatedAvl;
+    }
+
+    // 결재문서 삭제
+    public void deleteApproval(Long avlNo) {
+        avlRepo.deleteById(avlNo);
+    }
 
 }

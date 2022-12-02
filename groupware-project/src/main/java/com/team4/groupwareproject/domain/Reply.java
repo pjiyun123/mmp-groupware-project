@@ -21,22 +21,22 @@ public class Reply {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int rNo; // 댓글 번호
+    private Long reNo; // 댓글 번호
 
     @Column(nullable=false)
-    private Long userNo; // 회원 번호
+    private Long userNo; // 작성자 회원 번호
+
+    @Column(nullable = false)
+    private String userNm; // 작성자 이름
 
     @Column
-    private Long aNo; // 결재 문서 번호
+    private Long avlNo; // 결재 문서 번호
 
     @Column
-    private Long afNo; // 결재 문서 양식 번호
+    private String reContent; // 댓글 내용
 
     @Column
-    private String rContent; // 댓글 내용
-
-    @Column
-    private Long prNo; // 상위 댓글 번호
+    private Long preNo; // 상위 댓글 번호
 
     @Column(nullable = false)
     private LocalDateTime createDt; // 작성일자

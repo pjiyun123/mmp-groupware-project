@@ -24,6 +24,9 @@ public class Approver {
     private Long afNo; // 결재 문서 양식 번호
 
     @Column
+    private Long userNo; // 결재자 번호
+
+    @Column
     private String userNm; //결재자 이름
 
     @Column

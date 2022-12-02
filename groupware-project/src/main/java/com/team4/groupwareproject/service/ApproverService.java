@@ -38,6 +38,7 @@ public class ApproverService {
         Dept apDept = dRepo.findByDeptNo(apUser.getDeptNo());
         Approver newAp = Approver.builder()
                 .afNo(approver.getAfNo())
+                .userNo(userNo)
                 .userNm(apUser.getUserNm())
                 .deptNm(apDept.getDeptNm())
                 .createDt(LocalDateTime.now())
