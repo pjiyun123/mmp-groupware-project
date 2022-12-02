@@ -29,7 +29,7 @@ const ApprForm = () => {
 			<div>
 				<span>보고/결재 {'>'} 결재 양식</span>
 				{userInfo[0].userLv < 2 ? (
-					<button onClick={onFormAdd}>결재양식추가</button>
+					<button className={classes.appraddBtn} onClick={onFormAdd}>결재양식추가</button>
 				) : null}
 			</div>
 			{forms.length === 0 ? <div>등록된 결재 양식이 없습니다.</div> : (

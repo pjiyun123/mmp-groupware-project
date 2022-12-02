@@ -6,6 +6,7 @@ import jobTypes from "../../../assets/jobTypes";
 import lvTypes from "../../../assets/lvTypes";
 import baseUrl from "../../../assets/baseUrl";
 import { useNavigate } from 'react-router-dom';
+import classes from "../styles/AccountCreate.module.css"
 // import DeptTypesDropdown from "./DeptTypesDropdown";
 
 const AccountCreate = () => {
