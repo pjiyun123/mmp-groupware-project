@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import classes from '../styles/BoardPagination.module.css';
 
 const BoardPagination = ({ menuType, data }) => {
