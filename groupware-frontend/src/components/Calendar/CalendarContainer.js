@@ -9,15 +9,13 @@ const CalendarContainer = () => {
 	const [calList, setCalList] = useState([]);
 	const [newCreated, setNewCreated] = useState(false);
 
-	useEffect(() => {
-    axios({
-      method: "get",
-      url: baseUrl + "/calendar/list",
-    }).then((response) => {
-      setCalList(response.data);
-			setNewCreated(false);
-    })
-  }, [newCreated]);
+	axios({
+		method: "get",
+		url: baseUrl + "/calendar/list",
+	}).then((response) => {
+		setCalList(response.data);
+		setNewCreated(false);
+	})
 
 	return (
 		<div className='calendarContainer'>
