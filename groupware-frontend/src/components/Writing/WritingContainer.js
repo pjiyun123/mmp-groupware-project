@@ -92,7 +92,7 @@ const WritingContainer = ({ menuType }) => {
             <tr>
               <td>첨부파일</td>
               <td>
-                <input type="file" name="attachedFile" ref={fileRef} />
+                <input type="file" ref={fileRef} />
               </td>
             </tr>
           </tbody>

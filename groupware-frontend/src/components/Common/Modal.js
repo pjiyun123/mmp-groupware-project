@@ -14,7 +14,6 @@ const Modal = ({ onCancel, onConfirm }) => {
     <div className={classes.modal}>
       <p>정말로 삭제하시겠습니까?</p>
       <button className={`${classes.btn} ${classes.btn_alt}`} onClick={cancelHandler}>
-			
         예
       </button>
       <button className={classes.btn} onClick={confirmHandler}>
