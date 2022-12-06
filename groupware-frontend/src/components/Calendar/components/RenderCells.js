@@ -23,8 +23,12 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick, calList }) => {
   let days = [];
   let day = startDate;
   let formattedDate = "";
-
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCalNo, setSelectedCalNo] = useState();
+  const onClick = (e) => {
+    setIsModalOpen(true);
+    setSelectedCalNo(e.target.value);
+  }
   const schedule = calList.map((sche) => {
     return {
       calDate: new Date(sche.calDate),
@@ -32,27 +36,22 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick, calList }) => {
         <>
           <button
             className={sche.calMajor === "Y" ? "schedule major" : "schedule"}
-            key={sche.calId}
-            onClick={() => setIsModalOpen(true)}
+            key={sche.calNo}
+            value={sche.calNo}
+            onClick={onClick}
           >
             {/* {sche.userNo == null ? null : "["+sche.userNm+"]"}*/}
             {sche.calTit}
+            
           </button>
           {isModalOpen ? (
             <DetailModal
-              onDelete={() => setIsModalOpen(false)}
-              onClick={() => setIsModalOpen(false)}
-              content={(<>
-                <span>{sche.calDate}</span><br />
-                <span>{sche.calTit}</span>
-                {sche.calMajor ? <span>☆</span> : null}
-                <br />
-                <p>장소 : {sche.calPlace}</p>
-                <p>{sche.calContent}</p><br />
-                <p>{sche.calStartTime}~{sche.calEndTime}</p>
-              </>)}
-            />
+            calList={calList}
+            setIsModalOpen={setIsModalOpen}
+            calNo={selectedCalNo}
+           />
           ) : null}
+          
         </>
       ),
     };
@@ -75,7 +74,6 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick, calList }) => {
               : "valid"
           }`}
           key={day}
-          // onClick={() => onDateClick(parse(cloneDay))}
         >
           <span
             className={

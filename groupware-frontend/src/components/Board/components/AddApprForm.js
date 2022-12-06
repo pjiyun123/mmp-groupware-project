@@ -55,9 +55,18 @@ const AddApprForm = () => {
       headers: { "Content-Type": "multipart/form-data" },
       data: formData,
     }).then((response) => {
+			axios({
+				method: "post",
+				url: baseUrl + "/approver/" + enteredApNo,
+				data: {
+					userNo: enteredApNo,
+					afNo: response.data.afNo,
+				}
+			});
       alert("결재 양식이 등록되었습니다.");
       navigate("/appr/form");
     });
+		
   };
 
   return (
