@@ -18,7 +18,7 @@ const BusinesslogDetail = () => {
 
 	const getUrl = baseUrl + "/businesslog/" + no;
 	const fileUrl = baseUrl + "/businesslog/" + no + "/atc";
-	const deleteUrl = baseUrl + + "/businesslog/" + no.toString;
+	const deleteUrl = baseUrl + "/businesslog/" + no;
 
 	useEffect(() => {
 		axios({

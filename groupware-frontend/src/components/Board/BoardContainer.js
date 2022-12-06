@@ -8,7 +8,7 @@ import classes from './styles/BoardContainer.module.css';
 
 const BoardContainer = ({ menuType }) => {
 	const [data, setData] = useState([]);
-	const menuUrl = menuType === "업무일지" ? "/businesslog/" : "/apprform/";
+	const menuUrl = menuType === "업무일지" ? "/businesslog/" : "/approval/";
 	const user = localStorage.getItem("user");
 	const userInfo = JSON.parse(user);
 	const getUrl = baseUrl + menuUrl + "list";

@@ -7,6 +7,7 @@ import baseUrl from '../../assets/baseUrl';
 
 const CalendarContainer = () => {
 	const [calList, setCalList] = useState([]);
+	const [newCreated, setNewCreated] = useState(false);
 
 	useEffect(() => {
     axios({
@@ -14,14 +15,15 @@ const CalendarContainer = () => {
       url: baseUrl + "/calendar/list",
     }).then((response) => {
       setCalList(response.data);
+			setNewCreated(false);
     })
-  }, []);
+  }, [newCreated]);
 
 	return (
 		<div className='calendarContainer'>
 			<Routes>
 				<Route path='/' element={<Calendar calList={calList} />} />
-				<Route path="create" element={<CalCreate />} />
+				<Route path="create" element={<CalCreate setNewCreated={setNewCreated} />} />
 			</Routes>
 		</div>
 	);

@@ -5,7 +5,7 @@ import calCategoryTypes from '../../../assets/calCategoryTypes';
 import baseUrl from '../../../assets/baseUrl';
 import { useNavigate } from 'react-router-dom';
 
-const CalCreate = () => {
+const CalCreate = ({ setNewCreated }) => {
 	// const [created, setCreated] = useState(false);
 	const navigate = useNavigate();
 
@@ -51,6 +51,7 @@ const CalCreate = () => {
 			data: newCalInfo,
 		}).then((response) => {
 			// setCreated(true);
+			setNewCreated(true);
 			alert("일정이 등록되었습니다.");
       navigate("/calendar");
 		});

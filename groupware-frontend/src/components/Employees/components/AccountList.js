@@ -14,14 +14,14 @@ const AccountList = () => {
 			url: url, 
 		})
 		.then((response) => {
-			// setIsLoading(false);
+			setIsLoading(false);
 			setList(response.data);
 		})
 	} , []);
 	return (
 		<>
 			<UsersPagination data={list} />
-			{isLoading ? <img style={{width: '30px', textAlign: 'center'}} src='image/buffering.gif' alt='로딩중입니다.' /> : null}
+			{isLoading ? <img style={{width: '30px', display: 'block', margin: 'auto'}} src='image/buffering.gif' alt='로딩중입니다.' /> : null}
 		</>
 	);
 };
