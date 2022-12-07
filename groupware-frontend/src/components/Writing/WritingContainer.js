@@ -30,7 +30,6 @@ const WritingContainer = ({ menuType }) => {
       });
     }
   }, [menuType]);
-  console.log(afType);
   const onWriting = (e) => {
     e.preventDefault();
 
@@ -74,11 +73,10 @@ const WritingContainer = ({ menuType }) => {
       headers: { "Content-Type": "multipart/form-data" },
       data: formData,
     }).then((response) => {
-      console.log(response);
       menuType === "업무일지"
         ? alert("업무일지가 등록되었습니다.")
         : alert("결재 신청이 완료되었습니다.");
-      menuType === "업무일지" ? navigate("/businesslog") : navigate("/appr");
+      menuType === "업무일지" ? navigate("/businesslog") : navigate("/appr/my");
     });
   };
 
