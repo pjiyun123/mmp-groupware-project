@@ -43,17 +43,22 @@ const SideMenuContainer = () => {
       </div>
       <div className={classes.sideSubMenu}>
         <Link to="appr">
-          <SubMenu menuName="결재" />
+          <SubMenu menuName="완료된 결재 목록" />
         </Link>
       </div>
       <div className={classes.sideSubMenu}>
-        <Link to="appr/">
+        <Link to="appr/writing">
           <SubMenu menuName="결재신청" />
         </Link>
       </div>
       <div className={classes.sideSubMenu}>
         <Link to="appr/form">
           <SubMenu menuName="결재양식" />
+        </Link>
+      </div>
+      <div className={classes.sideSubMenu}>
+        <Link to="appr/my">
+          <SubMenu menuName="신청한 결재" />
         </Link>
       </div>
       {userInfo[0].userLv < 3 ? (

@@ -20,6 +20,9 @@ const BoardContainer = ({ menuType }) => {
 		})
 		.then((response) => {
 			setData(response.data);
+			if (menuType !== "업무일지") {
+				setData(response.data.filter(data => data.apprYn === "Yes"));
+			}
 		})
 	} , [getUrl, menuType]);
 
