@@ -40,10 +40,10 @@ const ApprForm = () => {
 							<th align="center">제목</th>
 						</tr>
 					</thead>
-					{forms.map((form) => (
+					{forms.map((form, index) => (
 						<tbody key={form.afNo} onClick={() => {navigate(form.afNo)}} >
 							<tr key={form.afNo}>
-								<td align="center">{form.afNo}</td>
+								<td align="center">{index+1}</td>
 								<td align="center"><Link to={`${form.afNo}`}>{form.afNm}</Link></td>
 							</tr>
 						</tbody>

@@ -26,6 +26,9 @@ const BoardPagination = ({ menuType, data }) => {
             <th align="center">제목</th>
             <th align="center">작성자</th>
             <th align="center">작성일</th>
+            {menuType === "신청한 결재" ? (
+              <th align="center">상태</th>
+            ) : null}
           </tr>
         </thead>
         {menuType === "업무일지"
@@ -62,6 +65,13 @@ const BoardPagination = ({ menuType, data }) => {
                   <td className="inquiryInfoType" align="center">
                     {info.createDt.slice(0, 10)}
                   </td>
+                  {menuType === "신청한 결재" ? (
+                    <td className="inquiryInfoType" align="center">
+                      {info.apprYn === "Wait" ? "대기" : (
+                        info.apprYn === "Yes" ? "완료" : "반려"
+                      )}
+                    </td>
+                   ) : null}
                 </tr>
               </tbody>
             )))}
