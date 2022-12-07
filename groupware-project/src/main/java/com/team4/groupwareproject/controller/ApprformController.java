@@ -51,7 +51,7 @@ public class ApprformController {
     // 결재문서 상세 파일 다운로드
     @GetMapping("/apprform/{afNo}/atc/{atcNo}/download")
     public String download(@PathVariable Long afNo, @PathVariable Long atcNo) {
-        String mmpUrl = "https://360map.co.kr/groupware/";
+        String mmpUrl = "https://360map.co.kr/groupware/apprform/";
         String ftpName = atcRepo.findByAtcNo(atcNo).getAtcFtpName();
         return mmpUrl + ftpName;
     }

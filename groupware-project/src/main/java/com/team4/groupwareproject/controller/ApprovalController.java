@@ -52,7 +52,7 @@ public class ApprovalController {
     // 결재문서 상세 파일 다운로드
     @GetMapping("/approval/{avlNo}/atc/{atcNo}/download")
     public String download(@PathVariable Long avlNo, @PathVariable Long atcNo) {
-        String mmpUrl = "https://360map.co.kr/groupware/";
+        String mmpUrl = "https://360map.co.kr/groupware/approval/";
         String ftpName = atcRepo.findByAtcNo(atcNo).getAtcFtpName();
         return mmpUrl + ftpName;
     }
