@@ -2,6 +2,7 @@ package com.team4.groupwareproject.controller;
 
 import com.team4.groupwareproject.domain.Apprform;
 import com.team4.groupwareproject.domain.Attachment;
+import com.team4.groupwareproject.repository.AttachmentRepository;
 import com.team4.groupwareproject.service.ApprformService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ import java.util.List;
 public class ApprformController {
 
     private final ApprformService afServ;
+    private final AttachmentRepository atcRepo;
 
     // 결재 양식 목록 조회
     @GetMapping("/apprform/list")
@@ -44,6 +46,14 @@ public class ApprformController {
     public List<Attachment> detailAtc(@PathVariable Long afNo) {
         List<Attachment> afFiles = afServ.getApprformFiles(afNo);
         return afFiles;
+    }
+
+    // 결재문서 상세 파일 다운로드
+    @GetMapping("/apprform/{afNo}/atc/{atcNo}/download")
+    public String download(@PathVariable Long afNo, @PathVariable Long atcNo) {
+        String mmpUrl = "https://360map.co.kr/groupware/";
+        String ftpName = atcRepo.findByAtcNo(atcNo).getAtcFtpName();
+        return mmpUrl + ftpName;
     }
 
     // 결재 양식 수정

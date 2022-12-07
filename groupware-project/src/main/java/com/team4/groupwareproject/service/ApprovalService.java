@@ -54,7 +54,7 @@ public class ApprovalService {
 
         if(!files.isEmpty()) {
             for(int i=0; i<files.size(); i++) {
-                String fileName = fileutil.uploadFile(files.get(0), "approval");
+                String fileName = fileutil.uploadFile(files.get(i), "approval");
 
                 Attachment atc = Attachment.builder()
                         .atcDocNo(constant.APPROVAL)
@@ -107,7 +107,7 @@ public class ApprovalService {
             atcRepo.deleteByAtcDocNoAndAtcPrtNo(constant.APPROVAL, avlNo);
 
             for(int i=0; i<files.size(); i++) {
-                String fileName = fileutil.uploadFile(files.get(0), "approval");
+                String fileName = fileutil.uploadFile(files.get(i), "approval");
 
                 Attachment atc = Attachment.builder()
                         .atcDocNo(constant.APPROVAL)

@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 public interface AttachmentRepository extends JpaRepository<Attachment, Long> {
-    List<Attachment> findByAtcNo(Long atcNo);
+    Attachment findByAtcNo(Long atcNo);
     List<Attachment> findByAtcDocNoAndAtcPrtNo(Long atcDocNo, Long atcPrtNo);
 
     @Transactional

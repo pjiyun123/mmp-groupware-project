@@ -47,7 +47,7 @@ public class BusinesslogService {
 
         if(!files.isEmpty()) {
             for(int i=0; i<files.size(); i++) {
-                String fileName = fileutil.uploadFile(files.get(0), "businesslog");
+                String fileName = fileutil.uploadFile(files.get(i), "businesslog");
 
                 Attachment atc = Attachment.builder()
                         .atcDocNo(constant.BUSINESSLOG)
@@ -93,7 +93,7 @@ public class BusinesslogService {
             atcRepo.deleteByAtcDocNoAndAtcPrtNo(constant.BUSINESSLOG, blNo);
 
             for(int i=0; i<files.size(); i++) {
-                String fileName = fileutil.uploadFile(files.get(0), "businesslog");
+                String fileName = fileutil.uploadFile(files.get(i), "businesslog");
 
                 Attachment atc = Attachment.builder()
                         .atcDocNo(constant.BUSINESSLOG)

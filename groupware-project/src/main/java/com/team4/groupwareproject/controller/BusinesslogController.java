@@ -2,12 +2,18 @@ package com.team4.groupwareproject.controller;
 
 import com.team4.groupwareproject.domain.Attachment;
 import com.team4.groupwareproject.domain.Businesslog;
+import com.team4.groupwareproject.repository.AttachmentRepository;
 import com.team4.groupwareproject.service.BusinesslogService;
+import com.team4.groupwareproject.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
 @RestController
@@ -17,6 +23,8 @@ import java.util.List;
 public class BusinesslogController {
 
     private final BusinesslogService blServ;
+    private final FileUtil fileutil;
+    private final AttachmentRepository atcRepo;
 
     // 업무일지 목록 조회
     @GetMapping("/businesslog/list")
@@ -44,6 +52,14 @@ public class BusinesslogController {
     public List<Attachment> detailAtc(@PathVariable Long blNo) {
         List<Attachment> blFiles = blServ.getBusinesslogFiles(blNo);
         return blFiles;
+    }
+
+    // 업무일지 상세 파일 다운로드
+    @GetMapping("/businesslog/{blNo}/atc/{atcNo}/download")
+    public String download(@PathVariable Long blNo, @PathVariable Long atcNo) {
+        String mmpUrl = "https://360map.co.kr/groupware/";
+        String ftpName = atcRepo.findByAtcNo(atcNo).getAtcFtpName();
+        return mmpUrl + ftpName;
     }
 
     // 업무일지 수정
