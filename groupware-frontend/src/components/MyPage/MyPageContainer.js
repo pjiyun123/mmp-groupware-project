@@ -19,7 +19,7 @@ const MyPageContainer = () => {
           element={
             <>
               <MyInformation />
-              <ProfileImg />
+              {/* <ProfileImg /> */}
               <InfoModiBtn onClick={onClick} />
               {/* <Link to="modify">
                 <InfoModiBtn />

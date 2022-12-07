@@ -14,6 +14,7 @@ import BusinesslogDetail from "../../components/Board/components/BusinesslogDeta
 import ApprFormDetail from "../../components/Board/components/ApprFormDetail";
 import MyAppr from "../../components/Board/components/MyAppr";
 import RequestAppr from "../../components/Board/components/RequestAppr";
+import ApprDetail from './../../components/Board/components/ApprDetail';
 
 const MainPage = () => {
   return (
@@ -31,8 +32,11 @@ const MainPage = () => {
           <Route path="/businesslog/:no" element={<BusinesslogDetail />} />
           <Route path="/businesslog/modify/:no" element={<BusinesslogDetail />} />
           <Route path="/appr/*" element={<BoardContainer menuType="결재" />} />
+          <Route path="/appr/:no" element={<ApprDetail />} />
           <Route path="/appr/my" element={<MyAppr />} />
+          <Route path="/appr/my/:no" element={<ApprDetail />} />
           <Route path="/appr/request" element={<RequestAppr />} />
+          <Route path="/appr/request/:no" element={<ApprDetail />} />
           <Route path="/appr/form" element={<ApprForm />} />
           <Route path="/appr/form/:no" element={<ApprFormDetail />} />
           <Route path="/appr/form/add" element={<AddApprForm />} />

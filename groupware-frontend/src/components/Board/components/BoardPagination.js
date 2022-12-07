@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import classes from '../styles/BoardPagination.module.css';
+import classes from "../styles/BoardPagination.module.css";
 
 const BoardPagination = ({ menuType, data }) => {
   const [start, setStart] = useState(0);
@@ -14,79 +14,86 @@ const BoardPagination = ({ menuType, data }) => {
     setStart((currentPage - 1) * 5);
     setEnd(currentPage * 5);
   }, [currentPage]);
-  
+
   return (
     <div className={classes.boardPagination}>
-			{data.length === 0 ? <div>등록된 글이 없습니다.</div> : (
-				<>
-				<table align="center" width="90%">
-        <thead>
-          <tr>
-            <th align="center">번호</th>
-            <th align="center">제목</th>
-            <th align="center">작성자</th>
-            <th align="center">작성일</th>
-            {menuType === "신청한 결재" ? (
-              <th align="center">상태</th>
-            ) : null}
-          </tr>
-        </thead>
-        {menuType === "업무일지"
-          ? (data?.slice(start, end).map((info, index) => (
-              <tbody>
-                <tr key={info.blNo}>
-                  <td className="inquiryInfoType" align="center">
-                    {start + index + 1}
-                  </td>
-                  <td className="inquiryInfoType" align="center">
-                    <Link to={`${info.blNo}`}>{info.blTit}</Link>
-                  </td>
-                  <td className="inquiryInfoType" align="center">
-                    {info.userNm}
-                  </td>
-                  <td className="inquiryInfoType" align="center">
-                    {info.createDt.slice(0, 10)}
-                  </td>
-                </tr>
-              </tbody>
-            )))
-          : (data?.slice(start, end).map((info, index) => (
-              <tbody>
-                <tr key={info.avlNo}>
-                  <td className="inquiryInfoType" align="center">
-                    {start + index + 1}
-                  </td>
-                  <td className="inquiryInfoType" align="center">
-                    {info.afNm}
-                  </td>
-                  <td className="inquiryInfoType" align="center">
-                    {info.userNm}
-                  </td>
-                  <td className="inquiryInfoType" align="center">
-                    {info.createDt.slice(0, 10)}
-                  </td>
-                  {menuType === "신청한 결재" ? (
-                    <td className="inquiryInfoType" align="center">
-                      {info.apprYn === "Wait" ? "대기" : (
-                        info.apprYn === "Yes" ? "완료" : "반려"
-                      )}
-                    </td>
-                   ) : null}
-                </tr>
-              </tbody>
-            )))}
-      </table>
+      {data.length === 0 ? (
+        <div>등록된 글이 없습니다.</div>
+      ) : (
+        <>
+          <table align="center" width="90%">
+            <thead>
+              <tr>
+                <th align="center">번호</th>
+                <th align="center">제목</th>
+                <th align="center">작성자</th>
+                <th align="center">작성일</th>
+                {menuType === "신청한 결재" ? (
+                  <th align="center">상태</th>
+                ) : null}
+              </tr>
+            </thead>
+            {menuType === "업무일지"
+              ? data?.slice(start, end).map((info, index) => (
+                  <tbody>
+                    <tr key={info.blNo}>
+                      <td className="inquiryInfoType" align="center">
+                        {start + index + 1}
+                      </td>
+                      <td className="inquiryInfoType" align="center">
+                        <Link to={`${info.blNo}`}>{info.blTit}</Link>
+                      </td>
+                      <td className="inquiryInfoType" align="center">
+                        {info.userNm}
+                      </td>
+                      <td className="inquiryInfoType" align="center">
+                        {info.createDt.slice(0, 10)}
+                      </td>
+                    </tr>
+                  </tbody>
+                ))
+              : data?.slice(start, end).map((info, index) => (
+                  <tbody>
+                    <tr key={info.avlNo}>
+                      <td className="inquiryInfoType" align="center">
+                        {start + index + 1}
+                      </td>
+                      <td className="inquiryInfoType" align="center">
+                        {/* {info.afNm} */}
 
-      <nav style={{ listStyleType: "none", display: "flex" }}>
-        {pageNumber.map((num) => (
-          <li key={num} onClick={() => setCurrentPage(num)}>
-            <button>{num}</button>
-          </li>
-        ))}
-      </nav>
-			</>
-			)}
-      
+                        <Link to={`${info.avlNo}`}>{info.avlTit}</Link>
+                      </td>
+                      <td className="inquiryInfoType" align="center">
+                        {info.userNm}
+                      </td>
+                      <td className="inquiryInfoType" align="center">
+                        {info.createDt.slice(0, 10)}
+                      </td>
+                      {menuType === "신청한 결재" ? (
+                        <td className="inquiryInfoType" align="center">
+                          {info.apprYn === "Wait" ? (
+                            <span>대기</span>
+                          ) : info.apprYn === "Yes" ? (
+                            <span style={{color: "blue"}}>완료</span>
+                          ) : (
+                            <span style={{color: "red"}}>반려</span>
+                          )}
+                        </td>
+                      ) : null}
+                    </tr>
+                  </tbody>
+                ))}
+          </table>
+
+          <nav style={{ listStyleType: "none", display: "flex" }}>
+            {pageNumber.map((num) => (
+              <li key={num} onClick={() => setCurrentPage(num)}>
+                <button>{num}</button>
+              </li>
+            ))}
+          </nav>
+        </>
+      )}
     </div>
   );
 };
