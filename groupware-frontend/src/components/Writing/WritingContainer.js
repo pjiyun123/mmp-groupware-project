@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import apprTypes from "../../assets/apprTypes";
 import WritingDropdown from "./components/WritingDropdown";
 import DropdownInput from "../Employees/components/DropdownInput";
+import useDidMountEffect from './../../hooks/useDidMountEffect';
 
 const WritingContainer = ({ menuType }) => {
   const navigate = useNavigate();
@@ -13,17 +14,18 @@ const WritingContainer = ({ menuType }) => {
   const titleRef = useRef();
   const contentRef = useRef();
   const fileRef = useRef();
-  //const [enteredManager, setEnteredManager] = useState(apprTypes[0].manager);
   const [afType, setAfType] = useState([]);
   const [enteredType, setEnteredType] = useState();
-  useEffect(() => {
+  
+  useDidMountEffect(() => {
+    setAfType([]);
     if (menuType !== "업무일지") {
       axios({
         method: "get",
         url: baseUrl + "/apprform/list",
       }).then((response) => {
         response.data.map((res) =>
-          setAfType(afType.concat({ id: res.afNo, value: res.afNm }))
+          setAfType((type) => type.concat({ id: res.afNo, value: res.afNm }))
         );
       });
     }
@@ -128,7 +130,7 @@ const WritingContainer = ({ menuType }) => {
           {menuType === "업무일지" ? null : (
             <tbody>
               <tr>
-                <td>결재자명</td>
+                {/* <td>결재자명</td> */}
                 <td>
                   {/* <WritingDropdown
                     dropdownList={apprTypes}
