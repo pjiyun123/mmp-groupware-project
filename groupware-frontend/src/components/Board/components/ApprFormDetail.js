@@ -22,7 +22,7 @@ const ApprFormDetail = () => {
 	const fileDetailUrl = baseUrl + "/apprform/" + no + "/atc";
 	const fileUrl = baseUrl + "/apprform/" + no + "/atc/" + atcNo + "/download";
 	const deleteUrl = baseUrl + "/apprform/" + no;
-	
+	//console.log(fileUrl)
 	useEffect(() => {
 		axios({
 			method: "get",
@@ -62,20 +62,20 @@ const ApprFormDetail = () => {
 		axios({
 			method: "get",
 			url: fileUrl,
-			responseType: 'blob'
+			//responseType: 'blob'
 		}).then((response) => {
 			console.log(response)
 			console.log(response.data)
 			setFile(response);
 
 			const blob = new Blob([response.data]) 
-
+			//const fileUrl = window.URL.createObjectURL(response.data);
 			const fileUrl = window.URL.createObjectURL(blob);
 
 			const link = document.createElement('a');
 			link.href = fileUrl;
 			link.style.display = 'none';
-			console.log(response.header);
+			//console.log(response.header);
 
 			const injectFilename = (res) => { 
 				const disposition = res.headers['content-disposition'];
