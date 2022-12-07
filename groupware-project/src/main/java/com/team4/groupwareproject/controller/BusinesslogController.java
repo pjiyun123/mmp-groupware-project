@@ -6,14 +6,25 @@ import com.team4.groupwareproject.repository.AttachmentRepository;
 import com.team4.groupwareproject.service.BusinesslogService;
 import com.team4.groupwareproject.util.FileUtil;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.io.FileUtils;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
@@ -57,7 +68,7 @@ public class BusinesslogController {
     // 업무일지 상세 파일 다운로드
     @GetMapping("/businesslog/{blNo}/atc/{atcNo}/download")
     public String download(@PathVariable Long blNo, @PathVariable Long atcNo) {
-        String mmpUrl = "https://360map.co.kr/groupware/";
+        String mmpUrl = "https://360map.co.kr/groupware/businesslog/";
         String ftpName = atcRepo.findByAtcNo(atcNo).getAtcFtpName();
         return mmpUrl + ftpName;
     }
