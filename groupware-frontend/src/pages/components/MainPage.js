@@ -11,6 +11,7 @@ import ApprForm from "./../../components/Board/components/ApprForm";
 import AddApprForm from "../../components/Board/components/AddApprForm";
 import classes from "../styles/MainPage.module.css";
 import BusinesslogDetail from "../../components/Board/components/BusinesslogDetail";
+import ApprFormDetail from "../../components/Board/components/ApprFormDetail";
 
 const MainPage = () => {
   return (
@@ -29,6 +30,7 @@ const MainPage = () => {
           <Route path="/businesslog/modify/:no" element={<BusinesslogDetail />} />
           <Route path="/appr/*" element={<BoardContainer menuType="결재" />} />
           <Route path="/appr/form" element={<ApprForm />} />
+          <Route path="/appr/form/:no" element={<ApprFormDetail />} />
           <Route path="/appr/form/add" element={<AddApprForm />} />
           <Route
             path="businesslog/writing/*"

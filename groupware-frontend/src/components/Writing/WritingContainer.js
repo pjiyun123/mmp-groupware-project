@@ -1,10 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import SaveButton from "./components/SaveButton";
 import axios from "axios";
 import baseUrl from "../../assets/baseUrl";
 import { useNavigate } from "react-router-dom";
 import apprTypes from "../../assets/apprTypes";
 import WritingDropdown from "./components/WritingDropdown";
+import DropdownInput from "../Employees/components/DropdownInput";
+import useDidMountEffect from './../../hooks/useDidMountEffect';
 
 const WritingContainer = ({ menuType }) => {
   const navigate = useNavigate();
@@ -12,8 +14,23 @@ const WritingContainer = ({ menuType }) => {
   const titleRef = useRef();
   const contentRef = useRef();
   const fileRef = useRef();
-  const [enteredManager, setEnteredManager] = useState(apprTypes[0].manager);
-
+  const [afType, setAfType] = useState([]);
+  const [enteredType, setEnteredType] = useState();
+  
+  useDidMountEffect(() => {
+    setAfType([]);
+    if (menuType !== "업무일지") {
+      axios({
+        method: "get",
+        url: baseUrl + "/apprform/list",
+      }).then((response) => {
+        response.data.map((res) =>
+          setAfType((type) => type.concat({ id: res.afNo, value: res.afNm }))
+        );
+      });
+    }
+  }, [menuType]);
+  console.log(afType);
   const onWriting = (e) => {
     e.preventDefault();
 
@@ -24,7 +41,7 @@ const WritingContainer = ({ menuType }) => {
     let formData = new FormData();
 
     const writingType =
-      menuType === "업무일지" ? "/businesslog/" : "/apprform/";
+      menuType === "업무일지" ? "/businesslog/" : "/approval/";
     const user = localStorage.getItem("user");
     const userInfo = JSON.parse(user);
     const url = baseUrl + writingType + userInfo[0].userNo;
@@ -35,17 +52,26 @@ const WritingContainer = ({ menuType }) => {
             blContent: enteredContent,
           }
         : {
-            afNm: enteredTitle,
-            apNo: enteredManager,
+            afNo: enteredType,
+            avlTit: enteredTitle,
+            avlContent: enteredContent,
           };
-    
-    formData.append("bl", new Blob([JSON.stringify(postData)], {type: "application/json"}));
+
+    menuType === "업무일지"
+      ? formData.append(
+          "bl",
+          new Blob([JSON.stringify(postData)], { type: "application/json" })
+        )
+      : formData.append(
+          "avl",
+          new Blob([JSON.stringify(postData)], { type: "application/json" })
+        );
     formData.append("files", enteredFile);
 
     axios({
       method: "post",
       url: url,
-      headers: { "Content-Type": "multipart/form-data", },
+      headers: { "Content-Type": "multipart/form-data" },
       data: formData,
     }).then((response) => {
       console.log(response);
@@ -68,7 +94,12 @@ const WritingContainer = ({ menuType }) => {
             <tbody>
               <tr>
                 <td>결재 종류</td>
-                <td></td>
+                <td>
+                  <DropdownInput
+                    dropdownList={afType}
+                    setSelectedDropValue={setEnteredType}
+                  />
+                </td>
               </tr>
             </tbody>
           )}
@@ -99,12 +130,12 @@ const WritingContainer = ({ menuType }) => {
           {menuType === "업무일지" ? null : (
             <tbody>
               <tr>
-                <td>결재자</td>
+                {/* <td>결재자명</td> */}
                 <td>
-                  <WritingDropdown
+                  {/* <WritingDropdown
                     dropdownList={apprTypes}
-                    setSelectedDropValue={setEnteredManager}
-                  />
+                    setSelectedDropValue={setEnteredType}
+                  /> */}
                 </td>
               </tr>
             </tbody>
