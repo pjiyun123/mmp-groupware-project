@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import classes from '../styles/BoardPagination.module.css';
 
 const BoardPagination = ({ menuType, data }) => {
@@ -49,7 +49,7 @@ const BoardPagination = ({ menuType, data }) => {
             )))
           : (data?.slice(start, end).map((info, index) => (
               <tbody>
-                <tr key={info.apNo}>
+                <tr key={info.avlNo}>
                   <td className="inquiryInfoType" align="center">
                     {start + index + 1}
                   </td>
@@ -57,7 +57,7 @@ const BoardPagination = ({ menuType, data }) => {
                     {info.afNm}
                   </td>
                   <td className="inquiryInfoType" align="center">
-                    {info.apNm}
+                    {info.userNm}
                   </td>
                   <td className="inquiryInfoType" align="center">
                     {info.createDt.slice(0, 10)}

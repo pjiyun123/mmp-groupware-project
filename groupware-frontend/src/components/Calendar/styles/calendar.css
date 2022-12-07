@@ -1,6 +1,12 @@
+.calendarContainer {
+	width: 80%;
+	/* border: 1px solid #acbae5;
+	border-radius: 10px;
+	padding: 5px; */
+}
+
 .calendar {
-	width: 60%;
-	height: 90%;
+	height: 20%;
 }
 
 .calendar .header {
@@ -10,6 +16,10 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: baseline;
+}
+
+.col-start {
+	font-weight: bold;
 }
 
 .calendar .header .col .col-first {
@@ -53,6 +63,7 @@
 	font-size: 0.65em;
 	padding: 2px;
 	color: gray;
+	margin-top: 20px;
 }
 
 .calendar .days .col {
@@ -97,9 +108,6 @@
 	margin: 4px 0 0 4px;
 }
 
-/* .calendar .body .row .col .not-valid {
-	color: ;
-} */
 
 .calendar .body .row .col .cell .valid :hover {
 	cursor: pointer;
@@ -116,7 +124,16 @@
 	color: pink;
 	font-weight: 600;
 }
+
 	
 .schedule {
-	/* overflow: scroll; */
+	width: 100%;
+	display: block;
+	border: none;
+	background-color: #acbae5;
+	border-radius: 5px;
+}
+
+.major {
+	background-color: #809fff;
 }
