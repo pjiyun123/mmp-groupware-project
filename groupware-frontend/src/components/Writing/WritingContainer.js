@@ -66,7 +66,7 @@ const WritingContainer = ({ menuType }) => {
           new Blob([JSON.stringify(postData)], { type: "application/json" })
         );
     formData.append("files", enteredFile);
-
+    console.log(formData.get("files"))
     axios({
       method: "post",
       url: url,

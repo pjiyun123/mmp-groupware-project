@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400');
+
+* {
+	font-family: "Nanum Gothic", sans-serif;
+}
 .app {
 	margin-top: 5vh;
 	margin-bottom: 5vh;
 	margin: 5vh 5vw;
 	height: 90vh;
+	
 }
 
 a {

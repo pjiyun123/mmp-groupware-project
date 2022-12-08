@@ -217,14 +217,14 @@ const InfoModify = () => {
               </td>
             </tr>
           </tbody>
-          <tbody>
+          {/* <tbody>
             <tr>
               <td>사진</td>
               <td>
                 <input className="fileInput" type="file" />
               </td>
             </tr>
-          </tbody>
+          </tbody> */}
           <tbody>
             <tr>
               <td>비밀번호</td>
