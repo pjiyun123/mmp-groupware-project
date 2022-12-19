@@ -15,6 +15,7 @@ import ApprFormDetail from "../../components/Board/components/ApprFormDetail";
 import MyAppr from "../../components/Board/components/MyAppr";
 import RequestAppr from "../../components/Board/components/RequestAppr";
 import ApprDetail from './../../components/Board/components/ApprDetail';
+import Footer from "../../components/Common/Footer";
 
 const MainPage = () => {
   return (
@@ -51,6 +52,7 @@ const MainPage = () => {
           <Route path="/employees/*" element={<EmployeesContainer />} />
         </Routes>
       </div>
+      <Footer />
     </>
   );
 };

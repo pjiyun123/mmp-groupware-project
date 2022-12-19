@@ -5,6 +5,7 @@ import InfoModify from "./components/InfoModify";
 import MyInformation from "./components/MyInformation";
 import ProfileImg from "./components/ProfileImg";
 import { useNavigate } from 'react-router-dom';
+import classes from './styles/MyPage.module.css';
 
 const MyPageContainer = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const MyPageContainer = () => {
     navigate('modify');
   }
   return (
-    <div className="MyPageContainer">
+    <div className={classes.MyPageContainer}>
       <Routes>
         <Route
           path="/"
