@@ -9,7 +9,7 @@ import {
   parse,
   addDays,
 } from "date-fns";
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import DetailModal from "../../Common/DetailModal";
 import "../styles/calendar.css";
 
@@ -33,7 +33,7 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick, calList }) => {
     return {
       calDate: new Date(sche.calDate),
       scheduleContent: (
-        <>
+        <Fragment key={sche.calNo}>
           <button
             className={sche.calMajor === "Y" ? "schedule major" : "schedule"}
             key={sche.calNo}
@@ -52,7 +52,7 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick, calList }) => {
            />
           ) : null}
           
-        </>
+        </Fragment>
       ),
     };
   });
