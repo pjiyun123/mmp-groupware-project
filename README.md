@@ -44,11 +44,11 @@
 
 ## ✔ 프로젝트 기술 스택
 - Frontend
-Javascript
-React
-Axios
-CSS
-CSS Module
+ Javascript
+ React
+ Axios
+ CSS
+ CSS Module
 
 - Backend            
  Spring Boot Actuator     
