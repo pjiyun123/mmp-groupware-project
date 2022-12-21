@@ -1,0 +1,15 @@
+.container {
+	width: 80%;
+}
+
+.SaveButton {
+	display: block;
+	margin: 3em auto;
+	width: 100px;
+  height: 40px;
+	border-radius: 10px;
+	background-color: #3928c0;
+	color: white;
+	border: none;
+	cursor: pointer;
+}

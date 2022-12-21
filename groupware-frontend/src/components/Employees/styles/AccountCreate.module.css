@@ -1,13 +1,52 @@
-.accountCreateBtn{
-    width: flex;
-    height: flex;
-    padding: 6px;
-    color: white;
-    font-size: 14px;
-    float:right;
-    align-items:center;
-    justify-content: center;
-    background-color: #9285f9;
-    border: 0;
-    border-radius:10px;
+.container {
+    width: 70%;
+}
+
+.acTable {
+  width: 80%;
+	font-size: 1.1rem;
+	border: 1px solid #bbb;
+	padding: 0.2em;
+	border-radius: 7px;
+	border-spacing: 0.2em;
+}
+
+.type {
+  width: 20%;
+  background-color: #ededed;
+	border-radius: 7px;
+	text-align: center;
+	font-style: bold;
+}
+
+.inputWindow {
+	width: 95%;
+	height: 100%;
+	border-radius: 7px;
+	padding: 0.5em;
+	border: 1px solid #bbb;
+}
+
+.emailinput {
+    width: 28.5%;
+	height: 100%;
+	border-radius: 7px;
+	padding: 0.5em;
+	border: 1px solid #bbb;
+}
+
+.btncontainer {
+    width: 80%;
+}
+
+.accountCreateBtn {
+  display: block;
+	margin: 3em auto;
+	width: 100px;
+  height: 40px;
+	border-radius: 10px;
+	background-color: #3928c0;
+	color: white;
+	border: none;
+	cursor: pointer;
 }

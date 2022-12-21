@@ -9,13 +9,13 @@ const EmployeesContainer = () => {
 	const [isList, setIsList] = useState(true);
 
 	return (
-		<div className='employeesContainer'>
+		<>
 			<Routes>
 				<Route path='/' element={<AccountList />} />
 				<Route path='/create' element={<AccountCreate />} />
 				<Route path='/delete' element={<AccountDelete isList={isList} setIsList={setIsList} />} />
 			</Routes>
-		</div>
+		</>
 	);
 };
 

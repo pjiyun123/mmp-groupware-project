@@ -23,7 +23,7 @@ const MyAppr = () => {
 	} , [getUrl, menuType]);
 	
 	return (
-		<div>
+		<div style={{width: "70%"}}>
 			<TopBar menuType={menuType} />
 			<BoardPagination menuType={menuType} data={data} />
 		</div>

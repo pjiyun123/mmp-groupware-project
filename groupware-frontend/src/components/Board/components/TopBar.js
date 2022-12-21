@@ -10,11 +10,11 @@ const TopBar = ({ menuType }) => {
 	}
 	return (
 		<div className={classes.topbar}>
-			<span>{menuType} 목록</span>
-			{menuType !== "신청한 결재" ? (
+			<h2>{menuType} 목록
+			{menuType === "업무일지" ? (
 				<WriteButton menuType={menuType} onClick={onWritingClick} />
 			) : null}
-			
+			</h2>
 		</div>
 	);
 };

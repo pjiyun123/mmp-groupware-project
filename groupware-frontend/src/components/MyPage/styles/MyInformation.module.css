@@ -1,6 +1,6 @@
 .infoTable {
 	width: 80%;
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 	border: 1px solid #bbb;
 	padding: 0.2em;
 	border-radius: 7px;
@@ -14,8 +14,9 @@
 .infoType {
 	background-color: #ededed;
 	border-radius: 7px;
-	text-align: right;
-	padding-right: 0.7em;
+	/* text-align: right; */
+	/* padding-right: 0.7em; */
+	text-align: center;
 	font-style: bold;
 }
 

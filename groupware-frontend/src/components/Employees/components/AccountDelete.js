@@ -3,6 +3,7 @@ import axios from "axios";
 import InquiryResult from "./InquiryResult";
 import baseUrl from "../../../assets/baseUrl";
 import { useNavigate } from 'react-router-dom';
+import classes from '../styles/AccountDelete.module.css';
 
 const AccountDelete = ({ isList, setIsList }) => {
   const [idInput, setIdInput] = useState("");
@@ -45,24 +46,29 @@ const AccountDelete = ({ isList, setIsList }) => {
   };
 
   return (
-    <div className="deleteContainer">
-      <div className="accountInquiry">
-        <h1>
+    <div className={classes.container}>
+      <div className={classes.accountInquiry}>
+        <h2>직원계정삭제</h2>
+        <span className={classes.deleteSpan}>
           삭제할 계정 조회{" "}
-          <input type="text" placeholder="사번입력창" onChange={onChange} />
-          <button className="inquiryBtn" onClick={searchHandler}>
+          <input className={classes.input} type="text" placeholder="사번입력창" onChange={onChange} />
+          <button className={classes.inquiryBtn} onClick={searchHandler}>
             조회
           </button>
-        </h1>
+        </span>
       </div>
       <InquiryResult
         list={list}
         searchClicked={searchClicked}
         isList={isList}
       />
-      <button className="accountDeleteBtn" onClick={deleteHandler}>
-        삭제
-      </button>
+      {list.length > 0 ? (
+        <div className={classes.deleteContainer}>
+        <button className={classes.deleteBtn} onClick={deleteHandler}>
+          삭제
+        </button>
+      </div>
+      ) : null}
     </div>
   );
 };

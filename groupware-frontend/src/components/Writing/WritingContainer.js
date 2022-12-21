@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import apprTypes from "../../assets/apprTypes";
 import WritingDropdown from "./components/WritingDropdown";
 import DropdownInput from "../Employees/components/DropdownInput";
-import useDidMountEffect from './../../hooks/useDidMountEffect';
+import useDidMountEffect from "./../../hooks/useDidMountEffect";
+import classes from "./styles/WritingContainer.module.css";
 
 const WritingContainer = ({ menuType }) => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const WritingContainer = ({ menuType }) => {
   const fileRef = useRef();
   const [afType, setAfType] = useState([]);
   const [enteredType, setEnteredType] = useState();
-  
+
   useDidMountEffect(() => {
     setAfType([]);
     if (menuType !== "업무일지") {
@@ -66,7 +67,7 @@ const WritingContainer = ({ menuType }) => {
           new Blob([JSON.stringify(postData)], { type: "application/json" })
         );
     formData.append("files", enteredFile);
-    console.log(formData.get("files"))
+    console.log(formData.get("files"));
     axios({
       method: "post",
       url: url,
@@ -81,17 +82,17 @@ const WritingContainer = ({ menuType }) => {
   };
 
   return (
-    <div>
-      <span>
-        {menuType === "업무일지" ? "업무일지 목록" : "보고/결재"} {">"}{" "}
+    <div className={classes.container}>
+      <h2>
+        {menuType === "업무일지" ? "업무일지 목록" : "보고/결재"} {" >"}{" "}
         {menuType} {menuType === "업무일지" ? "작성" : "신청"}
-      </span>
+      </h2>
       <form onSubmit={onWriting}>
-        <table>
+        <table className={classes.writeTable}>
           {menuType === "업무일지" ? null : (
-            <tbody>
+            <tbody className={classes.writeRow}>
               <tr>
-                <td>결재 종류</td>
+                <td className={classes.writeType}>결재 종류</td>
                 <td>
                   <DropdownInput
                     dropdownList={afType}
@@ -103,25 +104,39 @@ const WritingContainer = ({ menuType }) => {
           )}
           <tbody>
             <tr>
-              <td>제목</td>
+              <td className={classes.writeType}>제목</td>
               <td>
-                <input type="text" ref={titleRef} />
+                <input
+                  className={classes.inputWindow}
+                  type="text"
+                  ref={titleRef}
+                  placeholder="제목을 입력하세요."
+                />
               </td>
             </tr>
           </tbody>
           <tbody>
             <tr>
-              <td>내용</td>
+              <td className={classes.writeType}>내용</td>
               <td>
-                <textarea type="text" ref={contentRef} />
+                <textarea
+                  className={`${classes.inputWindow} ${classes.writearea}`}
+                  type="text"
+                  ref={contentRef}
+                  placeholder="내용을 입력하세요."
+                />
               </td>
             </tr>
           </tbody>
           <tbody>
             <tr>
-              <td>첨부파일</td>
+              <td className={classes.writeType}>첨부파일</td>
               <td>
-                <input type="file" ref={fileRef} />
+                <input
+                  className={classes.fileInput}
+                  type="file"
+                  ref={fileRef}
+                />
               </td>
             </tr>
           </tbody>

@@ -24,6 +24,7 @@ const MainPage = () => {
       <div className={classes.container}>
         <SideMenuContainer />
         <Routes>
+        <Route path="/" element={<CalendarContainer />} />
           <Route path="/mypage/*" element={<MyPageContainer />} />
           <Route path="/calendar/*" element={<CalendarContainer />} />
           <Route

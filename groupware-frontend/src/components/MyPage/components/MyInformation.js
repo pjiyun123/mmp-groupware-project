@@ -9,8 +9,15 @@ const MyInformation = () => {
 
   return (
     <div className={classes.MyInformationContainer}>
-      <h1>{userInfo[0].userNm}</h1>
+      <h2>마이페이지</h2>
+      {/* <h1>{userInfo[0].userNm}</h1> */}
       <table className={classes.infoTable}>
+      <tbody className={classes.infoRow}>
+          <tr>
+            <td className={classes.infoType}>이름</td>
+            <td className={classes.info}>{userInfo[0].userNm}</td>
+          </tr>
+        </tbody>
         <tbody className={classes.infoRow}>
           <tr>
             <td className={classes.infoType}>사번</td>

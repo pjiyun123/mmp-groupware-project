@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import classes from "../styles/SaveButton.module.css";
 
 const SaveButton = () => {
-	return (
-		<button>
-			저장
-		</button>
-	);
+  return (
+    <div className={classes.container}>
+      <button className={classes.SaveButton}>저장</button>
+    </div>
+  );
 };
 
 export default SaveButton;

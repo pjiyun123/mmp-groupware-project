@@ -1,0 +1,44 @@
+.container {
+	width: 70%;
+}
+
+.accountInquiry {
+	margin-bottom: 20px;
+}
+
+.deleteSpan {
+	font-size: 1.2rem;
+}
+
+.input {
+	margin-left: 10px;
+	border: 1px solid #bbb;
+	border-radius: 7px;
+	padding: 0.5em;
+	width: 300px;
+}
+
+.inquiryBtn {
+	width: 50px;
+	border: none;
+	border-radius: 7px;
+	padding: 0.5em;
+	background-color: #ededed;
+	cursor: pointer;
+}
+
+.deleteContainer {
+	width: 80%;
+}
+
+.deleteBtn {
+	display: block;
+	margin: 3em auto;
+	width: 100px;
+  height: 40px;
+	border-radius: 10px;
+	background-color: #3928c0;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
