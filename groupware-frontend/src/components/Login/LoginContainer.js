@@ -3,6 +3,8 @@ import axios from "axios";
 import LoginForm from './components/LoginForm';
 import '../../styles/loginPage.css';
 import baseUrl from './../../assets/baseUrl';
+import classes from './styles/LoginContainer.module.css';
+import Footer from '../Common/Footer'
 
 const LoginContainer = () => {
 	const [msg, setMsg] = useState("");
@@ -38,8 +40,13 @@ const LoginContainer = () => {
 		});
 	};
 	return (
-		<div className='login-container'>
+		<div className={classes.container}>
+			<div className={classes.header}></div>
+			<h1 className={classes.logo}>SI<span className={classes.mmp}>MMP</span>LEWARE</h1>
+			<div className={classes.box}>
 			<LoginForm onSubmit={loginHandler} idRef={idRef} pwRef={pwRef} message={msg} />
+			</div>
+			<Footer />
 		</div>
 	);
 };
