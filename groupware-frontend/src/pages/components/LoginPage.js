@@ -6,7 +6,7 @@ import '../../styles/loginPage.css';
 const LoginPage = () => {
 	return (
 		<div className='login-page'>
-			<LogoContainer />
+			{/* <LogoContainer /> */}
 			<LoginContainer />
 		</div>
 	);
