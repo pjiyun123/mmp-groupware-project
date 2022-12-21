@@ -6,10 +6,10 @@ import MainPage from "./components/MainPage";
 const LoginedPage = () => {
 	return (
 		<Routes>
-        <Route
+        {/* <Route
           path="/"
           element={<MenuPage />}
-        />
+        /> */}
 				<Route path='*' element={<MainPage />} />
     </Routes>
 	);

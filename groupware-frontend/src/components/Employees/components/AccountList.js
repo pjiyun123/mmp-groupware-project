@@ -20,8 +20,8 @@ const AccountList = () => {
 	} , []);
 	return (
 		<>
-			<UsersPagination data={list} />
-			{isLoading ? <img style={{width: '30px', display: 'block', margin: 'auto'}} src='image/buffering.gif' alt='로딩중입니다.' /> : null}
+			<UsersPagination data={list} isLoading={isLoading} />
+			
 		</>
 	);
 };

@@ -18,12 +18,12 @@ const CalendarContainer = () => {
 	})
 
 	return (
-		<div className='calendarContainer'>
+		<>
 			<Routes>
 				<Route path='/' element={<Calendar calList={calList} />} />
 				<Route path="create" element={<CalCreate setNewCreated={setNewCreated} />} />
 			</Routes>
-		</div>
+		</>
 	);
 };
 

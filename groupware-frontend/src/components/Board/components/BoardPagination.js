@@ -7,21 +7,21 @@ const BoardPagination = ({ menuType, data }) => {
   const [end, setEnd] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
   const pageNumber = [];
-  for (let i = 1; i <= Math.ceil(data?.length / 5); i++) {
+  for (let i = 1; i <= Math.ceil(data?.length / 10); i++) {
     pageNumber.push(i);
   }
   useEffect(() => {
-    setStart((currentPage - 1) * 5);
-    setEnd(currentPage * 5);
+    setStart((currentPage - 1) * 10);
+    setEnd(currentPage * 10);
   }, [currentPage]);
 
   return (
-    <div className={classes.boardPagination}>
+    <div className={classes.container}>
       {data.length === 0 ? (
-        <div>등록된 글이 없습니다.</div>
+        <span>등록된 글이 없습니다.</span>
       ) : (
         <>
-          <table align="center" width="90%">
+          <table className={classes.boardTable}>
             <thead>
               <tr>
                 <th align="center">번호</th>
@@ -85,10 +85,10 @@ const BoardPagination = ({ menuType, data }) => {
                 ))}
           </table>
 
-          <nav style={{ listStyleType: "none", display: "flex" }}>
+          <nav className={classes.pages} style={{ listStyleType: "none", display: "flex" }}>
             {pageNumber.map((num) => (
               <li key={num} onClick={() => setCurrentPage(num)}>
-                <button>{num}</button>
+                <button className={classes.btn}>{num}</button>
               </li>
             ))}
           </nav>

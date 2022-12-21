@@ -20,6 +20,7 @@ const Calendar = ({ calList }) => {
   }
 
   return (
+    <div className="calendarContainer">
     <div className="calendar">
       <RenderHeader
         currentMonth={currentMonth}
@@ -33,6 +34,7 @@ const Calendar = ({ calList }) => {
         onDateClick={onDateClick}
         calList={calList}
       />
+    </div>
     </div>
   );
 };
