@@ -43,8 +43,12 @@
 
 
 ## ✔ 프로젝트 기술 스택
-- Frontend
-
+- Frontend  
+ Javascript  
+ React  
+ Axios  
+ CSS  
+ CSS Module  
 
 - Backend            
  Spring Boot Actuator     
