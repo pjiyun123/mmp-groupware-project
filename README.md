@@ -49,6 +49,7 @@
  Axios  
  CSS  
  CSS Module  
+ yarn  
 
 - Backend            
  Spring Boot Actuator     
