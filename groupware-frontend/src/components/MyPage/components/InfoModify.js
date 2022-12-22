@@ -5,6 +5,7 @@ import deptTypes from "../../../assets/deptTypes";
 import jobTypes from "../../../assets/jobTypes";
 import { useNavigate } from "react-router-dom";
 import baseUrl from "../../../assets/baseUrl";
+import classes from "../styles/InfoModify.module.css";
 
 const InfoModify = () => {
   const user = localStorage.getItem("user");
@@ -96,7 +97,7 @@ const InfoModify = () => {
       // deptNo: enteredDept,
       // jobNo: enteredRank,
     };
-    console.log(modiInfo);
+    //console.log(modiInfo);
     const modiUrl = baseUrl + "/users/" + userInfo[0].userNo;
     axios({
       method: "patch",
@@ -113,15 +114,16 @@ const InfoModify = () => {
   };
 
   return (
-    <div className="InfoModifyContainer">
+    <div className={classes.container}>
+      <h2>내 정보 수정</h2>
       <form onSubmit={onModify}>
-        <table>
+        <table className={classes.mdtable}>
           <tbody>
             <tr>
-              <td>이름</td>
+              <td className={classes.type}>이름</td>
               <td>
                 <input
-                  className="textInput"
+                  className={classes.input}
                   type="text"
                   placeholder={userInfo[0].userNm}
                   onChange={onUserNmChange}
@@ -131,10 +133,10 @@ const InfoModify = () => {
           </tbody>
           <tbody>
             <tr>
-              <td>사번</td>
+              <td className={classes.type}>사번</td>
               <td>
                 <input
-                  className="textInput"
+                  className={classes.input}
                   type="text"
                   placeholder={userInfo[0].userNum}
                   onChange={onUserNumChange}
@@ -145,10 +147,10 @@ const InfoModify = () => {
           </tbody>
           <tbody>
             <tr>
-              <td>부서</td>
+              <td className={classes.type}>부서</td>
               <td>
                 <input
-                  className="textInput"
+                  className={classes.input}
                   type="text"
                   placeholder={deptTypes[userInfo[0].deptNo].value}
                   disabled
@@ -162,10 +164,10 @@ const InfoModify = () => {
           </tbody>
           <tbody>
             <tr>
-              <td>직급</td>
+              <td className={classes.type}>직급</td>
               <td>
                 <input
-                  className="textInput"
+                  className={classes.input}
                   type="text"
                   placeholder={jobTypes[userInfo[0].jobNo].value}
                   disabled
@@ -179,24 +181,24 @@ const InfoModify = () => {
           </tbody>
           <tbody>
             <tr>
-              <td>연락처</td>
+              <td className={classes.type}>연락처</td>
               <td>
                 <input
-                  className="textInput"
+                  className={classes.phoneInput}
                   type="text"
                   placeholder={userInfo[0].userPhone.slice(0, 3)}
                   onChange={onUserPhone1Change}
                 />{" "}
                 -{" "}
                 <input
-                  className="textInput"
+                  className={classes.phoneInput}
                   type="text"
                   placeholder={userInfo[0].userPhone.slice(4, 8)}
                   onChange={onUserPhone2Change}
                 />{" "}
                 -{" "}
                 <input
-                  className="textInput"
+                  className={classes.phoneInput}
                   type="text"
                   placeholder={userInfo[0].userPhone.slice(9, 13)}
                   onChange={onUserPhone3Change}
@@ -206,10 +208,10 @@ const InfoModify = () => {
           </tbody>
           <tbody>
             <tr>
-              <td>이메일</td>
+              <td className={classes.type}>이메일</td>
               <td>
                 <input
-                  className="textInput"
+                  className={classes.input}
                   type="email"
                   placeholder={userInfo[0].userEmail}
                   onChange={onUserEmailChange}
@@ -227,31 +229,36 @@ const InfoModify = () => {
           </tbody> */}
           <tbody>
             <tr>
-              <td>비밀번호</td>
+              <td className={classes.type}>비밀번호</td>
               <td>
-                <label>현재 비밀번호 : </label>
+                {/* <label className={classes.pwType}>현재 비밀번호</label> */}
                 <input
-                  className="pwModiInput"
+                  className={classes.pwInput}
                   type="password"
+                  placeholder="현재 비밀번호"
                   onChange={onUserOldPwdChange}
                 />
-                <label>새로운 비밀번호 : </label>
+                {/* <label>새로운 비밀번호</label> */}
                 <input
-                  className="pwModiInput"
+                  className={classes.pwInput}
                   type="password"
+                  placeholder="새로운 비밀번호"
                   onChange={onUserPwdChange}
                 />
-                <label>비밀번호 확인 : </label>
+                {/* <label>비밀번호 확인</label> */}
                 <input
-                  className="pwModiInput"
+                  className={classes.pwInput}
                   type="password"
+                  placeholder="비밀번호 확인"
                   onChange={onUserPwdCheckChange}
                 />
               </td>
             </tr>
           </tbody>
         </table>
-        <button className="infoModiBtn">수정하기</button>
+        <div className={classes.btnContainer}>
+          <button className={classes.btn}>수정하기</button>
+        </div>
       </form>
     </div>
   );
