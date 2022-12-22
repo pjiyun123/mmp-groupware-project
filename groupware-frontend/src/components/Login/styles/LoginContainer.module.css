@@ -1,0 +1,26 @@
+.container {
+	width: 100%;
+}
+
+.header {
+	height: 100px;
+	background-color: #00008B;
+	margin-top: 0;
+}
+
+.logo {
+	text-align: center;
+	font-size: 2.3em;
+}
+
+.mmp {
+	color: #809fff;
+}
+
+.box {
+	width: 400px;
+	height: 320px;
+	border: 1px solid #bbb;
+	border-radius: 7px;
+	margin: 30px auto 110px auto;
+}

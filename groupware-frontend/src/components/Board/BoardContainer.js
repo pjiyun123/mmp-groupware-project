@@ -19,7 +19,8 @@ const BoardContainer = ({ menuType }) => {
 			url: getUrl, 
 		})
 		.then((response) => {
-			setData(response.data);
+			const data = response.data.reverse();
+			setData(data);
 			if (menuType !== "업무일지") {
 				setData(response.data.filter(data => data.apprYn === "Yes"));
 			}

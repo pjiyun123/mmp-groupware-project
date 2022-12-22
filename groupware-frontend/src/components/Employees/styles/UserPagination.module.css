@@ -1,0 +1,35 @@
+.container {
+	width: 70%;
+}
+
+.loadingImg {
+	width: 30px;
+	display: block;
+	margin: 50px auto;
+}
+
+.usersTable {
+	text-align: center;
+	width: 80%;
+	border-spacing: 0.2em;
+	padding: 0.2em;
+	border: 1px solid #bbb;
+	border-radius: 7px;
+}
+
+.typeRow {
+	text-align: center;
+}
+
+.pages {
+	justify-content: center;
+	margin-top: 20px;
+	width: 80%;
+}
+
+.btn {
+	border: none;
+	margin: 2px;
+	cursor: pointer;
+	border-radius: 4px;
+}

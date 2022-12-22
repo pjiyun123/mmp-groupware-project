@@ -1,7 +1,12 @@
 .sideMenuContainer {
-	width: 200px;
+	/* width: 350px; */
+	width: 25%;
 	margin-right: 50px;
 	text-align: center;
+	background-color: #ededed;
+	/* background-color: #e6f4fa; */
+	/* border: 1px solid #bbb;
+	border-radius: 7px; */
 }
 
 .sideMainMenu {
@@ -12,8 +17,10 @@
 }
 
 .sideMainMenu :hover {
-	background-color: #acbae5;
-	color: white;
+	/* background-color: #acbae5;
+	color: white; */
+	color: #3928c0;
+	font-weight: bold;
 }
 
 .sideSubMenu {
@@ -21,6 +28,11 @@
 }
 
 .sideSubMenu :hover {
-	background-color: #acbae5;
-	color: white;
+	/* background-color: #acbae5;
+	color: white; */
+	color: #acbae5;
+}
+
+.clickedMenu {
+	font-weight: bold;
 }

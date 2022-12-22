@@ -1,6 +1,8 @@
 .container {
-	flex: 0.7;
+	/* flex: 0.7; */
+    width: 70%;
 }
+
 .appraddBtn{
 	width: flex;
     height: flex;
@@ -13,4 +15,13 @@
     background-color: #9285f9;
     border: 0;
     border-radius:10px;
+}
+
+.afTable {
+    text-align: center;
+    width: 80%;
+    border: 1px solid #bbb;
+    border-spacing: 0.2em;
+	padding: 0.2em;
+    border-radius: 7px;
 }

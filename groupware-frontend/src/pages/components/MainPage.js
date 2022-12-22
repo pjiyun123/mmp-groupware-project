@@ -15,6 +15,7 @@ import ApprFormDetail from "../../components/Board/components/ApprFormDetail";
 import MyAppr from "../../components/Board/components/MyAppr";
 import RequestAppr from "../../components/Board/components/RequestAppr";
 import ApprDetail from './../../components/Board/components/ApprDetail';
+import Footer from "../../components/Common/Footer";
 
 const MainPage = () => {
   return (
@@ -23,6 +24,7 @@ const MainPage = () => {
       <div className={classes.container}>
         <SideMenuContainer />
         <Routes>
+        <Route path="/" element={<CalendarContainer />} />
           <Route path="/mypage/*" element={<MyPageContainer />} />
           <Route path="/calendar/*" element={<CalendarContainer />} />
           <Route
@@ -51,6 +53,7 @@ const MainPage = () => {
           <Route path="/employees/*" element={<EmployeesContainer />} />
         </Routes>
       </div>
+      <Footer />
     </>
   );
 };

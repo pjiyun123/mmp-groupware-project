@@ -1,7 +1,8 @@
-.login-page {
+/* .login-page {
 	display: flex;
 	flex-direction: row;	
 	height: 100%;
+	margin-top: 5vh;
 }
 
 .logo-container {
@@ -14,4 +15,4 @@
 .login-container {
 	height: 100%;
 	flex: 0.5;
-}
+} */

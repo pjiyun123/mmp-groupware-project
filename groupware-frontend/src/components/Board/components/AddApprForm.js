@@ -71,9 +71,7 @@ const AddApprForm = () => {
 
   return (
     <>
-      <div>
-        <span>보고/결재 {">"} 결재양식등록</span>
-      </div>
+      <h2>보고/결재 {">"} 결재양식등록</h2>
       <form onSubmit={submitHandler}>
         <label>결재 종류</label>
         <input type="text" ref={typeRef} />

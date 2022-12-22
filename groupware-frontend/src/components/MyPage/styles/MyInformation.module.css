@@ -1,0 +1,27 @@
+.infoTable {
+	width: 80%;
+	font-size: 1.4rem;
+	border: 1px solid #bbb;
+	padding: 0.2em;
+	border-radius: 7px;
+	border-spacing: 0.2em;
+}
+
+.infoRow {
+	padding: 50px;
+}
+
+.infoType {
+	background-color: #ededed;
+	border-radius: 7px;
+	/* text-align: right; */
+	/* padding-right: 0.7em; */
+	text-align: center;
+	font-style: bold;
+}
+
+.info {
+	border: 1px solid #bbb;
+	border-radius: 7px;
+	text-align: center;
+}

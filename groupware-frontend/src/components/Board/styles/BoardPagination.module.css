@@ -1,3 +1,25 @@
-.boardPagination {
-	
+/* .container {
+	width: 70%;
+} */
+
+.boardTable {
+	text-align: center;
+	width: 80%;
+	border-spacing: 0.2em;
+	padding: 0.2em;
+	border-radius: 7px;
+	border: 1px solid #bbb;
+}
+
+.pages {
+	justify-content: center;
+	margin-top: 20px;
+	width: 80%;
+}
+
+.btn {
+	border: none;
+	margin: 2px;
+	cursor: pointer;
+	border-radius: 4px;
 }

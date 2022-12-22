@@ -6,13 +6,13 @@ const LoginForm = ({ onSubmit, idRef, pwRef, message }) => {
   return (
     <form className={classes.form} onSubmit={onSubmit} >
       <input
-        className={classes.input}
+        className={classes.idinput}
         type="text"
         placeholder="아이디를 입력하세요."
         ref={idRef}
       />
       <input
-        className={classes.input}
+        className={classes.pwinput}
         type="password"
         placeholder="비밀번호를 입력하세요."
         ref={pwRef}
