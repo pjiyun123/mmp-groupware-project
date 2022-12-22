@@ -1,9 +1,6 @@
-.container {
-    width: 70%;
-}
 
-.acTable {
-  width: 80%;
+.mdtable {
+	width: 80%;
 	font-size: 1.1rem;
 	border: 1px solid #bbb;
 	padding: 0.2em;
@@ -12,14 +9,14 @@
 }
 
 .type {
-  width: 20%;
-  background-color: #ededed;
+	background-color: #ededed;
 	border-radius: 7px;
 	text-align: center;
+	padding-right: 0.7em;
 	font-style: bold;
 }
 
-.inputWindow {
+.input {
 	width: 95%;
 	height: 100%;
 	border-radius: 7px;
@@ -28,19 +25,28 @@
 }
 
 .phoneInput {
-  width: 28.5%;
+  width: 29%;
 	height: 100%;
 	border-radius: 7px;
 	padding: 0.5em;
 	border: 1px solid #bbb;
 }
 
-.btncontainer {
-    width: 80%;
+.pwInput {
+	width: 29%;
+	height: 100%;
+	border-radius: 7px;
+	padding: 0.5em;
+	border: 1px solid #bbb;
+	margin-right: 1.7%;
 }
 
-.accountCreateBtn {
-  display: block;
+.btnContainer {
+	width: 80%;
+}
+
+.btn {
+	display: block;
 	margin: 3em auto;
 	width: 100px;
   height: 40px;

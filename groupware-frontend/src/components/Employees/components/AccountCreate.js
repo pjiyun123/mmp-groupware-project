@@ -145,21 +145,21 @@ const AccountCreate = () => {
               <td className={classes.type}>연락처</td>
               <td>
                 <input
-                  className={classes.emailinput}
+                  className={classes.phoneInput}
                   type="text"
                   placeholder="010"
                   ref={phoneInputRef1}
                 />{" "}
                 -{" "}
                 <input
-                  className={classes.emailinput}
+                  className={classes.phoneInput}
                   type="text"
                   placeholder="xxxx"
                   ref={phoneInputRef2}
                 />{" "}
                 -{" "}
                 <input
-                  className={classes.emailinput}
+                  className={classes.phoneInput}
                   type="text"
                   placeholder="xxxx"
                   ref={phoneInputRef3}
