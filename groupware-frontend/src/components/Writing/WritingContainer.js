@@ -18,19 +18,23 @@ const WritingContainer = ({ menuType }) => {
   const [afType, setAfType] = useState([]);
   const [enteredType, setEnteredType] = useState();
 
-  useDidMountEffect(() => {
+  useEffect(() => {
     setAfType([]);
     if (menuType !== "업무일지") {
       axios({
         method: "get",
         url: baseUrl + "/apprform/list",
       }).then((response) => {
+        let types = [];
         response.data.map((res) =>
-          setAfType((type) => type.concat({ id: res.afNo, value: res.afNm }))
+          //setAfType((type) => type.concat({ id: res.afNo, value: res.afNm }))
+          types.push({ id: res.afNo, value: res.afNm })
         );
+        setAfType(types);
       });
     }
   }, [menuType]);
+
   const onWriting = (e) => {
     e.preventDefault();
 
@@ -67,7 +71,7 @@ const WritingContainer = ({ menuType }) => {
           new Blob([JSON.stringify(postData)], { type: "application/json" })
         );
     formData.append("files", enteredFile);
-    console.log(formData.get("files"));
+    //console.log(formData.get("files"));
     axios({
       method: "post",
       url: url,
@@ -128,27 +132,16 @@ const WritingContainer = ({ menuType }) => {
               </td>
             </tr>
           </tbody>
-          <tbody>
-            <tr>
-              <td className={classes.writeType}>첨부파일</td>
-              <td>
-                <input
-                  className={classes.fileInput}
-                  type="file"
-                  ref={fileRef}
-                />
-              </td>
-            </tr>
-          </tbody>
           {menuType === "업무일지" ? null : (
             <tbody>
               <tr>
-                {/* <td>결재자명</td> */}
+                <td className={classes.writeType}>첨부파일</td>
                 <td>
-                  {/* <WritingDropdown
-                    dropdownList={apprTypes}
-                    setSelectedDropValue={setEnteredType}
-                  /> */}
+                  <input
+                    className={classes.fileInput}
+                    type="file"
+                    ref={fileRef}
+                  />
                 </td>
               </tr>
             </tbody>
