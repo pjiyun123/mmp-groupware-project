@@ -12,5 +12,6 @@ public class AppConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("http://localhost:3000", "https://simmpleware.netlify.app");
+                //.allowedOrigins("http://localhost:3000");
     }
 }

@@ -81,4 +81,30 @@ public class FileUtil {
         return upName;
     }
 
+    public File downloadFile(String oriNm, String ftpNm, String target){
+        File f = null;
+        String path = getUploadPath(target);
+        try {
+            int reply;
+            client = new FTPClient();
+            client.connect(FTP_SERVER, FTP_PORT);
+
+            if(client.login(FTP_ID, FTP_PWD)) {
+                reply = client.getReplyCode();
+
+                if (!FTPReply.isPositiveCompletion(reply)) {
+                    client.disconnect();
+                    return null;
+                }
+               // f = new File(path, ftpNm);
+               // FileOutputStream os;
+
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return f;
+    }
+
 }
