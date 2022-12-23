@@ -23,6 +23,7 @@
 	border: 0;
 	border-radius: 10px;
 	margin-left: 5px;
+	cursor: pointer;
 }
 
 .infos {
@@ -46,20 +47,4 @@
 	border: 1px solid #bbb;
 	border-radius: 7px;
 	padding: 0.7em 1%;
-}
-
-.btnContainer {
-	width: 70%;
-}
-
-.dlbtn {
-	display: block;
-	margin: 3em auto;
-	width: 150px;
-  height: 40px;
-	border-radius: 10px;
-	background-color: #3928c0;
-	color: white;
-	border: none;
-	cursor: pointer;
 }

@@ -14,16 +14,11 @@ const BusinesslogDetail = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [detail, setDetail] = useState([]);
-  const [fileDetail, setFileDetail] = useState();
-  const [atcNo, setAtcNo] = useState();
-  const [file, setFile] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const getUrl = baseUrl + "/businesslog/" + no;
-  const fileDetailUrl = baseUrl + "/businesslog/" + no + "/atc";
-  const fileUrl =
-    baseUrl + "/businesslog/" + no + "/atc/" + atcNo + "/download";
   const deleteUrl = baseUrl + "/businesslog/" + no;
+  
 
   useEffect(() => {
     axios({
@@ -33,18 +28,10 @@ const BusinesslogDetail = () => {
       setDetail(response.data);
     });
 
-    axios({
-      method: "get",
-      url: fileDetailUrl,
-      //responseType: "blob",
-    }).then((response) => {
-      setFileDetail(response.data[0]);
-      setAtcNo(response.data[0].atcNo);
-    });
-  }, [no, getUrl, fileUrl, isLoading]);
+  }, [no, getUrl]);
 
   const onModify = () => {
-    navigate("");
+    navigate("/businesslog/modify/" + no);
   };
 
   const onDelete = () => {
@@ -54,42 +41,6 @@ const BusinesslogDetail = () => {
     }).then(() => {
       setIsModalOpen(false);
       navigate("/businesslog");
-    });
-  };
-
-  const onDownload = () => {
-    axios({
-      method: "get",
-      url: fileUrl,
-      responseType: "blob",
-    }).then((response) => {
-      setFile(response);
-
-      const blob = new Blob([response.data]);
-      const newFile = new File([blob], fileDetail.atcOriName);
-      setFile(newFile);
-
-      //const fileUrl = window.URL.createObjectURL(response.data);
-      /*    const downloadUrl = window.URL.createObjectURL(blob);
-
-      const link = document.createElement("a");
-      link.href = downloadUrl;
-      link.style.display = "none";
-      //console.log(response.header);
-
-      const injectFilename = (res) => {
-        const disposition = res.headers["content-disposition"];
-
-        const fileName = fileDetail.atcOriName;
-
-        return fileName;
-      };
-      link.download = injectFilename(response);
-
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      window.URL.revokeObjectURL(fileUrl); */
     });
   };
 
@@ -120,11 +71,6 @@ const BusinesslogDetail = () => {
           </span>
         </div>
         <div className={classes.content}>{detail.blContent}</div>
-        <div className={classes.btnContainer}>
-          <button className={classes.dlbtn} onClick={onDownload}>
-            첨부파일 다운로드
-          </button>
-        </div>
       </div>
       {userInfo[0].userNo === detail.userNo ? (
         <div>

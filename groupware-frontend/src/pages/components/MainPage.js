@@ -16,6 +16,7 @@ import MyAppr from "../../components/Board/components/MyAppr";
 import RequestAppr from "../../components/Board/components/RequestAppr";
 import ApprDetail from './../../components/Board/components/ApprDetail';
 import Footer from "../../components/Common/Footer";
+import BlModi from "../../components/Writing/components/BlModi";
 
 const MainPage = () => {
   return (
@@ -32,7 +33,7 @@ const MainPage = () => {
             element={<BoardContainer menuType="업무일지" />}
           />
           <Route path="/businesslog/:no" element={<BusinesslogDetail />} />
-          <Route path="/businesslog/modify/:no" element={<BusinesslogDetail />} />
+          <Route path="/businesslog/modify/:no" element={<BlModi />} />
           <Route path="/appr/*" element={<BoardContainer menuType="결재" />} />
           <Route path="/appr/:no" element={<ApprDetail />} />
           <Route path="/appr/my" element={<MyAppr />} />
