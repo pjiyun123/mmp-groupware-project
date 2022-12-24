@@ -4,7 +4,7 @@ import classes from "../styles/BoardPagination.module.css";
 
 const BoardPagination = ({ menuType, data }) => {
   const [start, setStart] = useState(0);
-  const [end, setEnd] = useState(5);
+  const [end, setEnd] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const pageNumber = [];
   for (let i = 1; i <= Math.ceil(data?.length / 10); i++) {

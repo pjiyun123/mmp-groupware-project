@@ -8,14 +8,15 @@ import baseUrl from '../../assets/baseUrl';
 const CalendarContainer = () => {
 	const [calList, setCalList] = useState([]);
 	const [newCreated, setNewCreated] = useState(false);
-
-	axios({
-		method: "get",
-		url: baseUrl + "/calendar/list",
-	}).then((response) => {
-		setCalList(response.data);
-		setNewCreated(false);
-	})
+	useEffect(() => {
+		axios({
+			method: "get",
+			url: baseUrl + "/calendar/list",
+		}).then((response) => {
+			setCalList(response.data);
+			setNewCreated(false);
+		})
+	}, [newCreated])
 
 	return (
 		<>
