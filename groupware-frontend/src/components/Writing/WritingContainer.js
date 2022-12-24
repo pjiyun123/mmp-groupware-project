@@ -17,27 +17,36 @@ const WritingContainer = ({ menuType }) => {
   const fileRef = useRef();
   const [afType, setAfType] = useState([]);
   const [enteredType, setEnteredType] = useState();
+  const [enteredFile, setEnteredFile] = useState();
 
-  useDidMountEffect(() => {
+  useEffect(() => {
     setAfType([]);
     if (menuType !== "업무일지") {
       axios({
         method: "get",
         url: baseUrl + "/apprform/list",
       }).then((response) => {
+        let types = [];
         response.data.map((res) =>
-          setAfType((type) => type.concat({ id: res.afNo, value: res.afNm }))
+          //setAfType((type) => type.concat({ id: res.afNo, value: res.afNm }))
+          types.push({ id: res.afNo, value: res.afNm })
         );
+        setAfType(types);
+        setEnteredType(types[0].id);
       });
     }
   }, [menuType]);
+
   const onWriting = (e) => {
     e.preventDefault();
 
     const enteredTitle = titleRef.current.value;
     const enteredContent = contentRef.current.value;
-    const enteredFile = fileRef.current.files[0];
-
+  
+    if (menuType !== "업무일지") {
+     setEnteredFile(fileRef.current.files[0]);
+    }
+      
     let formData = new FormData();
 
     const writingType =
@@ -56,29 +65,34 @@ const WritingContainer = ({ menuType }) => {
             avlTit: enteredTitle,
             avlContent: enteredContent,
           };
-
-    menuType === "업무일지"
-      ? formData.append(
-          "bl",
-          new Blob([JSON.stringify(postData)], { type: "application/json" })
-        )
-      : formData.append(
-          "avl",
-          new Blob([JSON.stringify(postData)], { type: "application/json" })
-        );
-    formData.append("files", enteredFile);
-    console.log(formData.get("files"));
-    axios({
-      method: "post",
-      url: url,
-      headers: { "Content-Type": "multipart/form-data" },
-      data: formData,
-    }).then((response) => {
-      menuType === "업무일지"
-        ? alert("업무일지가 등록되었습니다.")
-        : alert("결재 신청이 완료되었습니다.");
-      menuType === "업무일지" ? navigate("/businesslog") : navigate("/appr/my");
-    });
+    
+    if (menuType !== "업무일지") {
+      formData.append(
+        "avl",
+        new Blob([JSON.stringify(postData)], { type: "application/json" })
+      );
+      formData.append("files", enteredFile);
+      axios({
+        method: "post",
+        url: url,
+        headers: { "Content-Type": "multipart/form-data" },
+        data: formData,
+      }).then((response) => {
+        alert("결재 신청이 완료되었습니다.");
+        navigate("/appr/my");
+      });
+    }
+    else {
+      axios({
+        method: "post",
+        url: url,
+        data: postData,
+      }).then((response) => {
+          alert("업무일지가 등록되었습니다.")
+          navigate("/businesslog");
+      });
+    }
+    
   };
 
   return (
@@ -128,27 +142,16 @@ const WritingContainer = ({ menuType }) => {
               </td>
             </tr>
           </tbody>
-          <tbody>
-            <tr>
-              <td className={classes.writeType}>첨부파일</td>
-              <td>
-                <input
-                  className={classes.fileInput}
-                  type="file"
-                  ref={fileRef}
-                />
-              </td>
-            </tr>
-          </tbody>
           {menuType === "업무일지" ? null : (
             <tbody>
               <tr>
-                {/* <td>결재자명</td> */}
+                <td className={classes.writeType}>첨부파일</td>
                 <td>
-                  {/* <WritingDropdown
-                    dropdownList={apprTypes}
-                    setSelectedDropValue={setEnteredType}
-                  /> */}
+                  <input
+                    className={classes.fileInput}
+                    type="file"
+                    ref={fileRef}
+                  />
                 </td>
               </tr>
             </tbody>

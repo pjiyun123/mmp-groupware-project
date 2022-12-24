@@ -14,8 +14,9 @@ import BusinesslogDetail from "../../components/Board/components/BusinesslogDeta
 import ApprFormDetail from "../../components/Board/components/ApprFormDetail";
 import MyAppr from "../../components/Board/components/MyAppr";
 import RequestAppr from "../../components/Board/components/RequestAppr";
-import ApprDetail from './../../components/Board/components/ApprDetail';
+import ApprDetail from "./../../components/Board/components/ApprDetail";
 import Footer from "../../components/Common/Footer";
+import BlModi from "../../components/Writing/components/BlModi";
 
 const MainPage = () => {
   return (
@@ -24,7 +25,8 @@ const MainPage = () => {
       <div className={classes.container}>
         <SideMenuContainer />
         <Routes>
-        <Route path="/" element={<CalendarContainer />} />
+          <Route path="*" element={<CalendarContainer />} />
+          <Route path="/" element={<CalendarContainer />} />
           <Route path="/mypage/*" element={<MyPageContainer />} />
           <Route path="/calendar/*" element={<CalendarContainer />} />
           <Route
@@ -32,7 +34,7 @@ const MainPage = () => {
             element={<BoardContainer menuType="업무일지" />}
           />
           <Route path="/businesslog/:no" element={<BusinesslogDetail />} />
-          <Route path="/businesslog/modify/:no" element={<BusinesslogDetail />} />
+          <Route path="/businesslog/modify/:no" element={<BlModi />} />
           <Route path="/appr/*" element={<BoardContainer menuType="결재" />} />
           <Route path="/appr/:no" element={<ApprDetail />} />
           <Route path="/appr/my" element={<MyAppr />} />

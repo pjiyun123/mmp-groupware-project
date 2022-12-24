@@ -1,0 +1,44 @@
+.container {
+	width: 70%;
+}
+
+.table {
+	width: 80%;
+	font-size: 1.1rem;
+	border: 1px solid #bbb;
+	padding: 0.2em;
+	border-radius: 7px;
+	border-spacing: 0.2em;
+}
+
+.type {
+	background-color: #ededed;
+	border-radius: 7px;
+	text-align: center;
+	padding-right: 0.7em;
+	font-style: bold;
+}
+
+.input {
+	width: 95%;
+	height: 100%;
+	border-radius: 7px;
+	padding: 0.5em;
+	border: 1px solid #bbb;
+}
+
+.btnContainer {
+	width: 80%;
+}
+
+.btn {
+	display: block;
+	margin: 3em auto;
+	width: 100px;
+  height: 40px;
+	border-radius: 10px;
+	background-color: #3928c0;
+	color: white;
+	border: none;
+	cursor: pointer;
+}

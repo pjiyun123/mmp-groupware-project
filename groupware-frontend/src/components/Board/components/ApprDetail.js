@@ -104,7 +104,7 @@ const ApprDetail = () => {
     axios({
       method: "get",
       url: fileUrl,
-      responseType: "blob",
+      //responseType: "blob",
     }).then((response) => {
       console.log(response);
       console.log(response.data);
