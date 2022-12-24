@@ -112,55 +112,55 @@ Backend : IntelliJ
 
 
 ## ✔ 프로젝트 상세 화면 명세
-[초기 화면]
+####[초기 화면]
 ![image](https://user-images.githubusercontent.com/95159265/209446453-9f0d8190-5af2-4b06-bbd1-c0eec9b99dbc.png)
 
-[마이페이지(직원 정보 조회)]
+####[마이페이지(직원 정보 조회)]
 ![image](https://user-images.githubusercontent.com/95159265/209446471-d2609faa-d13c-4e2e-8fc2-7927055a0b01.png)
 
-[직원 정보 수정]
+####[직원 정보 수정]
 ![image](https://user-images.githubusercontent.com/95159265/209446552-f060a0cd-dfb5-47b0-93e9-6ec46e4eac52.png)
 
-[직원 목록 조회]
+####[직원 목록 조회]
 ![image](https://user-images.githubusercontent.com/95159265/209446573-98c490e0-1816-4ec7-985d-0f1261179b59.png)
 
-[직원 계정 생성]
+####[직원 계정 생성]
 ![image](https://user-images.githubusercontent.com/95159265/209446583-fa49dc24-5822-4c83-a528-0b904b1a2a7a.png)
 
-[직원 계정 삭제]
+####[직원 계정 삭제]
 ![image](https://user-images.githubusercontent.com/95159265/209446590-b784bc56-6c85-4721-a0e7-7d2761714b0c.png)
 
-[일정 조회]
+####[일정 조회]
 ![image](https://user-images.githubusercontent.com/95159265/209446599-f55d9c56-ffc1-47dd-9521-ad90174671fc.png)
 
-[일정 등록]
+####[일정 등록]
 ![image](https://user-images.githubusercontent.com/95159265/209446609-6553f8c4-0a15-4430-a7e1-b35e763411a9.png)
 
-[업무일지 목록 조회]
+####[업무일지 목록 조회]
 ![image](https://user-images.githubusercontent.com/95159265/209446615-5a27e107-23ec-47e5-b07e-1944eea5da6b.png)
 
-[업무일지 등록]
+####[업무일지 등록]
 ![image](https://user-images.githubusercontent.com/95159265/209446618-cb7ccf4b-4da9-4097-b3f5-86050d4effcb.png)
 
-[결재 완료된 문서 조회]
+####[결재 완료된 문서 조회]
 ![image](https://user-images.githubusercontent.com/95159265/209446624-85a75f1f-f2cf-4011-9382-c77ce915fb66.png)
 
-[결재 요청 문서 조회]
+####[결재 요청 문서 조회]
 ![image](https://user-images.githubusercontent.com/95159265/209446632-a923440c-fdb5-4a5c-b66e-ddc74c129c68.png)
 
-[결재 문서 등록]
+####[결재 문서 등록]
 ![image](https://user-images.githubusercontent.com/95159265/209446639-ba1bdc0f-1ee8-4871-acf0-0ca8995a4d23.png)
 
-[결재 문서 양식 목록 조회]
+####[결재 문서 양식 목록 조회]
 ![image](https://user-images.githubusercontent.com/95159265/209446646-ec00f618-ef23-4c7b-aa71-9f977f2fbc94.png)
 
-[결재 문서 양식 조회]
+####[결재 문서 양식 조회]
 ![image](https://user-images.githubusercontent.com/95159265/209446653-8209d1d9-270d-4ba1-9d91-b2561c06bde2.png)
 
-[결재할 문서 목록 조회]
+####[결재할 문서 목록 조회]
 ![image](https://user-images.githubusercontent.com/95159265/209446658-7e5025d3-4270-4219-80d8-edae2911681a.png)
 
-[결재 진행]
+####[결재 진행]
 ![image](https://user-images.githubusercontent.com/95159265/209446665-9a3234dc-edb0-4572-a097-63b6a4ce2bd3.png)
 
 
