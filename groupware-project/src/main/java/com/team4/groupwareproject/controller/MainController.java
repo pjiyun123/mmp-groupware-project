@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping
+//@CrossOrigin(origins = "http://localhost:3030")
 @CrossOrigin(origins = "http://localhost:3030, https://simmpleware.netlify.app/")
 public class MainController {
 

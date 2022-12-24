@@ -34,7 +34,7 @@ public class BusinesslogService {
     }
 
     // 업무일지 등록
-    public Businesslog addBusinesslog(Long userNo, Businesslog businesslog, List<MultipartFile> files) throws IOException {
+    public Businesslog addBusinesslog(Long userNo, Businesslog businesslog) {
         User user = uRepo.findByUserNo(userNo);
         Businesslog newBl = Businesslog.builder()
                 .userNo(userNo)
@@ -44,24 +44,7 @@ public class BusinesslogService {
                 .createDt(LocalDateTime.now())
                 .build();
 
-        Long blNo = blRepo.save(newBl).getBlNo();
-
-        if(!files.isEmpty()) {
-            for(int i=0; i<files.size(); i++) {
-                String fileName = fileutil.uploadFile(files.get(i), "businesslog");
-
-                Attachment atc = Attachment.builder()
-                        .atcDocNo(constant.BUSINESSLOG)
-                        .atcPrtNo(blNo)
-                        .atcOriName(files.get(i).getOriginalFilename())
-                        .atcFtpName(fileName)
-                        .createDt(LocalDateTime.now())
-                        .build();
-
-                atcRepo.save(atc);
-            }
-        }
-
+        blRepo.save(newBl);
         return newBl;
     }
 
@@ -71,15 +54,17 @@ public class BusinesslogService {
         return bl;
     }
 
+    /*
     // 업무일지 상세 파일정보 조회
     public List<Attachment> getBusinesslogFiles(Long blNo) {
         List<Attachment> blFiles = atcRepo.findByAtcDocNoAndAtcPrtNo(constant.BUSINESSLOG, blNo);
 
         return blFiles;
     }
+     */
 
     // 업무일지 수정
-    public Businesslog updateBusinesslog(Long blNo, Businesslog businesslog, List<MultipartFile> files) throws IOException {
+    public Businesslog updateBusinesslog(Long blNo, Businesslog businesslog) {
         Businesslog tempBl = blRepo.findByBlNo(blNo);
 
         tempBl.setUpdateDt(LocalDateTime.now());
@@ -89,26 +74,6 @@ public class BusinesslogService {
             tempBl.setBlContent(businesslog.getBlContent());
 
         Businesslog updatedBl = blRepo.save(tempBl);
-
-        if(files != null) {
-            atcRepo.deleteByAtcDocNoAndAtcPrtNo(constant.BUSINESSLOG, blNo);
-
-            for(int i=0; i<files.size(); i++) {
-                String fileName = fileutil.uploadFile(files.get(i), "businesslog");
-
-                Attachment atc = Attachment.builder()
-                        .atcDocNo(constant.BUSINESSLOG)
-                        .atcPrtNo(blNo)
-                        .atcOriName(files.get(i).getOriginalFilename())
-                        .atcFtpName(fileName)
-                        .createDt(LocalDateTime.now())
-                        .updateDt(LocalDateTime.now())
-                        .build();
-
-                atcRepo.save(atc);
-            }
-        }
-
         return updatedBl;
     }
 

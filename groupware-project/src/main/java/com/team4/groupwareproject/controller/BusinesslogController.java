@@ -6,35 +6,14 @@ import com.team4.groupwareproject.repository.AttachmentRepository;
 import com.team4.groupwareproject.service.BusinesslogService;
 import com.team4.groupwareproject.util.FileUtil;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.net.ftp.FTP;
-import org.apache.commons.net.ftp.FTPClient;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.nio.ByteBuffer;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 import java.util.List;
 
 @RestController
 @RequestMapping
 @RequiredArgsConstructor
+//@CrossOrigin(origins = "http://localhost:3030")
 @CrossOrigin(origins = "http://localhost:3030, https://simmpleware.netlify.app/")
 public class BusinesslogController {
 
@@ -51,8 +30,8 @@ public class BusinesslogController {
 
     // 업무일지 등록
     @PostMapping("/businesslog/{userNo}")
-    public Businesslog add(@PathVariable Long userNo, @RequestPart("bl") Businesslog bl, @RequestPart("files") List<MultipartFile> files) throws IOException {
-        Businesslog newBl = blServ.addBusinesslog(userNo, bl, files);
+    public Businesslog add(@PathVariable Long userNo, @RequestBody Businesslog bl) throws IOException {
+        Businesslog newBl = blServ.addBusinesslog(userNo, bl);
         return newBl;
     }
 
@@ -63,14 +42,17 @@ public class BusinesslogController {
         return bl;
     }
 
+    /*
     // 업무일지 상세 파일 정보 조회
     @GetMapping("/businesslog/{blNo}/atc")
     public List<Attachment> detailAtc(@PathVariable Long blNo) {
         List<Attachment> blFiles = blServ.getBusinesslogFiles(blNo);
         return blFiles;
     }
+    */
 
 
+    /*
     // 업무일지 상세 파일 다운로드
     @GetMapping("/businesslog/{blNo}/atc/{atcNo}/download")
     public String download(@PathVariable Long blNo, @PathVariable Long atcNo) {
@@ -78,6 +60,7 @@ public class BusinesslogController {
         String ftpName = atcRepo.findByAtcNo(atcNo).getAtcFtpName();
         return mmpUrl + ftpName;
     }
+     */
 
     /*
     @GetMapping("/businesslog/{blNo}/atc/{atcNo}/download")
@@ -134,8 +117,8 @@ public class BusinesslogController {
 
     // 업무일지 수정
     @PatchMapping("/businesslog/{userNo}/{blNo}")
-    public Businesslog edit(@PathVariable Long userNo, @PathVariable Long blNo, @RequestPart("bl") Businesslog bl, @RequestPart("files") List<MultipartFile> files) throws IOException{
-        Businesslog updatedBl = blServ.updateBusinesslog(blNo, bl, files);
+    public Businesslog edit(@PathVariable Long userNo, @PathVariable Long blNo, @RequestBody Businesslog bl) {
+        Businesslog updatedBl = blServ.updateBusinesslog(blNo, bl);
         return updatedBl;
     }
 
