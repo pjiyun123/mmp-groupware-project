@@ -152,7 +152,7 @@ const InfoModify = () => {
                 <input
                   className={classes.input}
                   type="text"
-                  placeholder={deptTypes[userInfo[0].deptNo].value}
+                  placeholder={deptTypes.filter((dept) => dept.id === userInfo[0].deptNo)[0].value}
                   disabled
                 />
                 {/* <DropdownInput

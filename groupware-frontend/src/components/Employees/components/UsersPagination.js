@@ -9,8 +9,7 @@ const UsersPagination = ({ data, isLoading }) => {
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
-  // const defaultDeptTypes = [{deptNo: 0, deptNm: '부서를 선택하세요.'},];
-  // const [deptTypes, setDeptTypes] = useState(defaultDeptTypes);
+ 
   const pageNumber = [];
   for (let i = 1; i <= Math.ceil(data?.length / 5); i++) {
     pageNumber.push(i);
@@ -18,13 +17,6 @@ const UsersPagination = ({ data, isLoading }) => {
   useEffect(() => {
     setStart((currentPage - 1) * 5);
     setEnd(currentPage * 5);
-
-    // axios({
-    //   method: "get",
-    //   url: baseUrl + "/dept/list",
-    // }).then((response) => {
-    //   setDeptTypes(defaultDeptTypes.concat(response.data));
-    // })
   }, [currentPage]);
 
   return (
@@ -68,9 +60,7 @@ const UsersPagination = ({ data, isLoading }) => {
                   {jobTypes[info.jobNo].value}
                 </td>
                 <td className="inquiryInfoType" align="center">
-                  {deptTypes[info.deptNo].value}
-                  {/* {deptTypes[info.deptNo].value} */}
-                  {/* {deptTypes[info.deptNo].deptNm ? deptTypes[info.deptNo].deptNm : "부서를 찾을 수 없음."} */}
+                  {deptTypes.filter((dept) => dept.id === info.deptNo)[0].value}
                 </td>
                 <td className="inquiryInfoType" align="center">
                   {info.userPhone == null

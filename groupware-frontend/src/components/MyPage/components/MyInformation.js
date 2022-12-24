@@ -27,7 +27,7 @@ const MyInformation = () => {
         <tbody>
           <tr>
             <td className={classes.infoType}>부서</td>
-            <td className={classes.info}>{deptTypes[userInfo[0].deptNo].value}</td>
+            <td className={classes.info}>{deptTypes.filter((dept) => dept.id === userInfo[0].deptNo)[0].value}</td>
           </tr>
         </tbody>
         <tbody>
