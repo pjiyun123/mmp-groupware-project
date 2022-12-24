@@ -53,7 +53,9 @@ Backend : IntelliJ
  Axios  
  CSS  
  CSS Module  
- yarn  
+ yarn    
+ Web Storage  
+ Netlify
 
 - Backend            
  Spring Boot Actuator     
