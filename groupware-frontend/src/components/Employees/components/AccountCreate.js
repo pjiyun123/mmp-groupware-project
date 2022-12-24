@@ -10,17 +10,11 @@ import classes from "../styles/AccountCreate.module.css";
 // import DeptTypesDropdown from "./DeptTypesDropdown";
 
 const AccountCreate = () => {
-  // const defaultDeptTypes = [{deptNo: 0, deptNm: '부서를 선택하세요.'},];
-  // const [deptTypes, setDeptTypes] = useState(defaultDeptTypes);
+  const [phone1, setPhone1] = useState("010");
 
-  // useEffect(() => {
-  //   axios({
-  //     method: "get",
-  //     url: baseUrl + "/dept/list",
-  //   }).then((response) => {
-  //     setDeptTypes(defaultDeptTypes.concat(response.data));
-  //   })
-  // }, []);
+  const onChange = (e) => {
+    setPhone1(e.target.value);
+  }
 
   const navigate = useNavigate();
 
@@ -51,7 +45,7 @@ const AccountCreate = () => {
     const enteredPassword = passwordInputRef.current.value;
 
     const enteredPhone =
-      enteredPhone1 + "-" + enteredPhone2 + "-" + enteredPhone3;
+      phone1 + "-" + enteredPhone2 + "-" + enteredPhone3;
 
     const newEmployeeInfo = {
       userLv: enteredAuthorization,
@@ -147,7 +141,8 @@ const AccountCreate = () => {
                 <input
                   className={classes.phoneInput}
                   type="text"
-                  placeholder="010"
+                  value={phone1}
+                  onChange={onChange}
                   ref={phoneInputRef1}
                 />{" "}
                 -{" "}

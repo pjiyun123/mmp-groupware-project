@@ -17,11 +17,11 @@ const AccountList = () => {
 			setIsLoading(false);
 			setList(response.data);
 		})
+		
 	} , []);
 	return (
 		<>
 			<UsersPagination data={list} isLoading={isLoading} />
-			
 		</>
 	);
 };
