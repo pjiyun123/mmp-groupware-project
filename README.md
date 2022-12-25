@@ -12,6 +12,14 @@
 ## 📌 프로젝트 시연영상 URL
 https://youtu.be/dAD7lpAOiBU
 
+## 📌 프로젝트 배포 URL
+https://simmpleware.netlify.app/
+
+* 배포 이슈
+![image](https://user-images.githubusercontent.com/95159265/209472715-3f5ac719-78e4-4038-b027-f8e4a2d630e4.png)
+'cron-job'으로 점검한 결과, 현재까지 서버는 안정된 것으로 확인됨     
+그러나 헤로쿠가 자체적으로 유료 버전으로 변경되면서 불안정화될 수 있음
+
 
 ## ✔ 4팀 팀원 소개
 - 박지윤(팀장) | pjiyun123
